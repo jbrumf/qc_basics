@@ -1,0 +1,6 @@
+# OS X
+.DS_Store
+
+# Debugging and build files - not checked in
+non_git/
+release/
