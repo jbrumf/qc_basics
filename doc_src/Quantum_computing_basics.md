@@ -1,7 +1,7 @@
 # Quantum Computing Basics
 
 *Jon Brumfitt
-(First draft 19 June 2024, last updated 21 February 2025)*
+(First draft 19 June 2024, last updated 20 March 2025)*
 
 This is an introduction to some basic concepts of quantum computation using the quantum gate model. Some knowledge of linear algebra is assumed.
 
@@ -406,7 +406,7 @@ The tensor product of individual pure qubit states gives the state of the N-qubi
 
 Unentangled states are separable and can therefore be simulated efficiently on a classical computer. Without entanglement, quantum computers would be no more powerful than classical computers.
 
-A classical computer requires only 38 bytes of storage to represent 300 classical bits. In contrast, a quantum computer with 300 qubits requires a vector of $2^{300}$ (about $10^{93}$) complex values to represent the state, which is much more than the number of atoms in the observable universe (estimated to be around $10^{80}$ ). Simulating a quantum computer with more than a few tens of qubits is infeasible even on a supercomputer.
+A classical computer requires only 38 bytes of storage to represent 300 classical bits. In contrast, a quantum computer with 300 qubits requires a vector of $2^{300}$ (about $10^{90}$) complex values to represent the state, which is much more than the number of atoms in the observable universe (estimated to be around $10^{80}$ ). Simulating a quantum computer with more than a few tens of qubits is infeasible even on a supercomputer, for arbitrary quantum states. (Note: Modern quantum simulation techniques, such as the use of Matrix Product States, can allow simulations with hundreds of qubits in some cases by compressing the quantum state, provided that the entanglement in the system is not too great.)
 
 Quantum states represent exponentially more information than classical states. However, we cannot access that information because measuring it will only give one of the classical states. The art of writing quantum algorithms is to utilize the vast state space, but then evolve the state towards one of the basis states, having some required property, which can be read out as the answer.
 
@@ -638,7 +638,7 @@ Non-consecutive qubits are a problem in real quantum computers because the qubit
 
 Quantum computer programming languages and quantum circuit diagrams work at a higher level of abstraction, where multi-qubit gates can be applied to arbitrary qubits, without the user needing to worry about such issues. Software then compiles these into sequences of lower-level operations for the quantum hardware, taking into account the qubit topology and primitive operations available.
 
-Fortunately, in a quantum-computer simulator, we can implement swaps more efficiently by permuting the qubit indices, as explained in the next section. Then a later section considers approaches to simulating a quantum computer, including the use of tensors to provide a much more efficient solution..
+Fortunately, in a quantum-computer simulator, we can sometimes implement swaps more efficiently by permuting the qubit indices, as explained in the next section. Then a later section considers approaches to simulating a quantum computer, including the use of tensors to provide a much more efficient solution..
 
 ### Addressing Qubits
 
@@ -915,7 +915,7 @@ The suffices indicate the size of the sub-matrix. The suffix is 2 in the simple 
 
 Note that the above definition assumes the big-endian qubit convention.
 
-In this way, we can build controlled versions of any gate, such as the controlled-controlled-NOT (CCX).
+In this way, we can build a controlled version of any gate. We can even make a controlled-controlled gate, such as the controlled-controlled-NOT (CCX).
 
 ### SWAP Gate
 
@@ -1009,11 +1009,13 @@ The two successive CX gates cancel as they both apply an X (NOT) conditional on 
 
 The two meter symbols denote Z-basis measurements, as described in the section on [Measurement](#measurement).
 
+Bell measurement is used, for example, in the [Quantum Teleportation](#quantum-teleportation) protocol.
+
 ### Monogomy of Entanglement
 
-The principle of the *Monogomy of Entanglement* says that if two qubits are maximally entangled with one another, they cannot have any entanglement with a third qubit.
+The principle of the *Monogomy of Entanglement* says that if two qubits are maximally entangled with one another, they cannot have any entanglement with a third qubit. This principle is important in quantum cryptography.
 
-However, this does not mean that multi-qubit entanglement is impossible, just that there are some restrictions on what is allowed. This principle is important in quantum cryptography.
+However, this does not mean that multi-qubit entanglement is impossible, just that there are some restrictions on what is allowed.
 
 For example, three qubits can be fully entangled, but without any entanglement between the two qubits of any pair. Examples of this are the GHZ state:
 
