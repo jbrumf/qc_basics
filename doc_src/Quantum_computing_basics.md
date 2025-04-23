@@ -5,9 +5,24 @@
 
 ### Preface
 
-This is a short introduction to quantum computation, focusing on quantum circuits, quantum information and simulation aspects.
+This is a short introduction to quantum computation, focusing on quantum states, quantum gates, quantum circuits, quantum information and simulation, rather than implementation technologies such as superconducting qubits and quantum dots.
 
 Quantum mechanics and quantum computing are, by their very nature, rather mathematical. I have tried to keep the maths as simple as possible and have avoided the rigorous derivations you might find in a text book. However, some knowledge of complex numbers, vectors and matrices is assumed.
+
+After a career mostly spent developing scientific software for space astrophysics missions, I retired and was looking for something interesting to do with all the spare time I had suddenly acquired. Many years earlier at university, I had been fascinated by quantum mechanics, so the emerging field of quantum computing caught my imagination and I was keen to learn more about it.
+
+I ordered a book on quantum computing, but had only read a few pages before I started using Python to simulate some of the things I had read about. This quickly grew into a small simulator that I called "TinyQsim" (https://github.com/jbrumf/tinyqsim). This has no relation to the TinyQsim package in the PyPI repositoryr.
+
+If you read a book or watch a lecture on something, you may feel you understand it, but it is not until you try to actually use the knowledge that you really begin to understand it properly and appreciate all the subtle points that the book or lecturer glossed over or didn't mention. Writing the simulator has given me a much better understanding than I would have got by just using an off-the-shelf quantum simulator. I have often found that writing about something, preparing a lecture on it or simulating it in software are good ways to improve your understanding of it.
+
+This guide started out as as a few informal notes on quantum computing to accompany TinyQsim, but has grown into the current document, which is now separate from the simulator. I have enjoyed writing it and there are many more topics I would like to have covered, so I may continue to add to it from time to time.
+
+I would encourage you to get a simulator and experiment with the things in this guide yourself. You may be better of with a more comprehensive quantum simulator, such as IBM's Qiskit, which has a big user community and lots of documentation and examples. However, if my short guide has got you interested, then it has served its purpose.
+
+Jon Brumfitt
+April 2025
+
+---
 
 ### Contents
 
@@ -48,7 +63,7 @@ Quantum mechanics and quantum computing are, by their very nature, rather mathem
     - [Creating Entanglement](#creating-entanglement)
     - [Bell States](#bell-states)
     - [Bell Measurement](#bell-measurement)
-    - [Monogomy of Entanglement](#monogomy-of-entanglement)
+    - [Monogamy of Entanglement](#monogamy-of-entanglement)
   - [6: Measurement](#6-measurement)
     - [Introduction](#introduction)
     - [Simulated Measurements](#simulated-measurements)
@@ -72,6 +87,8 @@ Quantum mechanics and quantum computing are, by their very nature, rather mathem
     - [ZX Calculus](#zx-calculus)
   - [9: Conclusions](#9-conclusions)
   - [Bibliography](#bibliography)
+
+---
 
 ## 1: Introduction
 
@@ -324,7 +341,7 @@ We saw earlier that the state $\ket{\psi}$ of a qubit can be represented as a li
 
 The vector $\ket{\psi}$ is an element of the 2-dimensional complex vector space $\mathbb{C}^2$, known as a *Hilbert space*. A qubit can be any system that is described by a 2-dimensional Hilbert space.
 
-Note: A Hilbert space is a complex vector space with an inner product that is generalized to allow infinite dimenstional spaces. Infinite dimensional vector spaces become important in quantum mechanics when we are dealing with continuous degrees of freedom, such as position or momentum. Since we only need finite-dimensional vector spaces for quantum computing, we will often just use the term "complex vector space".
+Note: A Hilbert space is a complex vector space with an inner product that is generalized to allow infinite dimensional spaces. Infinite dimensional vector spaces become important in quantum mechanics when we are dealing with continuous degrees of freedom, such as position or momentum. Since we only need finite-dimensional vector spaces for quantum computing, we will often just use the term "complex vector space".
 
 The vector $\ket{\psi}$ can be visualized in the 2-dimensional vector space as follows:
 
@@ -400,7 +417,7 @@ The Bloch Sphere is a three-dimensional graphical representation of the state of
 
 It is particularly well-suited for relating qubits to the behaviour of spin-½ systems, such as the spin of an electron. However, even qubits that are physically implemented by other 2-state phenomena, such as the direction of current in a superconducting loop, behave in the same way at the abstract level of qubits. It is equally possible to perform X, Y and Z rotations of them on the Bloch sphere, although these operations are no longer simply related to the physical system.
 
-Quantum computing harnesses the apparently strange behaviour of quantum particles in order to perform computations. Without some appreciation of the physical realisation of qubits, the concepts of quantum computing may seem somewhat strange and arbitary. The spin of the electron is a good example to keep in mind as it relates nicely to the Bloch sphere and one-qubit quantum gates.
+Quantum computing harnesses the apparently strange behaviour of quantum particles in order to perform computations. Without some appreciation of the physical realisation of qubits, the concepts of quantum computing may seem somewhat strange and arbitrary. The spin of the electron is a good example to keep in mind as it relates nicely to the Bloch sphere and one-qubit quantum gates.
 
 The state of a qubit is described by two complex numbers. However, it is possible to describe the state with only two (real) angles because there is redundant information.
 
@@ -553,7 +570,7 @@ Note that the result can be expressed as the tensor product of two independent (
 
 It is possible to create two identical quantum states by applying the same sequence of unitary operators to a $\ket{00\dots 0}$ state, but this is not the same as creating a copy of a given unknown state. Creating entanglement also does not count as cloning because the entangled qubits are not independent.
 
-The related *no-deleting theorem* says that, given two identical quatum states, it is not possible to throw one away. This follows because the evolution of quantum state is reversible, so if deletion were possible then, in reverse, cloning would be possible.
+The related *no-deleting theorem* says that, given two identical quantum states, it is not possible to throw one away. This follows because the evolution of quantum state is reversible, so if deletion were possible then, in reverse, cloning would be possible.
 
 Deletion would be the operation:
 
@@ -561,7 +578,7 @@ Deletion would be the operation:
 \ket{\psi \psi} \rightarrow \ket{\psi 0}
 ```
 
-The no-cloning theorem implies that it is not possible to connect the output of one quantum gate to the input of two other gates, which is a normal occurence with classical logical gates.
+The no-cloning theorem implies that it is not possible to connect the output of one quantum gate to the input of two other gates, which is a normal occurrence with classical logical gates.
 
 ## 3: Quantum Circuits
 
@@ -577,7 +594,7 @@ A quantum circuit has a fixed number of qubits, as required by unitarity and the
 
 ### Endianness
 
-The qubit on the left side of a tensor product is refered to as the *most-significant* qubit. Hence, in the quantum state $\ket{011}$, the most-significant qubit is $\ket{0}$ and the least-significant qubit is $\ket{1}$:
+The qubit on the left side of a tensor product is referred to as the *most-significant* qubit. Hence, in the quantum state $\ket{011}$, the most-significant qubit is $\ket{0}$ and the least-significant qubit is $\ket{1}$:
 
 This document uses the *big-endian* qubit numbering convention in which the most-significant qubit is called qubit 0. Note that some books and papers use the *little-endian* convention in which the least significant qubit is qubit 0. This can lead to confusion when comparing examples from different sources. It also leads to different matrix representation of some multi-qubit gates, such as CX, which can be a further source of confusion.
 
@@ -591,7 +608,7 @@ A quantum circuit consists of a sequence of gates representing unitary operation
 <img src="assets_qcb/ABCD.png" height="120"/>
 </div>
 
-The input state on the left-hand side is $\ket{xy}=\ket{x}\otimes\ket{y}$. The qubit on the left side of a tensor product is refered to as the *most-significant* qubit. 
+The input state on the left-hand side is $\ket{xy}=\ket{x}\otimes\ket{y}$. The qubit on the left side of a tensor product is referred to as the *most-significant* qubit. 
 
 The quantum gates in the circuit simply represent quantum operations that are applied to the qubits. There is no implication that the gates are physical entities. In fact, the gates are often just quantum operations applied in-place to a fixed set of qubits. The inputs and outputs of the gates are not physical ports but simply the *before* and *after* states of the same qubits.
 
@@ -609,9 +626,9 @@ The following example shows the series composition of two one-qubit gates:
 \ket{\psi}=BA\ket{x}
 ```
 
-where  $\ket{\psi}$ is the ouput state on the right-hand side.
+where  $\ket{\psi}$ is the output state on the right-hand side.
 
-Note that the operations in the diagram are applied left to right, whereas the order in the equation is from right to left. The order of the gates cannot be interchaged unless the associated operators commute.
+Note that the operations in the diagram are applied left to right, whereas the order in the equation is from right to left. The order of the gates cannot be interchanged unless the associated operators commute.
 
 Single qubit operators may be applied to the tensor product of qubit states by taking the tensor product of the operators:
 
@@ -681,7 +698,7 @@ Consider modifying the previous example so that there are 5 qubits and the $\ket
 
 This gives rise to two problems. Firstly, the $\ket{x}$ and $\ket{y}$ qubits are non-adjacent and secondly the order of the qubits does not match the order required by gate 'C' (indicated by the 0 and 1 labels in the gate symbol).
 
-One solution is to use [SWAP](#swap-gate) gates to swap pairs of qubits to make the required qubits adjacent and in the correct order, then apply gate 'C' and finally reverse all the swaps to put the qubits back in the original order. The swap gates are denoted by a symbol with two crossses.
+One solution is to use [SWAP](#swap-gate) gates to swap pairs of qubits to make the required qubits adjacent and in the correct order, then apply gate 'C' and finally reverse all the swaps to put the qubits back in the original order. The swap gates are denoted by a symbol with two crosses.
 
 <div style="text-align: center;">
 <img src="assets_qcb/permute3.png" alt="permute3.png" height="270"/>
@@ -693,7 +710,7 @@ Non-consecutive qubits are a problem in real quantum computers because the qubit
 
 Quantum computer programming languages and quantum circuit diagrams work at a higher level of abstraction, where multi-qubit gates can be applied to arbitrary qubits, without the user needing to worry about such issues. Software then compiles these into sequences of lower-level operations for the quantum hardware, taking into account the qubit topology and primitive operations available.
 
-Fortunately, in a quantum-computer simulator, we can sometimes implement swaps more efficiently by permuting the qubit indices, as explained in the next section. Then a later section considers approaches to simulating a quantum computer, including the use of tensors to provide a much more efficient solution..
+Fortunately, in a quantum-computer simulator, we can sometimes implement swaps more efficiently by permuting the qubit indices, as explained in the next section. Then a later section considers approaches to simulating a quantum computer, including the use of tensors to provide a much more efficient solution.
 
 ### Addressing Qubits
 
@@ -776,7 +793,7 @@ When applied to the basis states $\ket{0}$ or $\ket{1}$, it reduces to the class
 
 ### Hadamard (H) Gate
 
-The Hadamard gate (H) is described by the following cicuit symbol, Dirac notation and unitary matrix:
+The Hadamard gate (H) is described by the following circuit symbol, Dirac notation and unitary matrix:
 
 <div style="text-align: center;">
 <img src="assets_qcb/h_gate.png" height="65"/>
@@ -983,7 +1000,7 @@ SWAP itself is usually not a primitive operation but it is equivalent to the app
 <img src="assets_qcb/cx3.png" height="115"/>
 </div>
 
-A sequence of swaps of adjacent qubits may be needed to realize a swap of two qubits that are seveal qubits apart. The topology of the physical qubit array is obviously important in minimizing the number of swap operations required.
+A sequence of swaps of adjacent qubits may be needed to realize a swap of two qubits that are several qubits apart. The topology of the physical qubit array is obviously important in minimizing the number of swap operations required.
 
 ## 5: Entanglement
 
@@ -991,7 +1008,7 @@ A sequence of swaps of adjacent qubits may be needed to realize a swap of two qu
 
 Entanglement was introduced in the earlier section on [Multi-Qubit States](#multi-qubit-states). Together with superposition and interference, it is one of the three main quantum phenomena exploited by quantum computers.
 
-The following example shows how entanglement can be created using just a Hadamard (H) gate and a CX gate, from the intial state $\ket{00}$:
+The following example shows how entanglement can be created using just a Hadamard (H) gate and a CX gate, from the initial state $\ket{00}$:
 
 <div style="text-align: center;">
 <img src="assets_qcb/bell_0.png" height="120"/>
@@ -1052,9 +1069,9 @@ The two meter symbols denote Z-basis measurements, as described in the section o
 
 Bell measurement is used, for example, in the [Quantum Teleportation](#quantum-teleportation) protocol.
 
-### Monogomy of Entanglement
+### Monogamy of Entanglement
 
-The principle of the *Monogomy of Entanglement* says that if two qubits are maximally entangled with one another, they cannot have any entanglement with a third qubit. This principle is important in quantum cryptography.
+The principle of the *Monogamy of Entanglement* says that if two qubits are maximally entangled with one another, they cannot have any entanglement with a third qubit. This principle is important in quantum cryptography.
 
 However, this does not mean that multi-qubit entanglement is impossible, just that there are some restrictions on what is allowed. For example, three qubits can be fully entangled, but without any entanglement between the two qubits of any pair.
 
@@ -1070,7 +1087,7 @@ The resulting entangled state is:
 \ket{\psi}={\scriptsize\frac{1}{\sqrt{2}}} (\ket{000} + \ket{111} )
 ```
 
-If we measure qubit q0, we will either get $\ket{0}$ or $\ket{1}$. The remaining two qubits are then in the state $\ket{00}$ or $\ket{11}$ repectively, but it is just a classical correlation. Qubits q1 and q2 are not in a superposition of $\ket{00}$ and $\ket{11}$, so they are not entangled. It is just a lack of knowledge about the result of measuring q0 that leaves two outcomes for q1 and q2.
+If we measure qubit q0, we will either get $\ket{0}$ or $\ket{1}$. The remaining two qubits are then in the state $\ket{00}$ or $\ket{11}$ respectively, but it is just a classical correlation. Qubits q1 and q2 are not in a superposition of $\ket{00}$ and $\ket{11}$, so they are not entangled. It is just a lack of knowledge about the result of measuring q0 that leaves two outcomes for q1 and q2.
 
 Any number of qubits can be entangled this way by cascading more CX gates.
 
@@ -1152,7 +1169,7 @@ Measurement of the state of the qubit results in the state changing (collapsing)
 
 After a measurement, the system is in an eigenstate of the measurement operator. So, if we measure it again, we will get the same result with probability $p=1$.
 
-The above approach generalizes to the measurement of a set of $N$ qubits, where there are $2^N$ basis states. If one qubit is measured, it will affect the probabilities of the remaining posible outcomes. However, the order in which a set of qubits is measured does not affect the measurement outcomes.
+The above approach generalizes to the measurement of a set of $N$ qubits, where there are $2^N$ basis states. If one qubit is measured, it will affect the probabilities of the remaining possible outcomes. However, the order in which a set of qubits is measured does not affect the measurement outcomes.
 
 ### Measurement in Different Bases
 
@@ -1223,7 +1240,7 @@ In other words, there are two possible outcomes:
 
 The whole system, including the data qubit and the measurement qubit is now in a joint superposition.
 
-In a real-world measurement, where we obtain a result outside the quantum system being measured, the measuring aparatus is not a single qubit. The measurement qubit becomes entangled with more and more other qubits (e.g. atoms) in the measuring device and the entanglement rapidly spreads into the environment, so that there is a big multi-qubit entanglement which has a consistent view of the measurement outcome. Entanglements are easy to create but difficult to undo, so the measurement becomes irreversible.
+In a real-world measurement, where we obtain a result outside the quantum system being measured, the measuring apparatus is not a single qubit. The measurement qubit becomes entangled with more and more other qubits (e.g. atoms) in the measuring device and the entanglement rapidly spreads into the environment, so that there is a big multi-qubit entanglement which has a consistent view of the measurement outcome. Entanglements are easy to create but difficult to undo, so the measurement becomes irreversible.
 
 This loss of information to the environment is called *Decoherence*. The evolution of the system being measured is no longer unitary, although the system as a whole, including the environment, is still unitary in principle.
 
@@ -1231,7 +1248,7 @@ This loss of information to the environment is called *Decoherence*. The evoluti
 
 The *principle of implicit measurement* says that any qubits which have not been measured at the end of the computation may be assumed to be measured.
 
-In other words, measuring these qubits has no effect on the probability distribution for measurement of the other qubits. Consequently, they can be ignored and there is no need to measure them. This is related to remark made earlier, that the order of measuring qubits make no difference to the probability distribution of outcomes.
+In other words, measuring these qubits has no effect on the probability distribution for measurement of the other qubits. Consequently, they can be ignored and there is no need to measure them. This is related to remark made earlier, that the order of measuring qubits makes no difference to the probability distribution of outcomes.
 
 For an example, see the section on [Exploring the Teleportation Example](#exploring-the-teleportation-example).
 
@@ -1263,7 +1280,7 @@ Another way to move measurements to the end is to use commutativity properties. 
 <img src="assets_qcb/defer_before.png" alt="defer_before" height="120"/>
 </div>
 
-This can be be replaced by:
+This can be replaced by:
 
 <div style="text-align: center;">
 <img src="assets_qcb/defer_after.png" alt="defer_after" height="120"/>
@@ -1271,7 +1288,7 @@ This can be be replaced by:
 
 Once all measurements are at the end, the circuit becomes a single unitary operator that is followed by final measurements of its outputs. This simplifies analysis and optimization of the circuit by allowing only pure states to be considered.
 
-Expressing the circuit as a single unitary also makes it faster to simulate. Instead of estimating outcome probabilities by performing many runs, it is possible to simply omit the final measurements completely and calculate the probabilities directly. If measuurement counts are needed to see examples of statistical fluctuations, it is possible to sample the probability distribution many times without needing to run the circuit more than once.
+Expressing the circuit as a single unitary also makes it faster to simulate. Instead of estimating outcome probabilities by performing many runs, it is possible to simply omit the final measurements completely and calculate the probabilities directly. If measurement counts are needed to see examples of statistical fluctuations, it is possible to sample the probability distribution many times without needing to run the circuit more than once.
 
 ### Mid-Circuit Measurement
 
@@ -1291,7 +1308,7 @@ Quantum teleportation is a protocol for sending quantum information (i.e. qubits
 
 Imagine that Alice has a data qubit that she wishes to send to Bob. The [No-Cloning Theorem](#no-cloning-theorem) of quantum mechanics says that it is impossible to create an independent and identical copy of an unknown quantum state. This implies that if Alice sends a qubit to Bob, then she no longer has access to the qubit herself.
 
-The protocol requires Alice and Bob to each have one of an entangled pair of qubits. Alice makes a joint [Bell Measurement](#bell-measurement) of the data qubit with her entangled qubit. This results in two classical bits of information corresponding to the four possible measurement outcomes. If Alice sends these two classical bits to Bob, he can can use them with his entangled qubit to recreate the qubit that Alice sent. The Bell measurement that Alice performs destroys the quantum state of her data qubit, so the no-cloning theorem is not violated.
+The protocol requires Alice and Bob to each have one of an entangled pair of qubits. Alice makes a joint [Bell Measurement](#bell-measurement) of the data qubit with her entangled qubit. This results in two classical bits of information corresponding to the four possible measurement outcomes. If Alice sends these two classical bits to Bob, he can use them with his entangled qubit to recreate the qubit that Alice sent. The Bell measurement that Alice performs destroys the quantum state of her data qubit, so the no-cloning theorem is not violated.
 
 The following quantum circuit shows Alice's part of the protocol:
 
@@ -1303,7 +1320,7 @@ The part to the left of the barrier shows the creation of an entangled pair of q
 
 If Alice were to simply measure her qubit, she would get a random result of 0 or 1. If Bob then measured his qubit, he would get the same result. However, this alone cannot be used to send information as Alice has no control over the result of her measurement.
 
-Instead, Alice performs a joint [Bell Measurement](#bell-measurement) of the data qubit with her entangled qubit. This results in two bits of classical information that say which of the four possible Bell states the qubits are in. Alice then sends these two bits of information to Bob over a normal (classical) communictaion channel.
+Instead, Alice performs a joint [Bell Measurement](#bell-measurement) of the data qubit with her entangled qubit. This results in two bits of classical information that say which of the four possible Bell states the qubits are in. Alice then sends these two bits of information to Bob over a normal (classical) communication channel.
 
 Bob applies one of the following quantum operations to his entangled qubit, depending on the two classical bits he receives from Alice:
 
@@ -1379,7 +1396,7 @@ U_N=\frac{1}{\sqrt{N}}\begin{bmatrix}1&1&1&\dots&1\\
 
 The QFT is equivalent to the application of this unitary matrix to the quantum state. The columns of the matrix are the DFTs of the N orthogonal quantum basis vectors $[1,0,0,\dots], [0,1,0,\dots],[0,0,1,\dots], $ etc. Because of linearity, we can apply it to a general quantum state that is a superposition of the basis states.
 
-However, to implement the algorithm on a quantum computer, we need a way to implement it using quantum gates. The QFT algorithm is an ingeneous way to decompose the matrix into the sequential application of Hadamard (H) gates and Controlled-phase (CP) gates.
+However, to implement the algorithm on a quantum computer, we need a way to implement it using quantum gates. The QFT algorithm is an ingenious way to decompose the matrix into the sequential application of Hadamard (H) gates and Controlled-phase (CP) gates.
 
 The time complexity of the basic DFT algorithm is $\mathcal{O}(n^2)$. However, it is normally implemented by the Fast Fourier Transform algorithm which is $\mathcal{O}(n\log{}n)$. The QFT algorithm does much better at $\mathcal{O}(\log^2{}n)$, which is exponentially faster than even the FFT.
 
@@ -1605,7 +1622,7 @@ The initial state of an N-qubit quantum computation is typically $\ket{00\dots 0
 
 A quantum circuit is a form of tensor network. The state is represented by an MPS and the individual gates are represented by tensors. Whereas the matrix representation of a 2-qubit gate (e.g. CX) is a 4x4 matrix (i.e. an order-2 tensor with index dimension 4), the tensor representation is an order-4 tensor with index dimension 2, corresponding to the number of basis states of a qubit.
 
-The following digram shows how a one-qubit gate (the red square) can be contracted into the MPS, replacing one of the original MPS tensor nodes.
+The following diagram shows how a one-qubit gate (the red square) can be contracted into the MPS, replacing one of the original MPS tensor nodes.
 
 <div style="text-align: center;">
 <img src="assets_qcb/MPS3.png" height="100"/>
@@ -1652,7 +1669,7 @@ ZX Calculus [JvdW20] breaks quantum gates down into more primitive tensors, of w
 
 A third type of tensor is usually included to represent the Hadamard operation. Although this could be constructed from X and Z spiders, it is useful to have a separate symbol because it is conceptually significant operation that switches between the Z and X bases, which can be used to convert X spiders to Z spiders or vice versa. It is denoted by a yellow square or sometimes simply by using a blue wire instead of a normal black wire.
 
-The ZX tensor network is an undirected multigraph which is a much more general than a normal quantum circuit. The tensor indices are not necessarily inputs or outputs, so there is no requirement for the tensors to have the same number of inputs as outputs and the wires may go in any direction. There are no longer any qubit lines, except possibly at the input and output of the circuit. Any quantum gate or quantum circuit may be reduced to a tensor network consisting of just red and green spiders.
+A ZX tensor network is an undirected multigraph which is a much more general than a normal quantum circuit. The tensor indices are not necessarily inputs or outputs, so there is no requirement for the tensors to have the same number of inputs as outputs and the wires may go in any direction. There are no longer any qubit lines, except possibly at the input and output of the circuit. Any quantum gate or quantum circuit may be reduced to a tensor network consisting of just red and green spiders.
 
 Because there are only red and green spiders, the rewrite rules are very simple and there are only a few of them. Tools exist to apply these rules to simplify the tensor network. The rewrite transformations may be used to execute (i.e. simulate) a quantum circuit symbolically by reducing it to a final state, given an initial state. Alternatively, the simplification may reduce the circuit and then the simplified form may be turned back into a normal quantum circuit for execution on a real quantum computer. However, extracting the circuit is computationally hard.
 
