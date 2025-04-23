@@ -1,11 +1,11 @@
-# Quantum Computing Basics
+# A Short Guide to Quantum Computing
 
 *Jon Brumfitt
 (This revision: 23 April 2025)*
 
 ### Preface
 
-This is a short introduction to quantum computation, focusing on quantum states, quantum gates, quantum circuits, quantum information and simulation, rather than implementation technologies such as superconducting qubits and quantum dots.
+This is a short introduction to quantum computation, focusing on quantum states, gates, circuits and quantum information, rather than hardware implementation technologies such as superconducting qubits and quantum dots. The final section looks at ways of simulating quantum computations on an ordinary computer.
 
 Quantum mechanics and quantum computing are, by their very nature, rather mathematical. I have tried to keep the maths as simple as possible and have avoided the rigorous derivations you might find in a text book. However, some knowledge of complex numbers, vectors and matrices is assumed.
 

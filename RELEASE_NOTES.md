@@ -2,6 +2,8 @@
 
 ### Release Note (23 April 2025)
 
+- Renamed document "A Short Guide to Quantum Computing".
+
 - The first few subsections have been grouped into a section called "Preliminaries". These subsections have been updated and rearranged. New subsections have been added on Qubit States and Complementarity.
 
 - The section on Simulating a Quantum Computer has been rewritten and significantly expanded.
