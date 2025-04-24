@@ -1,7 +1,7 @@
 # A Short Guide to Quantum Computing
 
 *Jon Brumfitt
-(This revision: 23 April 2025)*
+(This revision: 24 April 2025)*
 
 ### Preface
 
@@ -17,16 +17,15 @@ If you read a book or watch a lecture on something, you may feel you understand 
 
 This guide started out as as a few informal notes on quantum computing to accompany TinyQsim, but has grown into the current document, which is now separate from the simulator. I have enjoyed writing it and there are many more topics I would like to have covered, so I may continue to add to it from time to time.
 
-I would encourage you to get a simulator and experiment with the things in this guide yourself. You may be better of with a more comprehensive quantum simulator, such as IBM's Qiskit, which has a big user community and lots of documentation and examples. However, if my short guide has got you interested, then it has served its purpose.
+I would encourage you to get a simulator and experiment with the things in this guide yourself. You may be better off with a more comprehensive quantum simulator, such as IBM's Qiskit, which has a big user community and lots of documentation and examples. However, if my short guide has got you interested, then it has served its purpose.
 
-Jon Brumfitt
-April 2025
+*Jon Brumfitt*
 
 ---
 
 ### Contents
 
-- [Quantum Computing Basics](#quantum-computing-basics)
+- [A Short Guide to Quantum Computing](#a-short-guide-to-quantum-computing)
     - [Preface](#preface)
     - [Contents](#contents)
   - [1: Introduction](#1-introduction)
@@ -107,6 +106,8 @@ Quantum computers work on a completely different principle to classical computer
 Current quantum computers are referred to as Noisy Intermediate-Scale Quantum (NISQ) devices. They are susceptible to *decoherence* of the fragile quantum state, caused by noise and interaction of the qubits with their environment, leading to high error rates. Devices are cooled down to near absolute zero to reduce the thermal noise and shielded against other forms of radiation. Qubits can be made more robust by quantum error correction, implemented using many physical qubits to make one logical qubit. Consequently, the number of useful qubits can be much less that the physical number. The key challenge in the years ahead is to scale quantum computers up to the tens or hundreds of thousands of logical qubits needed to tackle real-world problems, while keeping noise and errors under control.
 
 An added benefit of developing the technology for quantum computers is that we are learning new ways to manipulate nature at the quantum level. This is certain to have applications in other areas such as quantum sensing and quantum metrology.
+
+---
 
 ## 2: Preliminaries
 
@@ -341,12 +342,12 @@ We saw earlier that the state $\ket{\psi}$ of a qubit can be represented as a li
 
 The vector $\ket{\psi}$ is an element of the 2-dimensional complex vector space $\mathbb{C}^2$, known as a *Hilbert space*. A qubit can be any system that is described by a 2-dimensional Hilbert space.
 
-Note: A Hilbert space is a complex vector space with an inner product that is generalized to allow infinite dimensional spaces. Infinite dimensional vector spaces become important in quantum mechanics when we are dealing with continuous degrees of freedom, such as position or momentum. Since we only need finite-dimensional vector spaces for quantum computing, we will often just use the term "complex vector space".
+Note: A Hilbert space is a complex vector space with an inner product that is generalized to allow infinite dimensional spaces. Infinite dimensional vector spaces become important in quantum mechanics when we are dealing with continuous degrees of freedom, such as position or momentum. Since we only need finite-dimensional vector spaces for quantum computing, we may sometimes just use the term "complex vector space".
 
-The vector $\ket{\psi}$ can be visualized in the 2-dimensional vector space as follows:
+The vector $\ket{\psi}$ can be visualized in 2-dimensional Hilbert space as follows. The dotted circle is a unit circle.
 
 <div style="text-align: center;">
-<img src="assets_qcb/c2_phi.png" width="200"/>
+<img src="assets_qcb/c2_phi.png" width="250"/>
 </div>
 
 The projections onto the basis vectors give the probability amplitudes $\alpha_0$ and $\alpha_1$ of measuring a 0 or 1. When the state of the qubit is measured, it will collapse to $\ket{0}$ or $\ket{1}$ with probabilities $\lvert\alpha_0\rvert^2$ and $\lvert\alpha_1\rvert^2$ respectively.
@@ -357,13 +358,13 @@ The vector $\ket{\psi}$ lies on the unit circle, since its norm must be one to g
 \lvert\alpha_0\rvert^2 + \lvert\alpha_1\rvert^2 = 1
 ```
 
-It is important to understand that the complex vector space represents an abstract *state space* describing the quantum state of the qubit. It should not be confused with the physical space in which a property, such as spin of an electron, is measured. For example, $\ket{0}$ and $\ket{1}$ are often used to represent the up and down spin states of an electron. Up and down are in opposite directions in physical space but orthogonal in state space. Being orthogonal allows the quantum state to be in a linear superposition of up and down, whereas in physical space they are mutually exclusive directions.
+It is important to understand that the Hilbert space represents an abstract *state space* describing the quantum state of the qubit. It should not be confused with the physical space in which a property, such as spin of an electron, is measured. For example, $\ket{0}$ and $\ket{1}$ are often used to represent the up and down spin states of an electron. Up and down are in opposite directions in physical space but orthogonal in state space. Being orthogonal allows the quantum state to be in a linear superposition of up and down, whereas in physical space they are mutually exclusive directions.
 
 ### Complementarity
 
-In quantum mechanics, there are pairs of *complementary* properties, such as position and momentum, that cannot both be precisely known at the same time. This is the basis of the Heisenberg Uncertainty Principle. The more you know about one property, the less you know about the other. An exact measurement of one of the properties makes the other one completely undetermined, such that a measurement of it gives a random result.
+In quantum mechanics, there are pairs of *complementary* properties, such as position and momentum, that cannot both be precisely known at the same time. This is the basis of the Heisenberg Uncertainty Principle. The more you know about one property, the less you know about the other. An exact measurement of one of the properties makes the other one completely undetermined, such that a measurement of it gives a random result. Complementarity limits what we can know about a quantum system, even in principle.
 
-In the case of qubits, complementarity exists between measurements made in the Z and X bases, for example.
+In the case of qubits, complementarity exists between measurements made in the Z and X bases.
 
 The X basis vectors are denoted by $\ket{+}$ and $\ket{-}$ and are related to the computational (Z) basis vectors $\ket{0}$ and $\ket{1}$ as follows:
 
@@ -376,15 +377,13 @@ The X basis vectors are denoted by $\ket{+}$ and $\ket{-}$ and are related to th
 
 The scaling factor of $\frac{1}{\sqrt{2}}$ is to normalize the vectors, so that the probabilities of the measurement outcomes sum to one.
 
-The following diagram shows how $\ket{+}$ and $\ket{-}$ are related to $\ket{0}$ and $\ket{1}$ in the 2-dimensional complex vector space. The dotted circle is a unit circle.
+The following diagram shows how $\ket{+}$ and $\ket{-}$ are related to $\ket{0}$ and $\ket{1}$ in 2-dimensional Hilbert space. The dotted circle is a unit circle.
 
 <div style="text-align: center;">
 <img src="assets_qcb/c2_zx.png" width="200"/>
 </div>
 
 A basis state in the Z-basis corresponds to an equal superposition in the X-basis and vice versa. If we measure a qubit in the Z basis, the state will collapse into the Z basis state $\ket{0}$ or $\ket{1}$. If we then measure the qubit in the X-basis, the result will be completely random, with an equal probability that we measure $\ket{+}$ or $\ket{-}$ and the state will become that X-basis state. If we then measure it again in the Z-basis, the result will again be completely random, with an equal probability of measuring $\ket{0}$ or $\ket{1}$.
-
-A consequence of complementarity is that we can never observe the quantum state of a system, even in principle. Any attempt to measure the state will collapse it to an eigenstate of the measurement operator. Consequently, it is not possible to measure components in orthogonal directions to reconstruct the state vector. This is very different to a classical measurement where, for example, we could measure a wind vector or magnetic field vector by making measurements in orthogonal directions. This leads to the No-Cloning Theorem which is discussed later.
 
 The operator that converts a qubit from the Z basis to the X basis, or vice versa, is the *Hadamard* operator $H$:
 
@@ -427,10 +426,10 @@ One degree of freedom is lost because the total probability must be one:
 \lvert\alpha_0\rvert^2 + \lvert\alpha_1\rvert^2 = 1
 ```
 
-A second degree of freedom is lost because there are many kets that describe the same physical state, since a global phase term $e^{i\beta}$ does not affect the result of a measurement:
+A second degree of freedom is lost because there are many kets that describe the same physical state, since a global phase term $e^{i\gamma}$ does not affect the result of a measurement:
 
 ```math
-\lvert\ket{\psi}\rvert^2 = \lvert e^{i\beta}\ket{\psi}\rvert^2
+\lvert\ket{\psi}\rvert^2 = \lvert e^{i\gamma}\ket{\psi}\rvert^2
 ```
 
 The state $\ket{\psi}$ of a qubit may be mapped onto a sphere, known as the Bloch sphere, as follows:
@@ -512,11 +511,13 @@ Associativity also allows us to combine two multi-qubit subsystems $A$ and $B$:
 \big(\ket{A_1}\otimes\ket{A_2}\big) \otimes \big(\ket{B_1}\otimes\ket{B_2}\big) = \ket{A_1}\otimes\ket{A_2}\otimes \ket{B_1}\otimes\ket{B_2}
 ```
 
-The tensor product of individual pure qubit states gives the state of the N-qubit system. However, it is not necessarily possible to factor the state back into individual qubit states after quantum gate operations have been applied. For example, the following is an *entangled* state that is not separable into the tensor product of individual qubit states:
+The tensor product of individual pure qubit states gives the state of the N-qubit system. However, it is not necessarily possible to factor the state back into individual qubit states after multi-qubit quantum gate operations have been applied. For example, the following is an *entangled* state that is not separable into the tensor product of individual qubit states:
 
 ```math
 \frac{1}{\sqrt{2}} (\ket{01} + \ket{10} )
 ```
+
+A pair of entangled qubits do not each have their own individual state, but together have a joint state that describes the system of two qubits. Entanglement is a strange property of quantum systems that makes it possible to know everything about a system but nothing about its parts. In general, to model an N-qubit system, we need to consider the state as a single vector in $2^N$ dimenional Hilbert space.
 
 Unentangled states are separable and can therefore be simulated efficiently on a classical computer. Without any entanglement, quantum computers would be no more powerful than classical computers.
 
@@ -545,7 +546,7 @@ The time evolution of a closed quantum system is *unitary*, according to the *Sc
 \ket{\psi'} = U\ket{\psi}
 ```
 
-The evolution does not depend on the state and is therefore *linear*. Consequently, the result of applying a unitary operator $U$ to the sum (e.g. superposition) of two states is the sum of the results of applying the operator to the states individually:
+The evolution does not depend on the state and is *linear*. Consequently, the result of applying a unitary operator $U$ to the sum (e.g. superposition) of two states is the sum of the results of applying the operator to the states individually:
 
 ```math
 U (\ket{\psi} + \ket{\phi}) = U \ket{\psi} + U \ket{\phi}
@@ -579,6 +580,8 @@ Deletion would be the operation:
 ```
 
 The no-cloning theorem implies that it is not possible to connect the output of one quantum gate to the input of two other gates, which is a normal occurrence with classical logical gates.
+
+---
 
 ## 3: Quantum Circuits
 
@@ -752,6 +755,8 @@ Individual state elements do not correspond to qubits, so we cannot apply gates 
 
 As we will see in a later section on simulation, the use of tensors instead of vectors and matrices leads to a much simpler and more efficient approach, where qubits can be addressed directly and there is no need to expand matrices before applying them to the state.
 
+---
+
 ## 4: Quantum Gates
 
 ### Introduction
@@ -805,7 +810,7 @@ H &= {\small\frac{1}{\sqrt{2}}}(\ketbra{0}{0} +\ketbra{0}{1} + \ketbra{1}{0} - \
 &={\small\frac{1}{\sqrt{2}}} \begin{bmatrix}1 & 1 \\ 1 & -1 \end{bmatrix} \end{align*}
 ```
 
-The Hadamard gate is important because it takes a basis state and converts it to a superposition with equal probabilities of state $\ket{0}$ and $\ket{1}$.
+The Hadamard gate is important because it transforms between the Z and X bases. One consequence of this is that a basis state is converted into a superposition with equal probabilities of state $\ket{0}$ and $\ket{1}$:
 
 ```math
 \begin{align*}
@@ -868,7 +873,7 @@ If Hadamard gates are applied to each of the qubits of an N-qubit all-zeros stat
 \ket{\psi} = {\small\frac{1}{\sqrt{8}}} (\ket{000} + \ket{001} + \ket{010} + \ket{011} + \ket{100} + \ket{101} + \ket{110} + \ket{111})
 ```
 
-This operation is known a *Hadamard Transform*. A Hadamard gate is just a one-qubit Hadamard transform.
+This operation is known a *Hadamard Transform*. A Hadamard gate is just a one-qubit Hadamard transform. The Hadamard transform performs a local change of basis on each qubit individually, whereas the Quantum Fourier Transform (QFT) is a transformation of the whole state vector.
  
 ### Phase (P) Gate
 
@@ -994,13 +999,15 @@ This definition is the same for both big-endian and little-endian conventions be
 
 SWAP operations are important on a real quantum computer because two-qubit gates (like CX) need the qubits to be physically-adjacent so that they can interact. The SWAP operation allows the qubits to be moved around.
 
-SWAP itself is usually not a primitive operation but it is equivalent to the application of three CX gates as follows:
+SWAP itself is equivalent to the application of three CX gates as follows:
 
 <div style="text-align: center;">
 <img src="assets_qcb/cx3.png" height="115"/>
 </div>
 
 A sequence of swaps of adjacent qubits may be needed to realize a swap of two qubits that are several qubits apart. The topology of the physical qubit array is obviously important in minimizing the number of swap operations required.
+
+---
 
 ## 5: Entanglement
 
@@ -1090,6 +1097,8 @@ The resulting entangled state is:
 If we measure qubit q0, we will either get $\ket{0}$ or $\ket{1}$. The remaining two qubits are then in the state $\ket{00}$ or $\ket{11}$ respectively, but it is just a classical correlation. Qubits q1 and q2 are not in a superposition of $\ket{00}$ and $\ket{11}$, so they are not entangled. It is just a lack of knowledge about the result of measuring q0 that leaves two outcomes for q1 and q2.
 
 Any number of qubits can be entangled this way by cascading more CX gates.
+
+---
 
 ## 6: Measurement
 
@@ -1300,6 +1309,8 @@ Another possible reason for a mid-circuit measurement is that it allows the qubi
 
 The use of mid-circuit measurements, the principle of deferred measurement and the principle of implicit measurement are all illustrated by the quantum teleportation example below.
 
+---
+
 ## 7: Examples
 
 ### Quantum Teleportation
@@ -1494,6 +1505,8 @@ The following histogram shows the counts for different measurement outcomes from
 
 The resulting state is $\ket{011}$. Placing a binary point before the '011' gives the binary fraction $0.011_2$ which is the value $\theta=\frac{3}{8}$ expressed in binary.
 
+---
+
 ## 8: Simulating a Quantum Computer
 
 It is useful to have a simulator that allows us to develop and test quantum algorithms on a conventional computer. A simulator is also a good tool for learning about quantum computers and experimenting with new ideas.
@@ -1550,7 +1563,7 @@ This notation allows complex tensor networks to be drawn in a way that is much e
 
 A quantum circuit can be treated as a tensor network in which the quantum gates and state are represented by tensors.
 
-For example, a 4-bit quantum state may be represented as an order-4 tensor $T_{abcd}$ where the subscripts correspond to qubits. Similarly, the matrix definition of a 2-qubit gate can be expressed as an order-4 tensor $G_{ijkl}$. If we now want to apply the gate to qubits $b$ and $c$ of the state, it is simply necessary to perform the following tensor contraction.
+For example, a 4-qubit quantum state may be represented as an order-4 tensor $T_{abcd}$ where the subscripts correspond to qubits. Similarly, the matrix definition of a 2-qubit gate can be expressed as an order-4 tensor $G_{ijkl}$. If we now want to apply the gate to qubits $b$ and $c$ of the state, it is simply necessary to perform the following tensor contraction.
 
 ```math
 G_{efbc}\,T_{abcd}\,\rightarrow T^{'}_{aefd}
@@ -1651,9 +1664,9 @@ The tensor $C_{icdk}$ is the contracted state in the MPS that replaces consecuti
 
 This procedure can be repeated to merge all the gates in the quantum circuit into the MPS, resulting in an MPS that describes the final state. The bond dimension can be limited, as described above, to keep the MPS size under control by approximating the state if it starts to grow too large.
 
-How well this method works depends on the quantum circuit and the initial state. The bond dimension necessary to achieve good compression depends on the correlations introduces between qubits by entanglement. Superposition, on its own, does not lead to increased entanglement; the entire initial state may be placed in a superposition without any entanglement being present.
+How well this method works depends on the quantum circuit and the initial state. The bond dimension necessary to achieve good compression depends on the correlations introduced between qubits by entanglement. Superposition, on its own, does not lead to increased entanglement; the entire initial state may be placed in a superposition without any entanglement being present.
 
-The application of a 2-qubit gate is more complicated if it is applied to non-adjacent qubits, because the intermediate qubit tensors need to be updated to increase the bond dimensions. One solution is to use a sequence of swaps, as discussed earlier, to make the qubits adjacent. The gate tensor is then applied and then the sequence of swaps is undone. This results in the  dimension of the bonds linking the intermediate tensors being increased by two. The sequence of swaps can be implemented as a single Matrix Product Operator (MPO). Alternatively, the 2-qubit gate could be turned into an MPO that operates on the two qubits required, with identity tensors for the MPO nodes in between, avoiding the need for swaps altogether.
+The application of a 2-qubit gate is more complicated if it is applied to non-adjacent qubits, because the intermediate qubit tensors need to be updated to increase the bond dimensions. One solution is to use a sequence of swaps, as discussed earlier, to make the qubits adjacent. The gate tensor is then applied and then the sequence of swaps is undone. This results in the  dimension of the bonds linking the intermediate tensors being increased as appropriate. The sequence of swaps can be implemented as a single Matrix Product Operator (MPO). Alternatively, the 2-qubit gate could be turned into an MPO that operates on the two qubits required, with identity tensors for the MPO nodes in between, avoiding the need for swaps altogether.
 
 Whether Matrix Products States are a good solution for simulation depends very much on the amount of entanglement generated by the quantum circuit. If the entanglement is low, an MPS can potentially allow simulations involving hundreds of qubits.
 
@@ -1661,13 +1674,13 @@ Whether Matrix Products States are a good solution for simulation depends very m
 
 ZX calculus is a graphical language for reasoning about quantum computation. It is relatively new, but is included here as an interesting new development.
 
-We have seen that a quantum circuit can be viewed as a tensor network. In fact, it is a restricted kind of tensor network in which the wires connecting tensors must use a fixed set of qubit lines. The circuit is a directed graph with time flowing from left to right, so wires cannot go backwards. The tensors representing gates must have the same number of inputs as outputs.
+We have seen that a quantum circuit can be viewed as a tensor network. In fact, it is a restricted kind of tensor network in which the wires connecting tensors must use a fixed set of qubit lines. The circuit is a directed graph with time flowing from left to right, so wires cannot go backwards. The tensors representing gates must be unitary and have the same number of inputs as outputs.
 
 Some simplification of a quantum circuit is possible using algebraic properties of gates as rewrite rules to replace one sequence of gates with another. For example, $HXH\rightarrow Z$. However, there are around 30 different types of quantum gate, leading to an enormous number of possible rewrite rules.
 
 ZX Calculus [JvdW20] breaks quantum gates down into more primitive tensors, of which there are just two kinds, X-spiders and Z-spiders. These are denoted by red and green dots respectively, with 'legs' corresponding to the tensor indices. A spider with N 'legs' represents an order-N tensor. It has an associated phase which by default is zero.
 
-A third type of tensor is usually included to represent the Hadamard operation. Although this could be constructed from X and Z spiders, it is useful to have a separate symbol because it is conceptually significant operation that switches between the Z and X bases, which can be used to convert X spiders to Z spiders or vice versa. It is denoted by a yellow square or sometimes simply by using a blue wire instead of a normal black wire.
+A third type of tensor is usually included to represent the Hadamard operation. Although this could be constructed from X and Z spiders, it is useful to have a separate symbol because it is a conceptually significant operation that switches between the Z and X bases, which can be used to convert X spiders to Z spiders or vice versa. It is denoted by a yellow square or sometimes simply by using a blue wire instead of a normal black wire.
 
 A ZX tensor network is an undirected multigraph which is a much more general than a normal quantum circuit. The tensor indices are not necessarily inputs or outputs, so there is no requirement for the tensors to have the same number of inputs as outputs and the wires may go in any direction. There are no longer any qubit lines, except possibly at the input and output of the circuit. Any quantum gate or quantum circuit may be reduced to a tensor network consisting of just red and green spiders.
 
@@ -1675,11 +1688,15 @@ Because there are only red and green spiders, the rewrite rules are very simple 
 
 This section was just to give a flavour of the ZX-calculus for interest, without going into too much detail. For further information and examples see [JvdW20].
 
+---
+
 ## 9: Conclusions
 
 This has been a look at some concepts of quantum computing, mostly from the perspective of information processing rather than physical implementation. There are many more topics that could have been included, but it is hoped that this has been a useful start.
 
 If you wish to explore further, the [Bibliography](#bibliography) contains some suggestions. Richard Feynman's paper [Fey82] is of historical interest, because it is where the idea of quantum computing was originally proposed. Leonard Susskind's book [Sus15] is a good basic introduction to quantum mechanics that is easy to understand. David Mermin's Book [Mer07] concentrates on the computer science aspects and looks at some quantum algorithms. Nielsen and Chaung's book [NC10] is an excellent textbook if you want to dive deeper into some of the topics. Finally, John van de Wetering's paper [JvdW20] may be of interest if you wish to explore the relatively new area of ZX calculus.
+
+---
 
 ## Bibliography
 
