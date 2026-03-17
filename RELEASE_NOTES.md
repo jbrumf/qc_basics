@@ -1,5 +1,13 @@
 ## QC_Basics Release Notes
 
+### Release Note (17 March 2026)
+
+- Added examples on Shor's Algorithm and Grover's Algorithm.
+- Removed section on "Exploring the Teleportation Example".
+- HTML output now has table of content in a side-bar instead of as document header.
+- Corrected QFT diagrams in examples
+- The Examples section has been renamed "Quantum Algorithms".
+
 ### Release Note (23 April 2025)
 
 - Renamed document "A Short Guide to Quantum Computing".

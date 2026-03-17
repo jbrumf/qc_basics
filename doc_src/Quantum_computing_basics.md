@@ -1,7 +1,7 @@
 # A Short Guide to Quantum Computing
 
 *Jon Brumfitt
-(This revision: 24 April 2025)*
+(This revision: 17 March 2026)*
 
 ### Preface
 
@@ -20,72 +20,6 @@ This guide started out as as a few informal notes on quantum computing to accomp
 I would encourage you to get a simulator and experiment with the things in this guide yourself. You may be better off with a more comprehensive quantum simulator, such as IBM's Qiskit, which has a big user community and lots of documentation and examples. However, if my short guide has got you interested, then it has served its purpose.
 
 *Jon Brumfitt*
-
----
-
-### Contents
-
-- [A Short Guide to Quantum Computing](#a-short-guide-to-quantum-computing)
-    - [Preface](#preface)
-    - [Contents](#contents)
-  - [1: Introduction](#1-introduction)
-  - [2: Preliminaries](#2-preliminaries)
-    - [Qubits](#qubits)
-    - [Quantum Probability and Interference](#quantum-probability-and-interference)
-    - [Dirac Bra-Ket Notation](#dirac-bra-ket-notation)
-      - [Inner Product](#inner-product)
-      - [Outer Product](#outer-product)
-      - [Tensor Product](#tensor-product)
-      - [Projectors](#projectors)
-    - [Qubit States](#qubit-states)
-    - [Complementarity](#complementarity)
-    - [Bloch Sphere](#bloch-sphere)
-    - [Multi-Qubit States](#multi-qubit-states)
-    - [Unitary Operators](#unitary-operators)
-    - [No-Cloning Theorem](#no-cloning-theorem)
-  - [3: Quantum Circuits](#3-quantum-circuits)
-    - [Endianness](#endianness)
-    - [Operations on Multiple Qubits](#operations-on-multiple-qubits)
-    - [Composing Circuits](#composing-circuits)
-    - [Permutation of Qubits](#permutation-of-qubits)
-    - [Addressing Qubits](#addressing-qubits)
-  - [4: Quantum Gates](#4-quantum-gates)
-    - [Introduction](#introduction)
-    - [X Gate (aka NOT gate)](#x-gate-aka-not-gate)
-    - [Hadamard (H) Gate](#hadamard-h-gate)
-    - [Hadamard Transform](#hadamard-transform)
-    - [Phase (P) Gate](#phase-p-gate)
-    - [Controlled-X (CX) Gate](#controlled-x-cx-gate)
-    - [Controlled-U (CU) Gate](#controlled-u-cu-gate)
-    - [SWAP Gate](#swap-gate)
-  - [5: Entanglement](#5-entanglement)
-    - [Creating Entanglement](#creating-entanglement)
-    - [Bell States](#bell-states)
-    - [Bell Measurement](#bell-measurement)
-    - [Monogamy of Entanglement](#monogamy-of-entanglement)
-  - [6: Measurement](#6-measurement)
-    - [Introduction](#introduction)
-    - [Simulated Measurements](#simulated-measurements)
-    - [Measurement Operators](#measurement-operators)
-    - [Measurement in Different Bases](#measurement-in-different-bases)
-    - [Measurement as Entanglement](#measurement-as-entanglement)
-    - [Principle of Implicit Measurement](#principle-of-implicit-measurement)
-    - [Principle of Deferred Measurement](#principle-of-deferred-measurement)
-    - [Mid-Circuit Measurement](#mid-circuit-measurement)
-  - [7: Examples](#7-examples)
-    - [Quantum Teleportation](#quantum-teleportation)
-    - [Exploring the Teleportation Example](#exploring-the-teleportation-example)
-    - [Quantum Fourier Transform](#quantum-fourier-transform)
-    - [Quantum Phase Estimation](#quantum-phase-estimation)
-  - [8: Simulating a Quantum Computer](#8-simulating-a-quantum-computer)
-    - [Simulation using Matrices](#simulation-using-matrices)
-    - [Tensors](#tensors)
-    - [Simulation using Tensors](#simulation-using-tensors)
-    - [Matrix Product States (MPS)](#matrix-product-states-mps)
-    - [Simulation using MPS](#simulation-using-mps)
-    - [ZX Calculus](#zx-calculus)
-  - [9: Conclusions](#9-conclusions)
-  - [Bibliography](#bibliography)
 
 ---
 
@@ -590,7 +524,7 @@ A quantum circuit is a network of quantum gates applied to a set of qubits. It c
 The following is a simple example of a quantum circuit involving a Hadamard gate H and two CX (aka controlled-NOT) gates. The convention used in this document is that qubit 0 is the *most-significant* qubit and it is drawn as the top-most qubit in the diagram. It is normally assumed that all qubits are initialized to $\ket{0}$ unless otherwise stated.
 
 <div style="text-align: center;">
-<img src="assets_qcb/endianness.png" height="170"/>
+<img src="assets_qcb/endianness.png" height="160"/>
 </div>
 
 A quantum circuit has a fixed number of qubits, as required by unitarity and the no-cloning theorem. No qubits can be added to the circuit or deleted. Any extra qubits (known as *ancilla* qubits) that the computation needs must be included and initialized as part of the initial state.
@@ -696,7 +630,7 @@ However, both A and B must be complete before C is applied. The circuit should b
 Consider modifying the previous example so that there are 5 qubits and the $\ket{x}$ input is qubit 4 instead of qubit 0. The dotted lines on qubits 2 and 3 of gate 'C' indicate that the gate does not use these qubits.
 
 <div style="text-align: center;">
-<img src="assets_qcb/permute1.png" alt="permute1.png" height="270"/>
+<img src="assets_qcb/permute1.png" alt="permute1.png" height="260"/>
 </div>
 
 This gives rise to two problems. Firstly, the $\ket{x}$ and $\ket{y}$ qubits are non-adjacent and secondly the order of the qubits does not match the order required by gate 'C' (indicated by the 0 and 1 labels in the gate symbol).
@@ -704,7 +638,7 @@ This gives rise to two problems. Firstly, the $\ket{x}$ and $\ket{y}$ qubits are
 One solution is to use [SWAP](#swap-gate) gates to swap pairs of qubits to make the required qubits adjacent and in the correct order, then apply gate 'C' and finally reverse all the swaps to put the qubits back in the original order. The swap gates are denoted by a symbol with two crosses.
 
 <div style="text-align: center;">
-<img src="assets_qcb/permute3.png" alt="permute3.png" height="270"/>
+<img src="assets_qcb/permute3.png" alt="permute3.png" height="260"/>
 </div>
 
 The swap gates, like the other gates, require adjacent inputs, so we cannot swap qubits 1 and 4 directly, but instead need to use a chain of swaps of adjacent qubits. Consequently, a large number of swaps may be needed to permute the qubits, especially when there are many qubits.
@@ -866,7 +800,7 @@ Many quantum algorithms work by first putting the system into a superposition of
 If Hadamard gates are applied to each of the qubits of an N-qubit all-zeros state $\ket{00\dots 0}$, the effect is to place the whole state into an equal superposition of all $2^N$ basis states. For example, for $N=3$:
 
 <div style="text-align: center;">
-<img src="assets_qcb/hadamard3.png" alt="hadamard3" height="180"/>
+<img src="assets_qcb/hadamard3.png" alt="hadamard3" height="160"/>
 </div>
 
 ```math
@@ -985,7 +919,7 @@ In this way, we can build a controlled version of any gate. We can even make a c
 The SWAP gate swaps the state of two qubits. As the gate operates on two qubits, it is represented by a 4x4 unitary matrix:
 
 <div style="text-align: center;">
-<img src="assets_qcb/swap_gate.png" height="115"/>
+<img src="assets_qcb/swap_gate.png" height="110"/>
 </div>
 
 ```math
@@ -1002,7 +936,7 @@ SWAP operations are important on a real quantum computer because two-qubit gates
 SWAP itself is equivalent to the application of three CX gates as follows:
 
 <div style="text-align: center;">
-<img src="assets_qcb/cx3.png" height="115"/>
+<img src="assets_qcb/cx3.png" height="110"/>
 </div>
 
 A sequence of swaps of adjacent qubits may be needed to realize a swap of two qubits that are several qubits apart. The topology of the physical qubit array is obviously important in minimizing the number of swap operations required.
@@ -1018,7 +952,7 @@ Entanglement was introduced in the earlier section on [Multi-Qubit States](#mult
 The following example shows how entanglement can be created using just a Hadamard (H) gate and a CX gate, from the initial state $\ket{00}$:
 
 <div style="text-align: center;">
-<img src="assets_qcb/bell_0.png" height="120"/>
+<img src="assets_qcb/bell_0.png" height="110"/>
 </div>
 
 The Hadamard gate creates an equal superposition of $\ket{0}$ and $\ket{1}$:
@@ -1067,7 +1001,7 @@ Given two qubits that are in a Bell state, a *Bell measurement* can be used to d
 The following circuit shows a Bell state being created (to the left of the barrier) and then measured with a Bell measurement (to the right of the barrier):
 
 <div style="text-align: center;">
-<img src="assets_qcb/bell_measure.png" alt="bell_measure" height="120"/>
+<img src="assets_qcb/bell_measure.png" alt="bell_measure" height="110"/>
 </div>
 
 The two successive CX gates cancel as they both apply an X (NOT) conditional on the same qubit. The two H gates then cancel because the Hadamard operator is its own conjugate transpose (i.e. Hermitian). Normally, of course, the Bell measurement would be performed on an arbitrary entangled state and not one we had just created.
@@ -1085,7 +1019,7 @@ However, this does not mean that multi-qubit entanglement is impossible, just th
 The following example shows a 3-qubit entangled state, known as a *GHZ state* after Greenberger, Horne and Zeilinger.
 
 <div style="text-align: center;">
-<img src="assets_qcb/ghz.png" alt="ghz" height="180"/>
+<img src="assets_qcb/ghz.png" alt="ghz" height="160"/>
 </div>
 
 The resulting entangled state is:
@@ -1227,7 +1161,7 @@ Viewed as collapse, a quantum measurement is a non-reversible operation that pro
 Another way to think about measurement is to consider the measuring device as another quantum system that becomes entangled with the system being measured when a measurement is made. The simplest case is when the system being measured is a single qubit and the measuring device is also a single qubit:
 
 <div style="text-align: center;">
-<img src="assets_qcb/measure_entangled.png" alt="measure_entangled" height="120"/>
+<img src="assets_qcb/measure_entangled.png" alt="measure_entangled" height="110"/>
 </div>
 
 If the data qubit is initially in the superposition state:
@@ -1278,7 +1212,7 @@ For example, in the following circuit, the first measurement cannot simply be mo
 However, the first measurement can be replaced by a CX gate that entangles the qubit with an ancilla qubit initialized to $\ket{0}$ that can subsequently be measured at the end of the circuit:
 
 <div style="text-align: center;">
-<img src="assets_qcb/ancilla_measure2.png" alt="ancilla_measure" height="120"/>
+<img src="assets_qcb/ancilla_measure2.png" alt="ancilla_measure" height="110"/>
 </div>
 
 If mid-circuit measurements are used to control (i.e. enable) operations later in the circuit, then the classically-controlled operations can be replaced by ones with quantum controls. For example, the ancilla qubit in the above example could be used to control subsequent quantum operations.
@@ -1286,13 +1220,13 @@ If mid-circuit measurements are used to control (i.e. enable) operations later i
 Another way to move measurements to the end is to use commutativity properties. In particular, measurement commutes with controls. For example, consider the following circuit:
 
 <div style="text-align: center;">
-<img src="assets_qcb/defer_before.png" alt="defer_before" height="120"/>
+<img src="assets_qcb/defer_before.png" alt="defer_before" height="110"/>
 </div>
 
 This can be replaced by:
 
 <div style="text-align: center;">
-<img src="assets_qcb/defer_after.png" alt="defer_after" height="120"/>
+<img src="assets_qcb/defer_after.png" alt="defer_after" height="110"/>
 </div>
 
 Once all measurements are at the end, the circuit becomes a single unitary operator that is followed by final measurements of its outputs. This simplifies analysis and optimization of the circuit by allowing only pure states to be considered.
@@ -1311,74 +1245,9 @@ The use of mid-circuit measurements, the principle of deferred measurement and t
 
 ---
 
-## 7: Examples
+## 7: Quantum Algorithms
 
-### Quantum Teleportation
-
-Quantum teleportation is a protocol for sending quantum information (i.e. qubits) from one place to another.
-
-Imagine that Alice has a data qubit that she wishes to send to Bob. The [No-Cloning Theorem](#no-cloning-theorem) of quantum mechanics says that it is impossible to create an independent and identical copy of an unknown quantum state. This implies that if Alice sends a qubit to Bob, then she no longer has access to the qubit herself.
-
-The protocol requires Alice and Bob to each have one of an entangled pair of qubits. Alice makes a joint [Bell Measurement](#bell-measurement) of the data qubit with her entangled qubit. This results in two classical bits of information corresponding to the four possible measurement outcomes. If Alice sends these two classical bits to Bob, he can use them with his entangled qubit to recreate the qubit that Alice sent. The Bell measurement that Alice performs destroys the quantum state of her data qubit, so the no-cloning theorem is not violated.
-
-The following quantum circuit shows Alice's part of the protocol:
-
-<div style="text-align: center;">
-<img src="assets_qcb/teleport1.png" alt="teleport1" height="180"/>
-</div>
-
-The part to the left of the barrier shows the creation of an entangled pair of qubits. Alice has one qubit and Bob has the other. Alice could create the entangled pair and send one to Bob or a third-party could create the pair and send one to each of them. This does not violate the no-cloning theorem because the two qubits are not independent.
-
-If Alice were to simply measure her qubit, she would get a random result of 0 or 1. If Bob then measured his qubit, he would get the same result. However, this alone cannot be used to send information as Alice has no control over the result of her measurement.
-
-Instead, Alice performs a joint [Bell Measurement](#bell-measurement) of the data qubit with her entangled qubit. This results in two bits of classical information that say which of the four possible Bell states the qubits are in. Alice then sends these two bits of information to Bob over a normal (classical) communication channel.
-
-Bob applies one of the following quantum operations to his entangled qubit, depending on the two classical bits he receives from Alice:
-
-```math
-\begin{align*}
-0,0 &\rightarrow \textrm{none}\\
-0,1 &\rightarrow X\\
-1,0 &\rightarrow Z\\
-1,1 &\rightarrow X \textrm{ then } Z
-\end{align*}
-```
-
-Bob's part of the protocol can be drawn as a circuit as follows. Classical bits are normally drawn as a double lines in quantum circuits, but here they are just shown as single lines. The X and Z gates have classical controls, which simply means that Bob applies an X or Z operation, depending on the classical bits he received.
-
-<div style="text-align: center;">
-<img src="assets_qcb/teleport2.png" alt="teleport2" height="180"/>
-</div>
-
-This results in Bob having the data qubit that Alice sent. Note that although entanglement is used, the information cannot be sent faster than the speed of light because Bob cannot decode his qubit until he receives the two bits over a classical channel.
-
-If Bob were to just guess what the two classical bits would be, he would have a 25% chance of correctly decoding the qubit but, if sent a sequence of qubits, he would not know which ones were correct.
-
-### Exploring the Teleportation Example
-
-The quantum teleportation example will be used to illustrate some of the principles introduced earlier.
-
-First, let us put Alice and Bob's parts of the circuit together:
-
-<div style="text-align: center;">
-<img src="assets_qcb/teleport3.png" alt="teleport3" height="180"/>
-</div>
-
-The outputs of the two measurements are now shown as qubits but, because they are measurement results, they can only be in the state $\ket{0}$ or $\ket{1}$, corresponding to the classical bits 0 and 1. So the qubits are only conveying classical information. Because they are now qubits, the conditional application of X and Z gates can be replaced by quantum CX and CZ gates as shown in the circuit. The final gate in this circuit is a controlled-Z (CZ) gate.
-
-Next, the [Principle of Deferred Measurement](#principle-of-deferred-measurement) may be used to move the two measurements to the end of the circuit, as follows:
-
-<div style="text-align: center;">
-<img src="assets_qcb/teleport4.png" alt="teleport4" height="180"/>
-</div>
-
-The required output of the circuit is just the data qubit, which is now on qubit 2. Consequently, the measurements on qubits 0 and 1 can be removed, using the [Principle of Implicit Measurement](#principle-of-implicit-measurement).
-
-<div style="text-align: center;">
-<img src="assets_qcb/teleport5.png" alt="teleport4" height="180"/>
-</div>
-
-### Quantum Fourier Transform
+### 7.1: Quantum Fourier Transform
 
 The Quantum Fourier Transform (QFT) is in important algorithm in quantum computing. It is used for estimating phase and periodicities in algorithms such as Shor's well-known integer factorization algorithm.
 
@@ -1414,7 +1283,7 @@ The time complexity of the basic DFT algorithm is $\mathcal{O}(n^2)$. However, i
 The following circuit shows a 4-qubit QFT:
 
 <div style="text-align: center;">
-<img src="assets_qcb/qft4.png" alt="qft4" height="240"/>
+<img src="assets_qcb/qft4.png" alt="qft4" height="210"/>
 </div>
 
 The details of how the QFT algorithm works are beyond the scope of this introduction. A key part is using phase gates to rotate the phase of qubits to perform the $\omega_n$ phase shifts. The swap gates are used to reverse the order of qubits in the result of the QFT. This is like the bit-reversal that is performed in a normal Discrete Fourier Transform (DFT).
@@ -1434,10 +1303,10 @@ P^\dagger(\phi) = P(-\phi)
 Consequently the 4-qubit inverse QFT is implemented by the following circuit:
 
 <div style="text-align: center;">
-<img src="assets_qcb/iqft4.png" alt="iqft4" height="240"/>
+<img src="assets_qcb/iqft4.png" alt="iqft4" height="210"/>
 </div>
 
-### Quantum Phase Estimation
+### 7.2: Quantum Phase Estimation
 
 Quantum Phase Estimation (QPE) is an important part of many quantum algorithms, such as Shor's factorization algorithm. The aim of QPE is to find the phase associated with an eigenvector $\ket{\psi}$ of a unitary $U$.
 
@@ -1504,6 +1373,589 @@ The following histogram shows the counts for different measurement outcomes from
 </div>
 
 The resulting state is $\ket{011}$. Placing a binary point before the '011' gives the binary fraction $0.011_2$ which is the value $\theta=\frac{3}{8}$ expressed in binary.
+
+### 7.3: Shor's Algorithm
+
+This example looks at Shor's Factoring Algorithm.
+
+#### Introduction
+
+Factoring large composite numbers is an interesting mathematical problem in its own right, but it is has particular practical implications for the widely-used RSA encryption system. RSA relies for its security on the fact that it is easy to multiply two large prime numbers but very difficult to find the factors if you are just given their product.
+
+In 1994, Peter Shor published a quantum algorithm, now known as Shor's algorithm, that can theoretically factor large composite numbers exponentially faster than a classical computer. To have any practical advantage over classical factoring methods, Shor's algorithm would need to be run on a quantum computer with thousands of logical (error free) qubits, which is still some way in the future.
+
+Shor's algorithm is a hybrid algorithm that combines both classical and quantum computation. The top-level routine is classical and calls a quantum order-finding subroutine that runs on a quantum computer.
+
+#### The Top-Level Algorithm
+
+The algorithm is based on number theory and makes use of modular arithmetic as well as Euclid's algorithm for efficiently finding the Greatest Common Divisor (GCD) of two integers.
+
+The aim is to factor a composite number $N$ into its factors $p_1$ and $p_2$:
+
+$$
+N=p_1\ p_2
+$$
+
+We will assume that these factors are odd primes. If $N$ is even, then $2$ is trivially a factor. If the values are not prime, we can recursively call the factorization routine, using a classical primality test to decide when to stop recursing.
+
+We start by choosing a random integer $a$ such that $1<a<N$.
+
+If $\gcd(a,N)\ne 1$ then the GCD is a factor and we can stop.
+
+Otherwise, we find the *multiplicative order* of $a$ modulo $N$. This is defined as the smallest positive integer $r$ such that:
+
+$$
+a^r\equiv 1\pmod{N}
+$$
+
+where $a$ is an integer coprime to $N$:
+
+$$
+\gcd(a, N)=1
+$$
+
+Finding the order is the part of the algorithm that can make use of a quantum processor to give an exponential speed improvement.
+
+If $r$ is odd we restart the algorithm with a new random value of $a$. If $r$ is even, then $\frac{r}{2}$ is an integer and we have found a square root of $1$ modulo $N$:
+
+$$
+(a^{r/2})^2 \equiv 1\pmod{N}
+$$
+
+By the difference of squares:
+
+$$
+(a^{r/2})^2 - 1^2 \equiv 0\pmod{N}
+$$
+
+$$
+(a^{r/2}-1)(a^{r/2}+1)\equiv 0\pmod{N}
+$$
+
+Hence:
+
+$$
+N\ |\ (a^{r/2}-1)(a^{r/2}+1)
+$$
+
+If $N\nmid (a^{r/2}\pm 1)$ then the following must be factors of $N$ and we have a solution:
+
+$$
+\qquad\gcd(a^{r/2}+1, N)\quad\text{ and }\quad\gcd(a^{r/2}-1, N)
+$$
+
+We require that neither of the terms $(a^{r/2}+1)$ and $(a^{r/2}-1)$ is zero. The latter can't be zero because it would imply that $r/2$ was the order of $a$ modulo $N$; but it is smaller than $r$ which is defined as the smallest positive integer $r$ such that $a^r\equiv 1\pmod{N}$, which would lead to a contradiction. To guard against the first one being zero, we restart the algorithm with a new random $a$ if:
+
+$$
+\quad a^{r/2}\equiv -1\pmod{N}
+$$
+
+It can be seen from the above that the algorithm is probabilistic in nature and may fail at at several points if certain conditions are not met. In these cases, the algorithm is restarted with a new random value of $a$. The condition that $r$ must be even has a probability of about 50%. The conditional probability that $a^{r/2}\not\equiv -1\pmod{N}$, given that $r$ is even, is at least 50%. From this simplistic analysis, the probability of success for a particular initial guess is $\approx$25%, which implies that about 4 tries are needed on average.
+
+When the order-finding is run on a quantum processor, the speed is exponentially greater than factoring on a classical computer. Even if a few runs are needed because of the restarts, the overall speedup is still exponentially better.
+
+#### Simple Numerical Example
+
+To demonstrate how the algorithm works, we will factor $N=21$.
+
+Let us assume $a=2$ as the random starting value, chosen so that $1<a<N$.
+
+First, calculate $\gcd(2,21)=1$
+
+As the GCD is 1, it follows that 2 and 21 are coprime, so there isn't a trivial factor and we can proceed with the "difference of squares" approach.
+
+Next, we need to find the order $r$, which is the smallest positive integer such that $2^r\equiv 1\pmod{21}$. To do this classically (non-quantum), we could try succesive integers for 'r':
+
+$$
+\begin{align*}
+2^0&\equiv 1&\pmod{21}&\quad\text{(start of cycle)}\\
+2^1&\equiv 2&\pmod{21}\\
+2^2&\equiv 4&\pmod{21}\\
+2^3&\equiv 8&\pmod{21}\\
+2^4&\equiv 16&\pmod{21}\\
+2^5&\equiv 11&\pmod{21}\\
+2^6&\equiv 1&\pmod{21}\\
+\end{align*}
+$$
+
+Hence the order $r=6$. The pattern repeats with a cycle length of 6, with the first cycle starting at $r=0$.
+
+Since $r$ is even, we can proceed as follows, using the difference of squares:
+
+$$
+2^6-1\equiv 0 \pmod{21}
+$$
+
+$$
+(2^\frac{6}{2}+1)(2^\frac{6}{2}-1)\equiv 0\pmod{21}
+$$
+
+$$
+9\times 7 \equiv 0\pmod{21}
+$$
+
+$21$ doesn't divide $7$ or $9$, so the GCDs of $7$ and $9$ with $21$ must divide $21$.
+
+The required factors of 21 are therefore:
+
+$$
+\gcd(9,21)=3\quad\text{ and }\quad\gcd(7,21)=7
+$$
+
+#### Quantum Order Finding
+
+Shor's algorithm achieves its performance gain on a quantum computer by using a quantum implementation of order-finding. This actually has both quantum and classical parts:
+
+- A quantum circuit that performs Quantum Phase Estimation (QPE)
+- A classical algorithm that extracts the order $r$ from the phase
+
+The Quantum Phase Estimation algorithm was discussed in an earlier section.
+
+We need to find the multiplicative order of $a$ modulo $N$, which is defined as the smallest integer such that:
+
+$$
+a^r\equiv 1\pmod N
+$$
+
+where $a$ is coprime to $N$.
+
+Quantum order finding works by defining a unitary $U$ such that:
+
+$$
+U: \ket{x}\mapsto \ket{ax\bmod N}
+$$
+
+QPE is then used to find an approximation to an eigenvalue of $U$, when the input of the QPE target register is the corresponding eigenstate.
+
+If $U_{a,N}\ket{x} = \ket{ax \bmod N}$, then it satisfies $U^r_{a,N}=I$ when $r$ is the order.
+
+Hence, its eigenvalues will be $e^{2\pi\frac{k}{r}}$ for $k=0,\dots,r-1$.
+
+Applying $U$ to the eigenstate $k$ times multiplies the phase $\phi_s$ by $k$:
+
+$$
+U^k\ket{u_e}=e^{2\pi ik\phi_s}\ket{u_e}
+$$
+
+$$
+U^k: \ket{x}\mapsto \ket{a^kx\bmod N}
+$$
+
+where $\ket{u_e}$ is the eigenvector of $U$ for which we want to find the eigenvalue.
+
+Using Quantum Phase Estimation (QPE) with $m$ qubits for the QPE control register, we will measure some value $x$, such that $\frac{x}{2^m}$ is an approximation to $\frac{k}{r}$:
+
+$$
+\frac{x}{2^m}\approx\frac{k}{r}
+$$
+
+We need to deduce the order $r$ by finding the exact rational $\frac{k}{r}$ from the approximation $\frac{x}{2^m}$. We will come back to this shortly.
+
+#### Quantum Phase Estimation
+
+The following diagram shows the general form of the Quantum Phase Estimation circuit for the trivial case of factoring 15. The number of qubits used for the 'C' register has been reduced from 9 to 4 to make the diagram easier to understand.
+
+<div style="text-align: center;">
+<img src="assets_qcb/shors_algorithm_1.png" height="300"/>
+</div>
+
+The circuit is split into four parts by the barrier symbols:
+
+- Initialization
+- Phase kickback
+- Inverse QFT
+- Measurement of result
+
+The barrier symbols are labelled 1,2,... so that the state at these points can be referred to as $\ket{\psi_1},\ket{\psi_2}$, etc.
+
+The unitary operator $U$ is specific to given values of $a$ and $N$ and consequently needs to be constructed for each run of the circuit.
+
+The qubits are split into two registers, C and T. Register C is the control register, with $m$ qubits, and register T is the target register, with $t$ qubits, that is initialized with the eigenvector. Register T requires enough qubits to hold the binary representation of the number $N$ that is to be factored:
+
+$$
+t=\lceil\log_2 N\rceil
+$$
+
+Register C requires more qubits than register T to give the required phase resolution. The following value is commonly used:
+
+$$
+m = \lceil 2\log_2 N\rceil + 1
+$$
+
+In the circuit above, the smaller value of $m=4$ has been used to make the diagram easier to understand.
+
+The control register is placed in the equal superposition state by the Hadamard gates. The target register is placed in the state $\ket{0001}$ which is an eigenvector of the unitary $U$.
+
+$$
+\ket{\psi_1}=\frac{1}{\sqrt{M}}\sum_{k=0}^{M-1}\ket{k}\ket{u_e}
+$$
+
+where $M=2^\text{m}$
+
+Applying the unitary operators gives:
+
+$$
+\begin{align*}
+\ket{\psi_2}&={\small\frac{1}{\sqrt{M}}}\sum_{k=0}^{M-1}\ket{k}U^k\ket{u_e}\\
+&={\small\frac{1}{\sqrt{M}}}\sum_{k=0}^{M-1}e^{2\pi ik\phi_s}\ket{k}\ket{u_e}
+\end{align*}
+$$
+
+The Quantum Fourier Transform (QFT) is defined as:
+$$
+QFT: \ket{x}\mapsto\frac{1}{\sqrt{M}}\sum_{k=0}^{M-1}{\large e^\frac{2\pi ixk}{M}}\ \ket{k}
+$$
+
+So applying the inverse QFT to register C results in:
+
+$$
+\ket{\psi_3}=\ket{x}\ket{\lambda}
+$$
+
+where the phase $\theta$ is approximated by the binary fraction $\large\frac{x}{2^m}$.
+
+#### Computing the Order
+
+Using Quantum Phase Estimation (QPE), with $m$ qubits for the QPE control register,  we will measure some value $x$, such that $\frac{x}{2^m}$ is an approximation to the true phase $\phi=\frac{k}{r}$:
+
+$$
+\frac{x}{2^m}\approx\frac{k}{r}
+$$
+
+where $k=0,1,\dots,r-1$
+
+The next step is to deduce the multiplicative order $r$ by finding the exact rational $\frac{k}{r}$ from the approximation $\frac{x}{2^m}$
+
+This can be done by computing the sequence of continued-fraction convergents and checking each one to see whether its denominator is the order $r$ of $a$ modulo $N$. This should be done in order of increasing candidate $r$, as the order is defined as the *smallest* such value.
+
+$$
+a^r\equiv 1\pmod{N}
+$$
+
+In our case, we have a rational fraction, so the sequence is finite. We just need to check each convergent to see whether its denominator is the order of $a$ modulo $N$:
+
+$$
+a^q\equiv 1\pmod{N}
+$$
+
+The approximation error is:
+
+$$
+\left|\frac{x}{2^m}-\frac{k}{r}\right|
+$$
+
+There is a theorem by Legendre that states that if a rational number $\frac{p}{q}$ is a sufficently good approximation of a real number $\alpha$, such that:
+
+$$
+\left|\alpha-\frac{p}{q}\right| < \frac{1}{2q^2}
+$$
+
+then $\frac{p}{q}$ must be one of the convergents of the continued fraction of $\alpha$.
+
+Rather than test each convergent denominator to see whether it is the order 'r' of $a$ mod $N$, it can be faster to only test ones that satisfy the approximation error condition:
+
+$$
+\left|\frac{x}{2^m}-\frac{k}{r}\right| < \frac{1}{2r^2}
+$$
+
+The procedure may still sometimes fail to find the order because the convergents are *reduced fractions* in their lowest terms. The actual order may therefore be a multiple of the convergent denominator. The simplest solution is to restart the algorithm with a new random value $a$, as is done for other failure conditions. Another approach is to try small multiples of the candidate order.
+
+### 7.4: Grover's Algorithm
+
+This example demonstrates how Grover's Search Algorithm may be used to solve search problems that involve finding the input to a black-box function that produces a particular output. 
+
+#### Introduction
+
+There is an important class of problems in computing where you can quickly check a candidate solution, but it is very hard to find the solution other than by trying all the different possibilities. In general, for a list of $N$ items it would take order $\mathcal{O}(N)$ steps to go through the possibilities. Grover's algorithm can in principle solve problems of this kind in $\mathcal{O}(\sqrt{N})$ steps on a quantum computer.
+
+We can abstract problems of this kind as a one-way black-box function known as an "oracle". We can ask the oracle whether something is a solution and it will give the reply 'yes' or 'no'.
+
+We will explore how the algorithm works with the aid of a simple example. The oracle will hide a secret K-bit binary number. Our goal is to find the secret number by asking the oracle whether specific "guesses" are correct. On a classical computer it would take $\frac{N}{2}$ attempts on average and $N$ in the worst case. With a quantum computer we can solve it in order $\mathcal{O}(\sqrt{N})$ attempts with very high probability. The advantage of the quantum algorithm gets progressively better as the size of the search space increases.
+
+In a more realistic application, an oracle might check whether something satisfies a constraint, rather than just hiding a pre-existing answer.
+
+To be of practical use, the algorithm would require a real quantum computer with thousands of logical (error-free) qubits. On today's Noisy Intermediate-Scale Quantum (NISQ) devices, it doesn't yet give any advantage. However, Grover's algorithm illustrates a more general approach to quantum algorithm design that involves starting with a superposition of all possibilities and then iteratively using amplitude amplification to increase the probability of the solution state.
+
+#### How the Algorithm Works
+
+Grover's algorithm starts by placing the quantum state into an equal superposition $\ket{s}$ of the $N=2^K$ basis states. The solution we are searching for corresponds to the basis state $\ket{\omega}$. We will assume for simplicity that the problem has a single solution. However, the method can be generalized to cases where there are multiple solutions.
+
+The superposition of the remaining $N-1$ basis states forms the vector $\ket{\omega_\perp}$, which is orthogonal to $\ket{\omega}$. The two vectors $\ket{\omega_\perp}$ and $\ket{\omega}$ span an (unknown) two-dimensional plane in the N-dimensional complex vector space, as shown here:
+
+<div style="text-align: center;">
+<img src="assets_qcb/grover1.png" height="250"/>
+</div>
+
+The initial superposition state is:
+
+$$
+\ket{s} = {\small\frac{1}{\sqrt{N}}}\sum_{i=0}^N{\ket{x_i}} = \ket{+\dots +}
+$$
+
+This can be written as the sum of two orthogonal vectors:
+
+$$
+\ket{s} = \sqrt{\frac{1}{N}}\ \ket{\omega} + \sqrt{\frac{N-1}{N}}\ \ket{\omega_\perp}
+$$
+
+Consequently, the angle $\theta$ between $\ket{s}$ and $\ket{\omega_\perp}$ given by:
+
+$$
+\theta=\arcsin\left(\frac{1}{\sqrt{N}}\right)
+$$
+
+For $N\gg 1$ this can be approximated as:
+
+$$
+\theta\approx\frac{1}{\sqrt{N}}
+$$
+
+Grover's algorithm starts by initializing the state to the superposition $\ket{s}$ and then performs a sequence of iterations that rotate the state vector until it is close to the solution state $\ket{\omega}$. This results in a high probability of getting the correct solution when the state is measured.
+
+The first two iterations are illustrated by the following diagram:
+
+<div style="text-align: center;">
+<img src="assets_qcb/grover2.png" height="250"/>
+</div>
+
+Each iteration consists of the application of unitary operators $U_\omega$ and $U_s$, where $U_\omega$ is the oracle and $U_s$ is called the Diffusion operator.
+
+- The state is initialized to the equal superposition $\ket{s}=\ket{+\dots +}$
+- The operator $U_\omega$ then flips the state about $\ket{\omega_\perp}$ resulting in $U_\omega\ket{s}$
+- The operator $U_s$ then flips the state about $\ket{s}$ resulting in $U_sU_\omega\ket{s}$
+
+All the vectors are in the plane spanned by $\ket{\omega}$ and $\ket{s}$. The effect of two flips in a plane, about axes separated by $\theta$, is rotation by $2\theta$ (see diagram).
+
+Successive iterations of $U_sU_\omega$ are applied until the state is as close as possible to the solution state $\ket{\omega}$, which occurs when the total angle is close to $\frac{\pi}{2}$. A measurement of the state then has a high probability of yielding the solution state $\ket{\omega}$.
+
+So the overall algorithm is as follows:
+
+- Calculate the number of iterations $\nu$ that are needed.
+- Initialize the state to the equal superposition $\ket{s}$
+- Repeat $\nu$ times:
+  - Apply the oracle $U_\omega$
+  - Apply the diffusion operator $U_s$
+- Measure the state, yielding the result $\omega$ with high probability.
+
+#### Number of Iterations
+
+The total angle $\phi$ starts at $\theta$ and increases by $2\theta$ with each iteration. After $\nu$ iterations, the total angle $\phi$ is:
+
+$$
+\phi=(2\nu+1)\ \theta\approx\frac{1}{\sqrt{N}}(2\nu+1)
+$$
+
+We want this to be as close to $\frac{\pi}{2}$ as possible. Consequently, the required number of iterations, which must be an integer, is:
+
+$$
+\nu = \left\lfloor\frac{\pi}{4}\sqrt{N}\right\rfloor
+$$
+
+This explains why the algorithmic complexity, in terms of the number of iterations, is $\mathcal{O}(\sqrt{N})$.
+
+The probability $P(\nu, K)$ of measuring the correct result after $\nu$ iterations is:
+
+$$
+\begin{align*}
+P(\nu, K) &= \sin^2(\phi)\\
+&\approx\sin^2\left[(2\nu + 1)\frac{1}{\sqrt{2^K}}\right]
+\end{align*}
+$$
+
+When $N$ is large, which will normally be the case for problems where the algorithm is needed, the probability of getting the correct result is very close to one.
+
+#### Reflections
+
+An operator $U_x$ which reflects about the hyperplane orthogonal to $\ket{x}$ can be defined as:
+
+$$
+U_x = \mathbb{I} - 2\ket{x}\bra{x}
+$$
+
+To see why this is the case, we can apply it to a vector $\ket{\psi}$:
+
+$$
+\begin{align*}
+U\ket{\psi} &= (\mathbb{I}-2\ket{x}\bra{x})\ \ket{\psi}\\[0.4em]
+&= \ket{\psi}-2\ket{x}\braket{x|\psi}\\[0.4em]
+&= \begin{cases}
+      -\ket{\psi}, & \text{if $\psi=x$}\\
+      +\ket{\psi}, & \text{if $\psi \ne x$}
+\end{cases}
+\end{align*}
+$$
+
+It flips the component of the vector $\ket{\psi}$ that is along $\ket{x}$, while leaving the other components which are orthogonal to $\ket{x}$ unchanged. This is equivalent to reflecting $\ket{\psi}$ about the hyperplane orthogonal to $\ket{x}$.
+
+#### MCZ Gate
+
+In order to perform the flip operations for the example, we will make use of Multi-Controlled-Z (MCZ) gates. When an MCZ appears in an algebraic expression as an operator, it will be denoted by $M_{cz}$ so that it isn't confused with the composition of three separate operators.
+
+$M_{cz}$ is equivalent to the $U_x$ operator described above, for the specific case of $\ket{x}=\ket{1\dots 1}$.
+
+$$
+M_{cz}=\mathbb{I}-2\ket{1\dots 1}\bra{1\dots 1}
+$$
+
+In other words, it flips the sign of the $\ket{1\dots 1}$ state and leaves all the others unchanged.
+
+$$
+M_{cz}\ket{x} = \begin{cases}
+      -\ket{x}, & \text{if $\ket{x}=\ket{1\dots 1}$}\\
+      +\ket{x}, & \text{if $\ket{x}\ne\ket{1\dots 1}$}
+\end{cases}
+$$
+
+It is easy to make it work for vectors other than $\ket{1\dots 1}$, by applying a suitable transformation. Consequently, we can use it to implement both the oracle and the diffusion operator.
+
+#### The Oracle
+
+The $2^K$ possible values are represented as the basis states of a K-qubit quantum state. If we query the oracle with the correct solution state, it will indicate its "yes" answer by flipping the sign of the state, otherwise it will leave the sign unchanged. If we query it with a quantum superposition of all possible states, it will just flip the state corresponding to the correct solution.
+
+The oracle $U_\omega$ reflects across the hyperplane orthogonal to $\ket{\omega}$:
+
+$$
+U_\omega = \mathbb{I} - 2\ket{\omega}\bra{\omega}
+$$
+
+It flips the component of the state vector along $\ket{\omega}$ while leaving the other components orthogonal to $\ket{\omega}$ unchanged.
+
+An MCZ gate on its own could serve as the oracle for an all-ones key $11\dots 1$. For an arbitrary key, we just need to invert the qubits that have a $0$ bit in the key by adding some 'X' (NOT) gates.
+
+The following circuit shows the oracle for a 4-bit secret ket '0101', implemented using an MCZ gate:
+
+<div style="text-align: center;">
+<img src="assets_qcb/grover_oracle.png" height="210"/>
+</div>
+
+If the input is a superposition of all basis states, only the basis state $\ket{0101}$ will have its sign flipped.
+
+#### The Diffusion Operator
+
+The diffusion operator $U_s$ flips the state vector about the $\ket{s}$ vector which is the equal superposition state $\ket{+\dots +}$.
+
+$$
+U_s = 2\ket{s}\bra{s} - \mathbb{I}
+$$
+
+An MCZ gate flips the sign of the $\ket{1\dots 1}$ component:
+
+$$
+M_{cz}=\mathbb{I}-2\ket{1\dots 1}\bra{1\dots 1}
+$$
+
+In order to make it flip the state about the $\ket{s}$ vector, we can make the following transformation:
+
+$$
+U_s= - (H^{\otimes K}X^{\otimes K}\ M_{cz}\ X^{\otimes K}H^{\otimes K})
+$$
+
+The $X$ gates make $M_{cz}$ flip $\ket{0\dots 0}$ instead of $\ket{1\dots 1}$. Then the $H$ gates make it flip $\ket{+\dots +}$ instead of $\ket{1\dots 1}$.
+
+The negative sign results from the reversed order of terms. It can be ignored because it represents a global phase of $\pi$, which has no measurable effect.
+
+The following circuit shows a 4-qubit diffusion operator implemented using an MCZ gate:
+
+<div style="text-align: center;">
+<img src="assets_qcb/grover_diffusion.png" height="210"/>
+</div>
+
+#### Example with 4-bit Key
+
+As a trivial example, let us consider the simple case of a 4-bit secret key '0101'.
+
+Since, $N=2^4=16$, the number of iterations required is 3, from the formula given earlier:
+
+$$
+\nu = \left\lfloor\frac{\pi}{4}\sqrt{N}\right\rfloor=3
+$$
+
+The first step of the algorithm is to create an equal superposition state using a Hadamard transform. If we were to make a measurement now, the probability of getting the correct solution would be $\frac{1}{16}=6.25\%$.
+
+<div style="text-align: center;">
+<img src="assets_qcb/grover_38.png" width="500"/>
+</div>
+
+Next, we apply the oracle. This flips the component of the state vector corresponding to the unknown key:
+
+<div style="text-align: center;">
+<img src="assets_qcb/grover_40.png" width="500"/>
+</div>
+
+If we were to make a measurement at this stage, all outcomes would still be equally likely as the probabilities are given by the square of the absolute value of the amplitude.
+
+Next, we apply the diffusion operator.
+
+<div style="text-align: center;">
+<img src="assets_qcb/grover_42.png" width="500"/>
+</div>
+
+This amplifies the probability of the solution state significantly. If we made a measurement now, there would be 47% probability of getting the correct solution.
+
+We need to perform two more iterations that each apply the oracle followed by the diffusion operator. After the second iteration, the probability of a measurement giving the correct result has been further increased to 90.8%. 
+
+<div style="text-align: center;">
+<img src="assets_qcb/grover_51.png" width="500"/>
+</div>
+
+After the third iteration, it has reached 96.1%.
+
+<div style="text-align: center;">
+<img src="assets_qcb/grover_54.png" width="500"/>
+</div>
+
+We can now perform a quantum measurement, which will give the correct result with a probability of 96%. If we were to perform another iteration, the probability would start going down again.
+
+The probability of getting an incorrect result is $1 - 0.96 = 0.04$. If this happens, we just need to run the process again. The oracle function is by its nature one that makes it easy to check the result. The probability of both measurements being wrong is $0.04^2 = 0.0016$.
+
+The complete quantum circuit for this example is as follows. This shows the initial Hadamard transform, followed by 3 Grover iterations and finally the measurement.
+
+<div style="text-align: center;">
+<img src="assets_qcb/grover_complete.png" height="130"/>
+</div>
+
+This example has demonstrated Grover's algorithm as well as the more general concept of Amplitude Amplification.
+
+### 7.5: Quantum Teleportation
+
+Quantum teleportation is a protocol for sending quantum information (i.e. qubits) from one place to another.
+
+Imagine that Alice has a data qubit that she wishes to send to Bob. The [No-Cloning Theorem](#no-cloning-theorem) of quantum mechanics says that it is impossible to create an independent and identical copy of an unknown quantum state. This implies that if Alice sends a qubit to Bob, then she no longer has access to the qubit herself.
+
+The protocol requires Alice and Bob to each have one of an entangled pair of qubits. Alice makes a joint [Bell Measurement](#bell-measurement) of the data qubit with her entangled qubit. This results in two classical bits of information corresponding to the four possible measurement outcomes. If Alice sends these two classical bits to Bob, he can use them with his entangled qubit to recreate the qubit that Alice sent. The Bell measurement that Alice performs destroys the quantum state of her data qubit, so the no-cloning theorem is not violated.
+
+The following quantum circuit shows Alice's part of the protocol:
+
+<div style="text-align: center;">
+<img src="assets_qcb/teleport1.png" alt="teleport1" height="165"/>
+</div>
+
+The part to the left of the barrier shows the creation of an entangled pair of qubits. Alice has one qubit and Bob has the other. Alice could create the entangled pair and send one to Bob or a third-party could create the pair and send one to each of them. This does not violate the no-cloning theorem because the two qubits are not independent.
+
+If Alice were to simply measure her qubit, she would get a random result of 0 or 1. If Bob then measured his qubit, he would get the same result. However, this alone cannot be used to send information as Alice has no control over the result of her measurement.
+
+Instead, Alice performs a joint [Bell Measurement](#bell-measurement) of the data qubit with her entangled qubit. This results in two bits of classical information that say which of the four possible Bell states the qubits are in. Alice then sends these two bits of information to Bob over a normal (classical) communication channel.
+
+Bob applies one of the following quantum operations to his entangled qubit, depending on the two classical bits he receives from Alice:
+
+```math
+\begin{align*}
+0,0 &\rightarrow \textrm{none}\\
+0,1 &\rightarrow X\\
+1,0 &\rightarrow Z\\
+1,1 &\rightarrow X \textrm{ then } Z
+\end{align*}
+```
+
+Bob's part of the protocol can be drawn as a circuit as follows. Classical bits are normally drawn as a double lines in quantum circuits, but here they are just shown as single lines. The X and Z gates have classical controls, which simply means that Bob applies an X or Z operation, depending on the classical bits he received.
+
+<div style="text-align: center;">
+<img src="assets_qcb/teleport2.png" alt="teleport2" height="165"/>
+</div>
+
+This results in Bob having the data qubit that Alice sent. Note that although entanglement is used, the information cannot be sent faster than the speed of light because Bob cannot decode his qubit until he receives the two bits over a classical channel.
+
+If Bob were to just guess what the two classical bits would be, he would have a 25% chance of correctly decoding the qubit but, if sent a sequence of qubits, he would not know which ones were correct.
 
 ---
 
