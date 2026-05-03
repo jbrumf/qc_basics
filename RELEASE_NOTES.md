@@ -1,5 +1,15 @@
 ## QC_Basics Release Notes
 
+### Release Note (3 May 2026)
+
+- Significant improvements throughout the document
+- Renamed the document as it is no longer a "short" guide
+- Added new examples on Interference and Phase Kickback
+- Significantly improved example on Quantum Phase Estimation
+- Restructured and improved the Premiminaries section
+- The Preliminaries section is now called Quantum Information
+- Improved the Measurements section
+
 ### Release Note (17 March 2026)
 
 - Added examples on Shor's Algorithm and Grover's Algorithm.
