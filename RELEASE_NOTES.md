@@ -1,5 +1,10 @@
 ## QC_Basics Release Notes
 
+### Release Note (**PENDING**)
+
+- Spelling and typo corrections
+- Updated section on Dirac notation
+
 ### Release Note (3 May 2026)
 
 - Significant improvements throughout the document

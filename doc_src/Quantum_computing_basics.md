@@ -1,7 +1,7 @@
 # A Guide to Quantum Computation
 
 *Jon Brumfitt
-(This revision: 3 May 2026)*
+(This revision: 4 May 2026)*
 
 ### Preface
 
@@ -11,7 +11,7 @@ Much of my career was spent developing scientific software for space astrophysic
 
 I bought a book on quantum computing, but had only read a few pages before I started using Python to explore the things I had read about. This quickly grew into a small simulator that I called "TinyQsim" (https://github.com/jbrumf/tinyqsim). This has no relation to the TinyQsim package in the PyPI repository. TinyQsim was used to develop and test the examples in this guide and generate almost all the graphics including the quantum circuits and various plots.
 
-Using a simulator turned out to be an excellent way to learn about quantum computing from first-hand experience, through playing with quantum circuits. In fact, a *real* quantum computer is quite limited in this respect because it is fundamentally impossible to observe the quantum state; all you get at the end of the computation is a single classical answer. A simulator, on the other hand, allows you to watch the evolution of the quantum state, examine phases and see quantum interference in action. Quantum state simulators are limited to a small number of quantum bits (Qubits) but this is not so important for learning and experimentation. A real quantum computer is of course needed to realise the performance advantages. Quantum mechanics has a reputation for being "weird" and unituitive, but being able to experiment using a simulator makes it far less abstract. This helps with developing an intuition for quantum systems and makes most of the "weirdness" disappear.
+Using a simulator turned out to be an excellent way to learn about quantum computing from first-hand experience, through playing with quantum circuits. In fact, a *real* quantum computer is quite limited in this respect because it is fundamentally impossible to observe the quantum state; all you get at the end of the computation is a single classical answer. A simulator, on the other hand, allows you to watch the evolution of the quantum state, examine phases and see quantum interference in action. Quantum state simulators are limited to a small number of quantum bits (Qubits) but this is not so important for learning and experimentation. A real quantum computer is of course needed to realise the performance advantages. Quantum mechanics has a reputation for being "weird" and unintuitive, but being able to experiment using a simulator makes it far less abstract. This helps with developing an intuition for quantum systems and makes most of the "weirdness" disappear.
 
 Of course, I could have used an existing quantum simulator, rather than developing my own, but I found it a fascinating and rewarding project. From past experience, I knew that developing a simulator is an excellent way to gain a detailed understanding of the domain you are simulating. Using an existing simulator is very valuable, but writing your own gives you even deeper insights. It forces you to think very deeply about the system you are simulating and understand it thoroughly. It quickly exposes the things you don't know and forces you to consider edge cases that would probably not be mentioned in a textbook. If you misunderstand something, it is quickly revealed by the simulation giving an invalid result. Writing a simulator was part of my journey into quantum computing, which explains why I have included a chapter on it.
  
@@ -270,13 +270,21 @@ The *inner product* $\braket{A|B} \in\mathbb{C}$ is:
 \end{align*}
 ```
 
-**Note:** The inner product is similar to the dot (scalar) product of ordinary vectors, except that it involves a complex conjugate, which is enforced by the use of the *Bra* (conjugate transpose) in the notation.
+The inner product is similar to the dot (scalar) product of ordinary vectors, except that it involves a complex conjugate. This is enforced by the use of the *Bra* (conjugate transpose) in the notation.
 
-For example, the fact that $\ket{0}$ and $\ket{1}$ are orthonormal can be expressed as:
+The inner product has conjugate symmetry:
+
+```math
+\braket{\phi|\psi}=\braket{\psi|\phi}^*
+```
+
+**Note:** The notation $\braket{A|B}$ is a shortened version of $\bra{A}\ket{B}$, in which the two vertical bars have been run together.
+
+Using the inner product, we can express the fact that $\ket{0}$ and $\ket{1}$ are orthonormal:
 
 ```math
 \begin{align*}
-\braket{0|1} &= \braket{1|0} =0 &&\text{(orthogonal)}\\
+\braket{0|1} &= \braket{1|0} =0 &&\text{(orthogonal)}\\[0.3ex]
 \braket{0|0} &= \braket{1|1} =1 &&\text{(normal)}
 \end{align*}
 ```
@@ -287,28 +295,33 @@ In the context of quantum computing, the inner product can be used to find the p
 p(x)=|\braket{x|\psi}|^2
 ```
 
-The inner product has conjuagte symmetry:
-
-```math
-\braket{\phi|\psi}=\braket{\psi|\phi}^*
-```
-
 #### Outer Product
 
-The outer product is:
+The outer product creates an operator from two vectors:
 
 ```math
 \ket{A}\bra{B} = \begin{bmatrix}a_1\\\dots\\a_m\end{bmatrix} \begin{bmatrix}b_1^*,\dots,b_n\end{bmatrix}
 	=  \begin{bmatrix}a_1 b_1^*&\dots&a_1 b_n^*\\\dots\\a_mb_1^*&\dots&a_mb_n^*\end{bmatrix}
 ```
 
-It creates an operator from two vectors. For example, the quantum NOT operator $X$ can be expressed as:
+We can express a quantum operator, such as the NOT operator $X$, in terms of outer products:
 
 ```math
 X=\ketbra{0}{1}+\ketbra{1}{0}=\begin{bmatrix}0&1\\1&0\end{bmatrix}
 ```
 
-Outer products are typically used to create *projection operators* (see below) and *density matrices*.
+If we apply the $X$ operator to $\ket{1}$, we get:
+
+```math
+\begin{align*}
+X\ket{1}&=(\ket{0}\bra{1}+\ket{1}\bra{0})\ \ket{1}\\[0.3ex]
+&=\ket{0}\bra{1}\ket{1}+\ket{1}\bra{0}\ket{1}\\[0.3ex]
+&=\ket{0}\ 1+\ket{1}\ 0\\[0.3ex]
+&=\ket{0}
+\end{align*}
+```
+
+Outer products are often used to create *projection operators* (see below) and *density matrices*.
 
 #### Projection Operators
 
@@ -331,6 +344,17 @@ P_{\phi} \ket{\psi} &= (\ket{\phi}\bra{\phi})\ \ket{\psi}\\
 The regrouping of terms allowed by associativity results in an inner product $\braket{\phi|\psi}$. This can then be moved to the left as a coefficient multiplier of $\ket{\psi}$ as it is just a complex number. The effect of the projector $\ketbra{\phi}{\phi}$ is to project the vector $\ket{\psi}$ onto the basis vector $\ket{\phi}$.
 
 This example illustrates how we can use bra-ket notation to perform algebra on abstract vectors, without requiring a specific basis.
+
+Projectors are *idempotent*. In other words, applying a projector $P$ twice gives the same result as applying it once:
+
+```math
+\begin{align*}
+P^2&=(\ket{\psi}\bra{\psi})(\ket{\psi}\bra{\psi})\\[0.3ex]
+&= \ket{\psi}(\braket{\psi|\psi})\bra{\psi}\\[0.3ex]
+&=\ket{\psi}\bra{\psi}\\[0.3ex]
+&=P
+\end{align*}
+```
 
 #### Tensor Product
 
@@ -767,7 +791,7 @@ The diagram represents a sequence of unitary operators, in the form of quantum g
 
 The qubit on the left side of a tensor product is referred to as the *most-significant* qubit. Hence, in the quantum state $\ket{011}$, the most-significant qubit is $\ket{0}$ and the least-significant qubit is $\ket{1}$.
 
-This document uses the *big-endian* convention in which the most-significant qubit is called qubit 0. Note that some books and papers use the *little-endian* convention in which the least-significant qubit is qubit 0. This can lead to confusion when comparing examples from different sources. Develelopment tools and software libraries for quantum computing also differ in "endianness". For example, Google's Circ and Xanadu's PennyLane both use the big-endian convention, whereas IBM's Qiskit uses little-endian.
+This document uses the *big-endian* convention in which the most-significant qubit is called qubit 0. Note that some books and papers use the *little-endian* convention in which the least-significant qubit is qubit 0. This can lead to confusion when comparing examples from different sources. Development tools and software libraries for quantum computing also differ in "endianness". For example, Google's Circ and Xanadu's PennyLane both use the big-endian convention, whereas IBM's Qiskit uses little-endian.
 
 A 3-qubit state is described by $\ket{q_0}\otimes\ket{q_1}\otimes\ket{q_2}$ in big-endian and by $\ket{q_2}\otimes\ket{q_1}\otimes\ket{q_0}$ in little-endian.
 
@@ -1005,7 +1029,7 @@ H &= {\small\frac{1}{\sqrt{2}}}(\ketbra{0}{0} +\ketbra{0}{1} + \ketbra{1}{0} - \
 &={\small\frac{1}{\sqrt{2}}} \begin{bmatrix}1 & 1 \\ 1 & -1 \end{bmatrix} \end{align*}
 ```
 
-**Note:** This gate is often drawn in color to draw attention to it, because it performs a special role in quantum circuits, by switching back and forth between the Z and X bases.
+**Note:** This gate is often drawn in colour to draw attention to it, because it performs a special role in quantum circuits, by switching back and forth between the Z and X bases.
 
 The Hadamard gate is important because it transforms between the Z and X bases. One consequence of this is that a basis state is converted into a superposition with equal probabilities of state $\ket{0}$ and $\ket{1}$:
 
@@ -1158,7 +1182,7 @@ Cloning (which is not allowed by the [No-Cloning Theorem](#no-cloning-theorem)) 
 
 ### Understanding Controls
 
-We often think of the control of a controlled gate as an enabling input, such that a $\ket{1}$ on the control qubit enables the controlled operation on the target qubit and a $\ket{0}$ on the control causes the gate to have no effect. However, this is a misleading way to think about controlled gates. It is valid when the control is in the computational basis state, $\ket{0}$ or $\ket{1}$. However, when the control is in a superposition state, the output of the gate is a superposition of its its outputs for each of the basis states, but this may no longer behave like a simple control action.
+We often think of the control of a controlled gate as an enabling input, such that a $\ket{1}$ on the control qubit enables the controlled operation on the target qubit and a $\ket{0}$ on the control causes the gate to have no effect. However, this is a misleading way to think about controlled gates. It is valid when the control is in the computational basis state, $\ket{0}$ or $\ket{1}$. However, when the control is in a superposition state, the output of the gate is a superposition of its outputs for each of the basis states, but this may no longer behave like a simple control action.
 
 For example, consider the following circuit with a controlled-X (CX) gate sandwiched between Hadamard gates. This "Hadamard Sandwich" changes the basis from Z to X before the CX gate and then back again afterwards.
 
@@ -1174,7 +1198,7 @@ This is exactly equivalent to the following circuit, in which the roles of the c
 
 The "Hadamard sandwich" effectively changes the basis from Z to X. This has the effect of reversing the roles of the control and target qubits. So, the concept of a particular qubit of a gate being the control is dependent on the basis. This effect plays a key role in the phenomenon of *Phase kickback*, which is the subject of one the example algorithms, which we will look at later.
 
-For controlled gates that have a diagonal unitary matrix, such as CP and CZ, it is actually arbitary which qubit we regard as the control because of symmetry. These are often represented by a symmetrical symbol, such as the CZ in the following circuit.
+For controlled gates that have a diagonal unitary matrix, such as CP and CZ, it is actually arbitrary which qubit we regard as the control because of symmetry. These are often represented by a symmetrical symbol, such as the CZ in the following circuit.
 
 <div style="text-align: center;">
 <img src="assets_qcb/example_2_kickback_26_0.png" height="120"/>
@@ -1537,7 +1561,7 @@ This circuit can be replaced by the following, where U2 now has a quantum contro
 
 #### Method 2
 
-Another way to move a mid-circuit measurement to the end is to entangle the qubit withan an ancilla qubit. The ancilla can then be measured at the end of the circuit.
+Another way to move a mid-circuit measurement to the end is to entangle the qubit with an ancilla qubit. The ancilla can then be measured at the end of the circuit.
 
 Consider the following example, where we want to move the mid-circuit measurement to the end:
 
@@ -1584,7 +1608,7 @@ The interaction with the environment can be via a measuring device, which in tur
 
 ## 7: Quantum Algorithms
 
-This section describes some quantum algorithms, incuding Shor's algorithm and Grover's algorithm. The examples have been adapted from the Jupyter Notebook examples that are included with the author's TinyQsim simulator. However, the executable code has been omitted here to keep this Guide less specific to particular development tools.
+This section describes some quantum algorithms, including Shor's algorithm and Grover's algorithm. The examples have been adapted from the Jupyter Notebook examples that are included with the author's TinyQsim simulator. However, the executable code has been omitted here to keep this Guide less specific to particular development tools.
 
 If you would like to see full working versions of these examples, see the Examples section in the TinyQsim documentation (https://jbrumf.github.io/tinyqsim).
 
@@ -1861,7 +1885,7 @@ QFT: \ket{x}\mapsto{\small\frac{1}{\sqrt{N}}}\sum_{k=0}^{N-1}e^{\large\frac{2\pi
 \quad\text{where }N=2^n
 ```
 
-**Note:** A ket such as $\ket{0011}$ is sometimes written as $\ket{3}$, using a decimal label instead of a binary one. This is often convenient when we are using qubits to encode numerical values. It is usually clear from context which is meant. Similarly, the above equation sums an expresion containing $\ket{k}$ over integer values of $k$.
+**Note:** A ket such as $\ket{0011}$ is sometimes written as $\ket{3}$, using a decimal label instead of a binary one. This is often convenient when we are using qubits to encode numerical values. It is usually clear from context which is meant. Similarly, the above equation sums an expression containing $\ket{k}$ over integer values of $k$.
 
 #### QFT Implementation
 
@@ -1956,7 +1980,7 @@ The phase is increasing at $\frac{\pi}{4}$ per element in the transformed state 
 
 If you are familiar with the ordinary Fourier transform or DFT, you will probably recognise this as an example of the *Fourier Shifting Theorem*. This says that a translation (shift) in one domain corresponds to a linearly increasing phase in the other domain.
 
-If we took the inverse QFT of the above phase ramp, we would get back to the input state $\ket{2}$ (or a close approixmation). In the *Quantum Phase Estimation* (QPE) example, which follows later, we do precisely that, to estimate an unknown phase. 
+If we took the inverse QFT of the above phase ramp, we would get back to the input state $\ket{2}$ (or a close approximation). In the *Quantum Phase Estimation* (QPE) example, which follows later, we do precisely that, to estimate an unknown phase. 
 
 #### Interference
 
@@ -2114,7 +2138,7 @@ Encoding the phase this way allows us to represent it using a qubit register, wi
 
 #### Example Unitary Operator
 
-To demonstate QPE, we will define a 2$\times$2 matrix which has eigenvalue phases of 0, p1, p2, p3 for eigenstates $\ket{00}, \ket{01}, \ket{10}, \ket{11}$, respectively. The phases are expressed as multiples of $2\pi$.
+To demonstrate QPE, we will define a 2$\times$2 matrix which has eigenvalue phases of 0, p1, p2, p3 for eigenstates $\ket{00}, \ket{01}, \ket{10}, \ket{11}$, respectively. The phases are expressed as multiples of $2\pi$.
 
 ```math
 \begin{bmatrix}
@@ -2227,9 +2251,9 @@ For the first example, we will set the eigenvector to $\ket{01}$, which correspo
 <img src="assets_qcb/example_4_qpe_1.png" width="800"/>
 </div>
 
-The above plots show the phase of the Control register just before the inverse QFT (IQFT) and the measurement probabilities after the IQFT. The plots were generated by the state simulator. This should look familar if you have studied the preceeding QFT example notebook.
+The above plots show the phase of the Control register just before the inverse QFT (IQFT) and the measurement probabilities after the IQFT. The plots were generated by the state simulator. This should look familiar if you have studied the preceding QFT example notebook.
 
-Looking at this in reverse, an output which correponds to a single basis state $\ket{k}$, would result in a linear phase ramp with $k$ cycles of $2\pi$. In this case $k=1$.
+Looking at this in reverse, an output which corresponds to a single basis state $\ket{k}$, would result in a linear phase ramp with $k$ cycles of $2\pi$. In this case $k=1$.
 
 The probability distribution shows that measuring the control register would give the result 00001. If we precede this by a binary point, it is the phase as the binary fraction $\theta=.00001_2 = \frac{1}{32}$, which is correct. 
 
@@ -2265,7 +2289,7 @@ There are now 5.5 phase cycles, which doesn't correspond to a single basis state
 
 **Note:** If you are familiar with Fourier Transforms in signal processing, you may recognize this as *spectral leakage*.
 
-In this case, we could just repeat the QPE with 6 control qbits and we would get the result $\theta=001011_2=\frac{11}{64}$.
+In this case, we could just repeat the QPE with 6 control qubits and we would get the result $\theta=001011_2=\frac{11}{64}$.
 
 However, the phase we want to find might not be expressible as a fraction with an integer numerator and a denominator that is a power of 2, such as $\frac{5}{26}$. In the next example we look at how Shor's factorization algorithm solves this problem using *partial fraction convergents*.
 
@@ -2277,7 +2301,7 @@ This example looks at Shor's Algorithm for integer factorisation.  It makes use 
 
 #### Introduction
 
-Factoring large composite numbers is an interesting mathematical problem in its own right, but it is has particular practical implications for the widely-used RSA encryption system. RSA relies for its security on the fact that it is easy to multiply two large prime numbers but very difficult to find the factors if you are just given their product.
+Factoring large composite numbers is an interesting mathematical problem in its own right, but it has particular practical implications for the widely-used RSA encryption system. RSA relies for its security on the fact that it is easy to multiply two large prime numbers but very difficult to find the factors if you are just given their product.
 
 In 1994, Peter Shor published a quantum algorithm, now known as Shor's algorithm, that can theoretically factor large composite numbers exponentially faster than a classical computer. To have any practical advantage over classical factoring methods, Shor's algorithm would need to be run on a quantum computer with thousands of logical (error free) qubits, which is still some way in the future.
 
@@ -2349,7 +2373,7 @@ We require that neither of the terms $(a^{r/2}+1)$ and $(a^{r/2}-1)$ is zero. Th
 a^{r/2}\equiv -1\pmod{N}
 ```
 
-It can be seen from the above that the algorithm is probabilistic in nature and may fail at at several points if certain conditions are not met. In these cases, the algorithm is restarted with a new random value of $a$. The condition that $r$ must be even has a probability of about 50%. The conditional probability that $a^{r/2}\not\equiv -1\pmod{N}$, given that $r$ is even, is at least 50%. From this simplistic analysis, the probability of success for a particular initial guess is $\approx$25%, which implies that about 4 tries are needed on average.
+It can be seen from the above that the algorithm is probabilistic in nature and may fail at several points if certain conditions are not met. In these cases, the algorithm is restarted with a new random value of $a$. The condition that $r$ must be even has a probability of about 50%. The conditional probability that $a^{r/2}\not\equiv -1\pmod{N}$, given that $r$ is even, is at least 50%. From this simplistic analysis, the probability of success for a particular initial guess is $\approx$25%, which implies that about 4 tries are needed on average.
 
 When the order-finding is run on a quantum processor, the speed is exponentially greater than factoring on a classical computer. Even if a few runs are needed because of the restarts, the overall speedup is still exponentially better.
 
@@ -2363,7 +2387,7 @@ First, calculate $\gcd(2,21)=1$
 
 As the GCD is 1, it follows that 2 and 21 are coprime, so there isn't a trivial factor and we can proceed with the "difference of squares" approach.
 
-Next, we need to find the order $r$, which is the smallest positive integer such that $2^r\equiv 1\pmod{21}$. To do this classically (non-quantum), we could try succesive integers for 'r':
+Next, we need to find the order $r$, which is the smallest positive integer such that $2^r\equiv 1\pmod{21}$. To do this classically (non-quantum), we could try successive integers for 'r':
 
 ```math
 \begin{align*}
@@ -2520,7 +2544,7 @@ The approximation error in the value returned by QPE is:
 \left|\frac{x}{2^m}-\frac{k}{r}\right|
 ```
 
-Legendre's theorem on continued fractions states that if a rational number $\frac{p}{q}$ is a sufficently good approximation of a real number $\alpha$, such that:
+Legendre's theorem on continued fractions states that if a rational number $\frac{p}{q}$ is a sufficiently good approximation of a real number $\alpha$, such that:
 
 ```math
 \left|\alpha-\frac{p}{q}\right| < \frac{1}{2q^2}
@@ -2546,7 +2570,7 @@ Putting everything together, let us look at how the algorithm might factor the i
 N=119
 ```
 
-The first step is to select a random number $a$ in the range $1\lt a\lt $N, and check whether it is comprime with $N$. For example:
+The first step is to select a random number $a$ in the range $1\lt a\lt $N, and check whether it is coprime with $N$. For example:
 
 ```math
 a=40
@@ -2559,7 +2583,7 @@ As the GCD is 1, it follows that 40 and 119 are coprime, so there isn't a trivia
 
 The target register needs 7 qubits for the 7-bit number $N=119$.
 
-The control register needs $m$ qbits, where:
+The control register needs $m$ qubits, where:
 
 ```math
 m = \lceil 2\log_2 N\rceil + 1 = 15
@@ -2575,7 +2599,7 @@ The QPE is run on the quantum processor and quantum measurement of the control r
 
 This gives an approximation to the phase of: $\hat{\theta}=\frac{27989}{32768}$.
 
-To find the order $r$, we need to find the exact rational $\frac{k}{r}$ from this appproximation by using continued-fraction convergents. In this case, the convergents are:
+To find the order $r$, we need to find the exact rational $\frac{k}{r}$ from this approximation by using continued-fraction convergents. In this case, the convergents are:
 
 ```math
 \small\frac{1}{1}, \frac{5}{6}, \frac{6}{7}, \frac{35}{41}, \frac{41}{48}
