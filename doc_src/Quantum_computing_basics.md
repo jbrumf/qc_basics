@@ -1,7 +1,7 @@
 # A Guide to Quantum Computation
 
 *Jon Brumfitt
-(This revision: 4 May 2026)*
+(This revision: 5 May 2026)*
 
 ### Preface
 
@@ -769,7 +769,7 @@ The no-cloning theorem implies that it is not possible to connect the output of 
 
 A *quantum circuit* is a network of quantum gates applied to a fixed set of qubits. It can be described by a quantum circuit diagram or using a textual representation. Quantum circuit diagrams are more standardised and they are also good for developing an intuitive understanding.
 
-The following is an example of a simple quantum circuit involving a Hadamard gate H and two CX (aka controlled-NOT) gates. Don't worry about what the circuit does for the moment; we are just considering the graphical notation:
+The following is a simple example of a quantum circuit, involving a Hadamard gate H and two CX (aka controlled-NOT) gates. Don't worry about what the circuit does for the moment; we are just considering the graphical notation:
 
 <div style="text-align: center;">
 <img src="assets_qcb/ghz.png" alt="ghz" height="160"/>
@@ -777,37 +777,23 @@ The following is an example of a simple quantum circuit involving a Hadamard gat
 
 A quantum circuit diagram has a set of horizontal lines representing the qubits. The qubits are usually assumed to be initialized to $\ket{0}$, although this example shows the initial state for clarity. The qubits are numbered $0,1,2,\dots$ and typically labelled $q_0,q_1,q_2,\dots$, with qubit $q_0$ being the one at the top. The initial state is on the left and the final state is on the right.
 
-The *big-endian* convention used in this document is that qubit 0 is the *most-significant* qubit. In the example, the initial state is the tensor product of the three qubits in the following order:
+In a tensor product of qubits, the qubit on the left is the *most-significant* qubit and the one on the right is the *least-significant* qubit. In the following 3-qubit state, $\ket{A}$ is the most-significant qubit and $\ket{C}$ is the least-significant:
+
+```math
+\ket{A}\otimes\ket{B}\otimes\ket{C}
+```
+
+There are two different conventions for numbering the qubits, which often causes confusion. This guide uses the *big-endian* convention, in which the *most-significant* qubit is qubit 0. In the circuit above, the initial state is the tensor product of the three qubits in the following order:
 
 ```math
 \ket{q_0}\otimes\ket{q_1}\otimes\ket{q_2} = \ket{000}
 ```
 
+The difference between *big-endian* and *little-endian* systems is discussed in a later section.
+
 A quantum circuit has a fixed number of qubits, as required by unitarity and the no-cloning theorem. No qubits can be added to the circuit or deleted. Any extra qubits (known as *ancilla* qubits) that the computation needs must be included and initialized as part of the initial state. The flow of information is from left to right, with no loops allowed.
 
 The diagram represents a sequence of unitary operators, in the form of quantum gates, applied to a set of qubits, with the information flow running from left to right. The gates are typically not physical entities, but just operators applied to a fixed set of qubits *in situ*.
-
-### Endianness
-
-The qubit on the left side of a tensor product is referred to as the *most-significant* qubit. Hence, in the quantum state $\ket{011}$, the most-significant qubit is $\ket{0}$ and the least-significant qubit is $\ket{1}$.
-
-This document uses the *big-endian* convention in which the most-significant qubit is called qubit 0. Note that some books and papers use the *little-endian* convention in which the least-significant qubit is qubit 0. This can lead to confusion when comparing examples from different sources. Development tools and software libraries for quantum computing also differ in "endianness". For example, Google's Circ and Xanadu's PennyLane both use the big-endian convention, whereas IBM's Qiskit uses little-endian.
-
-A 3-qubit state is described by $\ket{q_0}\otimes\ket{q_1}\otimes\ket{q_2}$ in big-endian and by $\ket{q_2}\otimes\ket{q_1}\otimes\ket{q_0}$ in little-endian.
-
-If quantum circuits are drawn with qubit 0 at the top, tensor products are applied in a downward direction for the big-endian convention and in an upward direction for the little-endian convention.
-
-Endianness also leads to different matrix representations of some multi-qubit gates, which can be a further source of confusion. For example, in big-endian systems the CX gate matrix is:
-
-```math
-\begin{bmatrix}1&0&0&0 \\ 0&1&0&0 \\0&0&0&1 \\0&0&1&0 \end{bmatrix}
-```
-
-whereas in little-endian systems, it is:
-
-```math
-\begin{bmatrix}1&0&0&0 \\ 0&0&0&1 \\0&0&1&0 \\0&1&0&0 \end{bmatrix}
-```
 
 ### Composing Circuits
 
@@ -890,6 +876,38 @@ The A and B gates in this example may be applied in either order, or they can bo
 ```
 
 However, both A and B must be complete before C is applied. The circuit should be thought of as a *partially ordered* Directed Acyclic Graph (DAG), rather than as a strict time-sequence having time on the horizontal axis.
+
+### Endianness
+
+The qubit on the left side of a tensor product is referred to as the *most-significant* qubit. Hence, in the quantum state $\ket{0}\otimes\ket{1}\otimes\ket{1}$, the most-significant qubit is $\ket{0}$ and the least-significant qubit is $\ket{1}$. This state can also be written as $\ket{011}$.
+
+There are two different conventions for numbering the qubits. In the *big-endian* convention, qubit 0 refers to the most-significant qubit whereas, in the *little-endian* convention, qubit 0 refers to the least-significant qubit. For example, a 3-qubit state is $\ket{q_0}\otimes\ket{q_1}\otimes\ket{q_2}$ for big-endian and $\ket{q_2}\otimes\ket{q_1}\otimes\ket{q_0}$ for little-endian.
+
+The majority textbooks and academic papers use the big-endian convention. Development tools and software libraries for quantum computing vary in "endianness". For example, Google's Circ and Xanadu's PennyLane both use the big-endian convention, whereas IBM's Qiskit uses little-endian. This can lead to confusion for beginners when comparing examples from different sources or when trying to run textbook examples on little-endian systems.
+
+This guide uses the big-endian convention. 
+
+Consider the following simple circuit, consisting of a single CX gate with the control on qubit 0:
+
+<div style="text-align: center;">
+<img src="assets_qcb/cx_gate.png" height="115"/>
+</div>
+
+If we interpret it as a big-endian circuit, qubit 0 is the most-significant and the state is $\ket{q_0}\otimes\ket{q_1}$, with the tensor-multiplication order going down the diagram. The CX gate is then defined as:
+
+```math
+CX = \ket{0}\bra{0} \otimes I + \ket{1}\bra{1} \otimes X 
+= \begin{bmatrix}1&0&0&0 \\ 0&1&0&0 \\0&0&0&1 \\0&0&1&0 \end{bmatrix}
+```
+
+If, on the other hand, we interpret the diagram as a little-endian circuit, qubit 0 is the least-significant and the state is $\ket{q_1}\otimes\ket{q_0}$, with the tensor-multiplication order going up the diagram. The CX gate is then defined as:
+
+```math
+CX = I \otimes \ket{0}\bra{0} + X \otimes \ket{1}\bra{1}
+= \begin{bmatrix}1&0&0&0 \\ 0&0&0&1 \\0&0&1&0 \\0&1&0&0 \end{bmatrix}
+```
+
+The first definition is for a big-endian CX gate, whereas the second definition is for a little-endian CX gate. The tensor-product order of qubits to which the gate is applied is reversed, leading to reversal of the terms in the Dirac notation definition of the gate.
 
 ### Permutation of Qubits
 
@@ -1198,7 +1216,7 @@ This is exactly equivalent to the following circuit, in which the roles of the c
 
 The "Hadamard sandwich" effectively changes the basis from Z to X. This has the effect of reversing the roles of the control and target qubits. So, the concept of a particular qubit of a gate being the control is dependent on the basis. This effect plays a key role in the phenomenon of *Phase kickback*, which is the subject of one the example algorithms, which we will look at later.
 
-For controlled gates that have a diagonal unitary matrix, such as CP and CZ, it is actually arbitrary which qubit we regard as the control because of symmetry. These are often represented by a symmetrical symbol, such as the CZ in the following circuit.
+For some controlled gates, such as CZ, it is actually arbitrary which qubit we regard as the control because of symmetry. These are often represented by a symmetrical symbol, such as the CZ in the following circuit.
 
 <div style="text-align: center;">
 <img src="assets_qcb/example_2_kickback_26_0.png" height="120"/>
