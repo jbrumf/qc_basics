@@ -1,7 +1,7 @@
 # A Guide to Quantum Computation
 
 *Jon Brumfitt
-(This revision: 5 May 2026)*
+(This revision: 6 May 2026)*
 
 ### Preface
 
@@ -883,7 +883,7 @@ The qubit on the left side of a tensor product is referred to as the *most-signi
 
 There are two different conventions for numbering the qubits. In the *big-endian* convention, qubit 0 refers to the most-significant qubit whereas, in the *little-endian* convention, qubit 0 refers to the least-significant qubit. For example, a 3-qubit state is $\ket{q_0}\otimes\ket{q_1}\otimes\ket{q_2}$ for big-endian and $\ket{q_2}\otimes\ket{q_1}\otimes\ket{q_0}$ for little-endian.
 
-The majority textbooks and academic papers use the big-endian convention. Development tools and software libraries for quantum computing vary in "endianness". For example, Google's Circ and Xanadu's PennyLane both use the big-endian convention, whereas IBM's Qiskit uses little-endian. This can lead to confusion for beginners when comparing examples from different sources or when trying to run textbook examples on little-endian systems.
+The majority of textbooks and academic papers use the big-endian convention. Development tools and software libraries for quantum computing vary in "endianness". For example, Google's Circ and Xanadu's PennyLane both use the big-endian convention, whereas IBM's Qiskit uses little-endian. This can lead to confusion for beginners when comparing examples from different sources or when trying to run textbook examples on little-endian systems.
 
 This guide uses the big-endian convention. 
 
@@ -1298,7 +1298,7 @@ The Hadamard gate creates an equal superposition of $\ket{0}$ and $\ket{1}$:
 H \ket{0} = \frac{1}{\sqrt{2}}(\ket{0} + \ket{1})
 ```
 
-The CX gate applies an X operation to the second input if the first input is $\ket{1}$.:
+The CX gate applies an X operation to the second input if the first input is $\ket{1}$:
 
 ```math
 CX = \ket{0}\bra{0} \otimes I + \ket{1}\bra{1} \otimes X
@@ -1865,7 +1865,7 @@ The $X$ gate initializes qubit q1 to $\ket{1}$, which is an eigenvector of $U$.
 The output state is:
 
 ```math
-\displaystyle \ket{\psi} = (0.75+0.43301j)\ \ket{01} + (0.25-0.43301j)\ \ket{11}$
+\displaystyle \ket{\psi} = (0.75+0.43301j)\ \ket{01} + (0.25-0.43301j)\ \ket{11}
 ```
 
 This is not an entangled state, because it can be written as the tensor product of qubit states:
@@ -3055,8 +3055,6 @@ A Matrix Product State (MPS) or Tensor Train (TT) is a factorization of the tens
 
 As the equation implies, these four tensors would give back the original order-4 tensor if they were contracted, so no information has been lost.
 
-**Note:** The use of subscripts and superscripts is simply for clarity. It does not imply covariant and contravariant indices.
-
 The tensors in the train each have order 3, except for the ones at the ends, which have order 2. A dummy index can be added to the tensors at each end, so that they are all order-3 and can be treated in the same way. The horizontal lines are called *bonds* and represent summation over the bond indices $b$. The $s$ indices are the *physical indices* of the original tensor $T$ and are of dimension $d$, where $d=2$ in the case of qubits, corresponding to the $\ket{0}$ and $\ket{1}$ components.
 
 The MPS factorization can be performed using Singular Value Decomposition (SVD). This is a linear algebra technique that factorizes a matrix $M$ as follows:
@@ -3134,7 +3132,7 @@ A third type of tensor is usually included to represent the Hadamard operation. 
 
 A ZX tensor network is an undirected multigraph which is a much more general than a normal quantum circuit. The tensor indices are not necessarily inputs or outputs, so there is no requirement for the tensors to have the same number of inputs as outputs and the wires may go in any direction. There are no longer any qubit lines, except possibly at the input and output of the circuit. Any quantum gate or quantum circuit may be reduced to a tensor network consisting of just red and green spiders.
 
-Because there are only red and green spiders, the rewrite rules are very simple and there are only a few of them. Tools exist to apply these rules to simplify the tensor network. The rewrite transformations may be used to execute (i.e. simulate) a quantum circuit symbolically by reducing it to a final state, given an initial state. Alternatively, the simplification may reduce the circuit and then the simplified form may be turned back into a normal quantum circuit for execution on a real quantum computer. However, extracting the circuit is computationally hard.
+Because there are only red and green spiders, the rewrite rules are very simple and there are only a few of them. Tools exist to apply the rules to transform or simplify a tensor network. These may be used for symbolic reasoning about circuits or for simplifying circuits. The simplified form may be turned back into a normal quantum circuit for execution on a real quantum computer. However, extracting the circuit is computationally hard.
 
 This section was just to give a flavour of the ZX-calculus for interest, without going into too much detail. For further information and examples see [JvdW20].
 
