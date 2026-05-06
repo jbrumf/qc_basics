@@ -543,12 +543,12 @@ Consider the following sequence of operations:
 
 - We start with a qubit in an unknown state and measure it in the Z basis. The state will collapse into one of the Z basis states: $\ket{0}$ or $\ket{1}$. For example, let us say it is $\ket{1}$.
 
-- We measure the qubit again in the Z basis. The state will remain at $\ket{1}$ because it is already in a Z-basis state, so we will get the same result again, i.e: $\braket{1|1}=1$.
+- We measure the qubit again in the Z basis. The state will remain at $\ket{1}$ because it is already in a Z-basis state, so we will get the same result again, i.e: $\lvert\braket{1|1}\rvert^2=1$.
 
 - But $\ket{1}$ is an equal superposition of $\ket{+}$ and $\ket{-}$. So, if we now measure the qubit in the X basis, the result will be completely random, with an equal probability that the state becomes $\ket{+}$ or $\ket{-}.$
 
   ```math
-  p(+)=\braket{+|1}={\small\frac{1}{2}}\quad\text{and}\quad p(-)=\braket{-|1}={\small\frac{1}{2}}
+  p(+)=\lvert\braket{+|1}\rvert^2={\small\frac{1}{2}}\quad\text{and}\quad p(-)=\lvert\braket{-|1}\rvert^2={\small\frac{1}{2}}
   ```
 
 - We measure again in the X basis. The state will remain unchanged because it is already in an X-basis state, so we will get the same result again.
