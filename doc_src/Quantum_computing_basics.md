@@ -1,7 +1,7 @@
 # A Guide to Quantum Computation
 
 *Jon Brumfitt
-(This revision: 6 May 2026)*
+(This revision: 3 June 2026)*
 
 ### Preface
 
@@ -38,7 +38,7 @@ In 1994, Peter Shor published a quantum algorithm, now known as Shor's algorithm
 
 Quantum computers work on a completely different principle to classical computers, so the quantum algorithm to solve a problem is entirely different to a classical one. A lot of work is needed to find quantum algorithms that can exploit the power of a quantum computer. As yet, only a few exist.
 
-Current quantum computers are referred to as Noisy Intermediate-Scale Quantum (NISQ) devices. They are susceptible to *decoherence* of the fragile quantum state, caused by noise and interaction of the qubits with their environment, leading to high error rates. Devices are cooled down to near absolute zero to reduce the thermal noise and shielded against other forms of radiation. Qubits can be made more robust by quantum error correction, implemented using many physical qubits to make one error-free logical qubit. Consequently, the number of logical qubits can be much less that the physical number. The key challenge in the years ahead is to scale quantum computers up to the many thousands of logical qubits needed to tackle real-world problems, while keeping noise and errors under control.
+Current quantum computers are referred to as Noisy Intermediate-Scale Quantum (NISQ) devices. They are susceptible to *decoherence* of the fragile quantum state, caused by noise and interaction of the qubits with their environment, leading to high error rates. Devices are cooled down to near absolute zero to reduce the thermal noise and shielded against other forms of radiation. Qubits can be made more robust by quantum error correction, implemented using many physical qubits to make one error-free logical qubit. Consequently, the number of logical qubits can be much less than the physical number. The key challenge in the years ahead is to scale quantum computers up to the many thousands of logical qubits needed to tackle real-world problems, while keeping noise and errors under control.
 
 An added benefit of developing the technology for quantum computers is that we are learning new ways to manipulate nature at the quantum level and perform quantum experiments. This is already starting to have applications in areas such as quantum sensing. The spin-off benefits of trying to build a quantum computer may end up being as transformative as the quantum computers themselves.
 
@@ -154,8 +154,8 @@ If something can happen in two different ways, we add the probability amplitudes
    p &= \lvert \alpha_0 + \alpha_1 \rvert ^2\\
 	&=  (\alpha_0 + \alpha_1)^*\  (\alpha_0 + \alpha_1) \\
 	& = \lvert \alpha_0 \rvert^2 + \lvert \alpha_1 \rvert^2 + \alpha_0 \alpha_1^* + \alpha_0^* \alpha_1 \\
-	& = \lvert \alpha_0 \rvert^2 + \lvert \alpha_1 \rvert^2 + \lvert\alpha_0\rvert\lvert\alpha_1\rvert (e^{i(\phi_0-\phi_1)} + e^{-i(\phi_0-\phi_1)}\\
-	& = \lvert \alpha_0 \rvert^2 + \lvert \alpha_1 \rvert^2 + 2 \lvert \alpha_0\rvert \lvert \alpha_1 \rvert \cos{(\phi_0 - \phi_1)}]
+	& = \lvert \alpha_0 \rvert^2 + \lvert \alpha_1 \rvert^2 + \lvert\alpha_0\rvert\lvert\alpha_1\rvert (e^{i(\phi_0-\phi_1)} + e^{-i(\phi_0-\phi_1)})\\
+	& = \lvert \alpha_0 \rvert^2 + \lvert \alpha_1 \rvert^2 + 2 \lvert \alpha_0\rvert \lvert \alpha_1 \rvert \cos{(\phi_0 - \phi_1)}
 \end{align*}
 ```
 
@@ -240,7 +240,7 @@ This can be represented by a column vector:
 \alpha_0\ket{0}+\alpha_1\ket{1}=\begin{bmatrix}\alpha_0\\\alpha_1\end{bmatrix}
 ```
 
-So far, we have only looked a single qubit that has two basis states, but in practice we require many qubits. A $K$-qubit system has $2^K$ basis states and can be represented by an $n=2^K$-element column vector:
+So far, we have only looked at a single qubit that has two basis states, but in practice we require many qubits. A $K$-qubit system has $2^K$ basis states and can be represented by an $n=2^K$-element column vector:
 
 ```math
 \ket{A} = \begin{bmatrix}a_1\\a_2\\...\\a_n\end{bmatrix}
@@ -341,7 +341,7 @@ P_{\phi} \ket{\psi} &= (\ket{\phi}\bra{\phi})\ \ket{\psi}\\
 \end{align*}
 ```
 
-The regrouping of terms allowed by associativity results in an inner product $\braket{\phi|\psi}$. This can then be moved to the left as a coefficient multiplier of $\ket{\psi}$ as it is just a complex number. The effect of the projector $\ketbra{\phi}{\phi}$ is to project the vector $\ket{\psi}$ onto the basis vector $\ket{\phi}$.
+The regrouping of terms allowed by associativity results in an inner product $\braket{\phi|\psi}$. This can then be moved to the left as a coefficient multiplier of $\ket{\phi}$ as it is just a complex number. The effect of the projector $\ketbra{\phi}{\phi}$ is to project the vector $\ket{\psi}$ onto the basis vector $\ket{\phi}$.
 
 This example illustrates how we can use bra-ket notation to perform algebra on abstract vectors, without requiring a specific basis.
 
@@ -516,7 +516,7 @@ The X-basis vectors are denoted by $\ket{+}$ and $\ket{-}$ and are related to th
 ```math
 \begin{align*}
 	\ket{+} &= {\small\frac{1}{\sqrt{2}}}(\ket{0} + \ket{1}) =  {\small\frac{1}{\sqrt{2}}} \begin{bmatrix}1\\1\end{bmatrix}\\[1ex]
-	\ket{-} &= {\small\frac{1}{\sqrt{2}}}(\ket{0} - \ket{1} =  {\small\frac{1}{\sqrt{2}}} \begin{bmatrix}1\\-1\end{bmatrix}
+	\ket{-} &= {\small\frac{1}{\sqrt{2}}}(\ket{0} - \ket{1}) =  {\small\frac{1}{\sqrt{2}}} \begin{bmatrix}1\\-1\end{bmatrix}
 \end{align*}
 ```
 
@@ -569,12 +569,12 @@ H\ket{1} = \frac{1}{\sqrt{2}} \begin{bmatrix}1 & 1 \\ 1 & -1 \end{bmatrix}\begin
 
 The X basis is sometimes called the Hadamard basis. The Hadamard operator is frequently used in quantum algorithms, in the form of a Hadamard gate, to switch back and forth between the Z and X bases.
 
-In addition, to the Z and X bases, there is also a Y basis. The Y basis vectors are denoted by $\ket{R}$ and $\ket{L}$, or sometimes by $\ket{i}$ and $\ket{-i}$. They are related to the computational (Z) basis vectors $\ket{0}$ and $\ket{1}$ as follows:
+In addition to the Z and X bases, there is also a Y basis. The Y basis vectors are denoted by $\ket{R}$ and $\ket{L}$, or sometimes by $\ket{i}$ and $\ket{-i}$. They are related to the computational (Z) basis vectors $\ket{0}$ and $\ket{1}$ as follows:
 
 ```math
 \begin{align*}
 	\ket{R} &= {\small\frac{1}{\sqrt{2}}}(\ket{0} + i\ket{1}) =  {\small\frac{1}{\sqrt{2}}} \begin{bmatrix}1\\i\end{bmatrix}\\[1ex]
-	\ket{L} &= {\small\frac{1}{\sqrt{2}}}(\ket{0} - i\ket{1} =  {\small\frac{1}{\sqrt{2}}} \begin{bmatrix}1\\-i\end{bmatrix}
+	\ket{L} &= {\small\frac{1}{\sqrt{2}}}(\ket{0} - i\ket{1}) =  {\small\frac{1}{\sqrt{2}}} \begin{bmatrix}1\\-i\end{bmatrix}
 \end{align*}
 ```
 
@@ -967,7 +967,7 @@ This can be written as a table:
 \end{align*}
 ```
 
-The ket labels 00, 01, 10 and 11 can be thought of as binary numbers that index elements of the state vector. Qubits 0 and 1 corresponds to the first and second bits of this number respectively. The values of the elements, such as $a_0b_1$ all contain '$a$' and '$b$' terms. Consequently, modifying either of the qubits affects all of the elements of the state vector. 
+The ket labels 00, 01, 10 and 11 can be thought of as binary numbers that index elements of the state vector. Qubits 0 and 1 correspond to the first and second bits of this number respectively. The values of the elements, such as $a_0b_1$ all contain '$a$' and '$b$' terms. Consequently, modifying either of the qubits affects all of the elements of the state vector. 
 
 This explains why we had to take the tensor product of gates with dummy identity gates to make a $2^N\times 2^N$ matrix that could be applied to the $2^N$ element state vector.
 
@@ -1511,12 +1511,6 @@ Mathematically, measuring qubits one-at-a-time corresponds to expanding the $2\t
 M=Z\otimes I\otimes I
 ```
 
-To measure all the qubits at once, the Hermitian matrix would be:
-
-```math
-M=Z\otimes Z\otimes Z
-```
-
 If the qubits are entangled, measuring one qubit may affect the probabilities of other unmeasured qubits, but this does not affect the final outcome.
 
 The qubits that have already been measured have definite values that can't be changed by measuring other qubits. This leads to the *Principle of Implicit Measurement*. This states that any qubits which have not been measured at the end of the computation may be assumed to be measured.
@@ -1533,7 +1527,7 @@ Quantum computer hardware normally only supports measurement in the Z basis. Mea
 
 However, a Z-basis measurement can be used to make measurements in other bases, by first transforming the state between bases and then performing a Z-basis measurement.
 
-For example, a X-basis measurement can be made by applying a Hadamard (H) gate before the Z-basis measurement.
+For example, an X-basis measurement can be made by applying a Hadamard (H) gate before the Z-basis measurement.
 
 <div style="text-align: center;">
 <img src="assets_qcb/measure_x.png" alt="measure_x" height="65"/>
@@ -1617,7 +1611,7 @@ If it is required to simulate measurements (for example to see some typical meas
 
 The traditional (Copenhagen interpretation) view of quantum measurement treats it as a discontinuous irreversible jump that causes the quantum state to suddenly collapse into a classical one. However, it seems very unsatisfactory that the state normally evolves in a deterministic unitary manner, but follows a completely different non-deterministic rule when we observe it. It is not even clear what constitutes a measurement.
 
-A more modern view, from the perspective of quantum information theory, is that measurement is the interaction of a quantum system with the environment through entanglement and information exchange. This causes phase information to leak out into the environment, so that the quantum coherence is lost. This process of *decoherence* makes the original system behave classically as it can no longer exhibit quantum effects such as superposition and interference. The evolution of the system being measured is no longer unitary, although the system as a whole, including the environment, is still unitary in principle. However, the phase information is now lost in the trillions of particles in the environment, so it is impossible in practice to recover the information and restore the coherence. Decoherence is the reason that that our everyday macroscopic world does not exhibit quantum behaviour, even though it is made of quantum particles.
+A more modern view, from the perspective of quantum information theory, is that measurement is the interaction of a quantum system with the environment through entanglement and information exchange. This causes phase information to leak out into the environment, so that the quantum coherence is lost. This process of *decoherence* makes the original system behave classically as it can no longer exhibit quantum effects such as superposition and interference. The evolution of the system being measured is no longer unitary, although the system as a whole, including the environment, is still unitary in principle. However, the phase information is now lost in the trillions of particles in the environment, so it is impossible in practice to recover the information and restore the coherence. Decoherence is the reason why our everyday macroscopic world does not exhibit quantum behaviour, even though it is made of quantum particles.
 
 The interaction with the environment can be via a measuring device, which in turn interacts with the environment, or it can be direct, in which case we can think of the environment as "measuring" the system. The system rapidly becomes entangled with trillions of particles in the measuring device and the entanglement rapidly spreads into the environment, so that there is a big multi-qubit entanglement which has a consistent view of the measurement outcome. We see one particular result because we are entangled with the environment.
 
@@ -1807,7 +1801,7 @@ If we apply the unitary to one of its eigenvectors $\ket{u_k}$, the result will 
 
 ```math
 \begin{align*}
-U \ket{u_k} &= ({e^{i\phi_k}\,\ket{u_k}\bra{\psi_k}})\ \ket{u_k}\\
+U \ket{u_k} &= ({e^{i\phi_k}\,\ket{u_k}\bra{u_k}})\ \ket{u_k}\\
 &= e^{i\phi_k}\ket{u_k}
 \end{align*}
 ```
@@ -1827,11 +1821,11 @@ We apply $U$ to its eigenstate as a controlled-U with the control in superpositi
 The output is:
 
 ```math
-{\small\frac{1}{\sqrt{2}}}(\ket{0}\ket{u_k} + \ket{1}U\ket{u_k}
+{\small\frac{1}{\sqrt{2}}}(\ket{0}\ket{u_k} + \ket{1}U\ket{u_k})
 ```
 
 ```math
-= {\small\frac{1}{\sqrt{2}}}(\ket{0}\ket{u_k} + e^{i\phi}\ket{1}\ket{u_k}
+= {\small\frac{1}{\sqrt{2}}}(\ket{0}\ket{u_k} + e^{i\phi}\ket{1}\ket{u_k})
 ```
 
 This is not an entangled state, because it can be written as the tensor product of qubit states:
@@ -1876,7 +1870,7 @@ This is not an entangled state, because it can be written as the tensor product 
 
 All the phase has been kicked-back to qubit q0. Qubit q1 is still in its original state $\ket{1}$ and so has not been affected.
 
-Phase kickback will work for any unitary, because a unitary simply applies a phase $\theta_k$ when its input is the corresonding eigenvector $\ket{\phi_k}$.
+Phase kickback will work for any unitary, because a unitary simply applies a phase $\theta_k$ when its input is the corresponding eigenvector $\ket{\phi_k}$.
 
 Although we have only considered a one-qubit unitary with two eigenvectors, it works for an N-qubit unitary with $2^N$ eigenvectors. By initializing the input of the unitary to one of its eigenvectors, we can read out the phase associated with the corresponding eigenvalue. This plays an important role in algorithms such as Quantum Phase Estimation (QPE) and Shor's Algorithm.
 
@@ -1944,7 +1938,7 @@ QFT: \ket{x}\mapsto{\small\frac{1}{\sqrt{N}}}\sum_{k=0}^{N-1}e^{\large\frac{2\pi
 \quad\text{where }N=2^n
 ```
 
-If the input $\ket{x}$ is a basis state, then the output is an equal-magnitude superposition with linearly increasing phase. The rate at which the phase increases going along the state vector is proportional to $k$, which the index along the state vector, and to $k$, which is the input.
+If the input $\ket{x}$ is a basis state, then the output is an equal-magnitude superposition with linearly increasing phase. The rate at which the phase increases going along the state vector is proportional to $k$, which is the index along the state vector, and to $x$, which is the input.
 
 Let us look at the result of applying the 4-qubit QFT to some simple states. This should help to build some intuition about what the QFT does. The magnitude and phase plots shown below were produced by running the QFT circuit on a quantum circuit simulator with various input states.
 
@@ -2041,15 +2035,15 @@ The result can be quantified as follows:
 ```
 
 ```math
-\begin{align*}QFT(\ket{\psi})&={\small\frac{1}{\sqrt{2}}}(\frac{1}{4}\sum_{k=0}^{15} e^{{2\pi ik}\frac{1}{16}} + \frac{1}{4}\sum_{k=0}^{15} e^{{2\pi ik}\frac{15}{16}})\\
-&={\small\frac{1}{4\sqrt{2}}}\sum_{k=0}^{15}(e^{{2\pi ik}\frac{1}{16}}+e^{-{2\pi ik}\frac{1}{16}})
+\begin{align*}QFT(\ket{\psi})&={\small\frac{1}{\sqrt{2}}}(\frac{1}{4}\sum_{k=0}^{15} e^{{2\pi ik}\frac{1}{16}}\ket{k} + \frac{1}{4}\sum_{k=0}^{15} e^{{2\pi ik}\frac{15}{16}})\ket{k}\\
+&={\small\frac{1}{4\sqrt{2}}}\sum_{k=0}^{15}(e^{{2\pi ik}\frac{1}{16}}+e^{-{2\pi ik}\frac{1}{16}})\ket{k}
 \end{align*}
 ```
 
 Using the identity $\cos{\phi}=\frac{e^{i\phi}+e^{-i\phi}}{2}$, this simplifies to:
 
 ```math
-QFT(\ket{\psi})={\small\frac{1}{2\sqrt{2}}}\sum_{k=0}^{15}\cos(\frac{2\pi k}{16})
+QFT(\ket{\psi})={\small\frac{1}{2\sqrt{2}}}\sum_{k=0}^{15}\cos(\frac{2\pi k}{16})\ket{k}
 ```
 
 #### Computational Complexity
@@ -2156,7 +2150,7 @@ Encoding the phase this way allows us to represent it using a qubit register, wi
 
 #### Example Unitary Operator
 
-To demonstrate QPE, we will define a 2$\times$2 matrix which has eigenvalue phases of 0, p1, p2, p3 for eigenstates $\ket{00}, \ket{01}, \ket{10}, \ket{11}$, respectively. The phases are expressed as multiples of $2\pi$.
+To demonstrate QPE, we will define a $4\times 4$ matrix which has eigenvalue phases of 0, p1, p2, p3 for eigenstates $\ket{00}, \ket{01}, \ket{10}, \ket{11}$, respectively. The phases are expressed as multiples of $2\pi$.
 
 ```math
 \begin{bmatrix}
@@ -2220,7 +2214,7 @@ The action of applying a unitary operator $U$ to one of its eigenvectors $\ket{u
 
 ```math
 \begin{align*}
-\ket{\psi_2}&={\small\frac{1}{\sqrt{M}}}\sum_{k=0}^{M-1}\lambda\ket{k} \otimes\ket{u}\\
+\ket{\psi_2}&={\small\frac{1}{\sqrt{M}}}\sum_{k=0}^{M-1}\lambda^k\ket{k} \otimes\ket{u}\\
 &={\small\frac{1}{\sqrt{M}}}\sum_{k=0}^{M-1}e^{2\pi i k\ \theta}\ket{k} \otimes\ket{u}
 \end{align*}
 ```
@@ -2239,7 +2233,7 @@ This is identical to the control register part of $\ket{\psi_2}$ if we equate $\
 \theta = \frac{x}{M}
 ```
 
-So, taking the inverse QFT of the control register should result in a single basis state $\ket{x}$, provided that $\theta$ can be expressed as fraction with an integer numerator and denominator $M$. Otherwise the probability distribution will peak close to this value and $\frac{x}{M}$ is the nearest approximation to $\theta$ expressed as a binary fraction with $m$ bits. In this case, $\frac{x}{M}$ is an estimate $\hat{\theta}$:
+So, taking the inverse QFT of the control register should result in a single basis state $\ket{x}$, provided that $\theta$ can be expressed as a fraction with an integer numerator and denominator $M$. Otherwise the probability distribution will peak close to this value and $\frac{x}{M}$ is the nearest approximation to $\theta$ expressed as a binary fraction with $m$ bits. In this case, $\frac{x}{M}$ is an estimate $\hat{\theta}$:
 
 ```math
 \hat{\theta}=\frac{x}{M}
@@ -2470,7 +2464,7 @@ The QPE returns an approximation to an eigenvalue of $U$, when the input of the 
 
 If $U_{a,N}\ket{x} = \ket{ax \bmod N}$, then it satisfies $U^r_{a,N}=I$ when $r$ is the order.
 
-Hence, its eigenvalues will be $e^{2\pi\frac{k}{r}}$ for $k=0,\dots,r-1$.
+Hence, its eigenvalues will be $e^{2\pi i\frac{k}{r}}$ for $k=0,\dots,r-1$.
 
 Applying $U$ to the eigenstate $k$ times multiplies the phase $\theta$ by $k$:
 
@@ -2520,7 +2514,7 @@ m = \lceil 2\log_2 N\rceil + 1
 
 **Note:** This value can be derived using Legendre's theorem on continued fractions. It guarantees that the correct partial-fraction convergent will appear in the list of convergents (see above). However, the convergents are *reduced fractions*, so the required order may be a multiple of the convergent denominator.
 
-The circuit diagram above is just to illustrate the generate form of the QPE circuit, so a smaller value of $m$ has been used to make the diagram easier to understand.
+The circuit diagram above is just to illustrate the general form of the QPE circuit, so a smaller value of $m$ has been used to make the diagram easier to understand.
 
 The target register is initialized to the eigenvector $\ket{u_e}=\ket{0\dots 01}$ of the unitary $U$. Then applying QPE gives an approximation $\frac{x}{2^m}$ to the phase, as discussed above.
 
@@ -2641,7 +2635,7 @@ This is even, so we can factor $N$ using the difference-of-squares approach:
 (40^{24}+1)(40^{24}-1)\equiv 0\pmod{119}
 ```
 
-The required factors of 21 are therefore:
+The required factors of 119 are therefore:
 
 ```math
 \gcd((40^{24}+1),119)=17
@@ -2651,7 +2645,7 @@ and
 \gcd((40^{24}-1),119)=7
 ```
 
-Hence $119$ can be factor as $17\times 7$.
+Hence $119$ can be factored as $17\times 7$.
 
 ---
 
@@ -2684,7 +2678,7 @@ The superposition of the remaining $N-1$ basis states forms the vector $\ket{\om
 The initial superposition state is:
 
 ```math
-\ket{s} = {\small\frac{1}{\sqrt{N}}}\sum_{i=0}^N{\ket{x_i}} = \ket{+\dots +}
+\ket{s} = {\small\frac{1}{\sqrt{N}}}\sum_{i=0}^{N-1}{\ket{x_i}} = \ket{+\dots +}
 ```
 
 This can be written as the sum of two orthogonal vectors:
@@ -2773,10 +2767,6 @@ To see why this is the case, we can apply it to a vector $\ket{\psi}$:
 \begin{align*}
 U\ket{\psi} &= (\mathbb{I}-2\ket{x}\bra{x})\ \ket{\psi}\\[0.4em]
 &= \ket{\psi}-2\ket{x}\braket{x|\psi}\\[0.4em]
-&= \begin{cases}
-      -\ket{\psi}, & \text{if $\psi=x$}\\
-      +\ket{\psi}, & \text{if $\psi \ne x$}
-\end{cases}
 \end{align*}
 ```
 
@@ -3069,7 +3059,7 @@ It is possible to convert an existing state vector into an MPS by applying an SV
 
 The dimension of the bonds starts out at 1 for a non-entangled initial state such as $\ket{00\dots0}$. The resulting storage requirement is only $Nd$ elements, which is same as just having $N$ independent order-1 tensors for the qubits. The bond dimensions grow as multi-qubit gate tensors are applied which introduce entanglement between qubits. If the degree of entanglement is low, the dimension of the bonds can remain low. The bond dimension grows from each end of the train and in the worst case reaches a maximum of $2^\frac{N}{2}$ at the centre of the train.
 
-The bond dimension may start off small but will grow as the application of gate tensors introduces entanglement. This can be countered by limiting the bond dimension to a maximum value $\chi$. After each SVD, only the $\chi$ largest non-zero singular values are kept and the others are set to zero. The matrix rows and columns corresponding to singular values of zero can then be removed, leaving fewer elements to store and process. This results is a small approximation error but significantly reduces the  amount of data to be stored and processed. Provided that the degree of entanglement is not too high, an MPS can achieve a significant degree of compression of the quantum state, with a corresponding reduction in memory usage and processing time.
+The bond dimension may start off small but will grow as the application of gate tensors introduces entanglement. This can be countered by limiting the bond dimension to a maximum value $\chi$. After each SVD, only the $\chi$ largest non-zero singular values are kept and the others are set to zero. The matrix rows and columns corresponding to singular values of zero can then be removed, leaving fewer elements to store and process. This results in a small approximation error but significantly reduces the  amount of data to be stored and processed. Provided that the degree of entanglement is not too high, an MPS can achieve a significant degree of compression of the quantum state, with a corresponding reduction in memory usage and processing time.
 
 A Matrix Product Operator (MPO) is similar to an MPS, except that the tensors are of order-4 instead of order-3. It provides a way to factor a tensor operator into a train of lower-order tensors in much the same way that an MPS factors a state. The following diagram shows an MPO (in red) being applied to an MPS. The MPS and MPO sites can then be contracted together resulting in an updated MPS.
 
@@ -3096,7 +3086,7 @@ where $G_{mj}$ is the one-qubit gate tensor and $A_{ijk}$ is the MPS site into w
 
 In the case of a one-qubit gate, no approximation is involved and the bond dimensions in the chain remain unchanged.
 
-The situation is a little more complicated for a 2-qubit gate, as shown below. The 2-qubit gate tensor (shown in red) is contracted with the MPS and replaces two of the tensors in the chain with an order-4 tensor, as shown in the middle part of the diagram. The SVD procedure described earlier is then used the split this new tensor into two order-3 tensors to restore the MPS.
+The situation is a little more complicated for a 2-qubit gate, as shown below. The 2-qubit gate tensor (shown in red) is contracted with the MPS and replaces two of the tensors in the chain with an order-4 tensor, as shown in the middle part of the diagram. The SVD procedure described earlier is then used to split this new tensor into two order-3 tensors to restore the MPS.
 
 <div style="text-align: center;">
 <img src="assets_qcb/MPS4.png" height="130"/>

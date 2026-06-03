@@ -1,5 +1,9 @@
 ## QC_Basics Release Notes
 
+### Release Note (3 June 2026)
+
+- Minor corrections
+
 ### Release Note (6 May 2026)
 
 - Spelling and minor corrections

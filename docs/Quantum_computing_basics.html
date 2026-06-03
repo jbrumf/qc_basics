@@ -1,4 +1,4 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Quantum_computing_basics</title><style>html{font-size:15.000000px;}</style><style>/* copy from https://github.com/sindresorhus/github-markdown-css/ */
+<!doctype html><html><head><meta charset="utf-8"><meta name="referrer" content="strict-origin-when-cross-origin"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Quantum_computing_basics</title><style>html{font-size:15.000000px;}</style><style>/* copy from https://github.com/sindresorhus/github-markdown-css/ */
 
 html,body{background-color: #feffff;}
 
@@ -754,7 +754,7 @@ div.code-toolbar > .toolbar > .toolbar-item > span:focus {
 <script>(()=>{var e={647:(e,t,n)=>{var o,l,r;l=[],void 0===(r="function"==typeof(o=function(e){"use strict";const t=!!(e&&e.document&&e.document.querySelector&&e.addEventListener);if("undefined"==typeof window&&!t)return;const o=n(563);return e.tocbot=o,o}(void 0!==n.g?n.g:window||n.g))?o.apply(t,l):o)||(e.exports=r)},563:(e,t,n)=>{"use strict";function o(e){var t,n=[].forEach,o=[].some,l=document.body,r=!0,i=" ";function s(t,o){var l,r,a,u=o.appendChild((l=t,r=document.createElement("li"),a=document.createElement("a"),e.listItemClass&&r.setAttribute("class",e.listItemClass),e.onClick&&(a.onclick=e.onClick),e.includeTitleTags&&a.setAttribute("title",l.textContent),e.includeHtml&&l.childNodes.length?n.call(l.childNodes,(function(e){a.appendChild(e.cloneNode(!0))})):a.textContent=l.textContent,a.setAttribute("href",e.basePath+"#"+l.id),a.setAttribute("class",e.linkClass+i+"node-name--"+l.nodeName+i+e.extraLinkClasses),r.appendChild(a),r));if(t.children.length){var d=c(t.isCollapsed);t.children.forEach((function(e){s(e,d)})),u.appendChild(d)}}function c(t){var n=e.orderedList?"ol":"ul",o=document.createElement(n),l=e.listClass+i+e.extraListClasses;return t&&(l=(l=l+i+e.collapsibleClass)+i+e.isCollapsedClass),o.setAttribute("class",l),o}function a(t){var n=0;return null!==t&&(n=t.offsetTop,e.hasInnerContainers&&(n+=a(t.offsetParent))),n}function u(e,t){return e&&e.className!==t&&(e.className=t),e}function d(t){return t&&-1!==t.className.indexOf(e.collapsibleClass)&&-1!==t.className.indexOf(e.isCollapsedClass)?(u(t,t.className.replace(i+e.isCollapsedClass,"")),d(t.parentNode.parentNode)):t}return{enableTocAnimation:function(){r=!0},disableTocAnimation:function(t){var n=t.target||t.srcElement;"string"==typeof n.className&&-1!==n.className.indexOf(e.linkClass)&&(r=!1)},render:function(e,n){var o=c(!1);if(n.forEach((function(e){s(e,o)})),null!==(t=e||t))return t.firstChild&&t.removeChild(t.firstChild),0===n.length?t:t.appendChild(o)},updateToc:function(s){var c;c=e.scrollContainer&&document.querySelector(e.scrollContainer)?document.querySelector(e.scrollContainer).scrollTop:document.documentElement.scrollTop||l.scrollTop,e.positionFixedSelector&&function(){var n;n=e.scrollContainer&&document.querySelector(e.scrollContainer)?document.querySelector(e.scrollContainer).scrollTop:document.documentElement.scrollTop||l.scrollTop;var o=document.querySelector(e.positionFixedSelector);"auto"===e.fixedSidebarOffset&&(e.fixedSidebarOffset=t.offsetTop),n>e.fixedSidebarOffset?-1===o.className.indexOf(e.positionFixedClass)&&(o.className+=i+e.positionFixedClass):o.className=o.className.replace(i+e.positionFixedClass,"")}();var f,m=s;if(r&&null!==t&&m.length>0){o.call(m,(function(t,n){return a(t)>c+e.headingsOffset+10?(f=m[0===n?n:n-1],!0):n===m.length-1?(f=m[m.length-1],!0):void 0}));var h=t.querySelector("."+e.activeLinkClass),p=t.querySelector("."+e.linkClass+".node-name--"+f.nodeName+'[href="'+e.basePath+"#"+f.id.replace(/([ #;&,.+*~':"!^$[\]()=>|/\\@])/g,"\\$1")+'"]');if(h===p)return;var C=t.querySelectorAll("."+e.linkClass);n.call(C,(function(t){u(t,t.className.replace(i+e.activeLinkClass,""))}));var g=t.querySelectorAll("."+e.listItemClass);n.call(g,(function(t){u(t,t.className.replace(i+e.activeListItemClass,""))})),p&&-1===p.className.indexOf(e.activeLinkClass)&&(p.className+=i+e.activeLinkClass);var v=p&&p.parentNode;v&&-1===v.className.indexOf(e.activeListItemClass)&&(v.className+=i+e.activeListItemClass);var S=t.querySelectorAll("."+e.listClass+"."+e.collapsibleClass);n.call(S,(function(t){-1===t.className.indexOf(e.isCollapsedClass)&&(t.className+=i+e.isCollapsedClass)})),p&&p.nextSibling&&-1!==p.nextSibling.className.indexOf(e.isCollapsedClass)&&u(p.nextSibling,p.nextSibling.className.replace(i+e.isCollapsedClass,"")),d(p&&p.parentNode.parentNode)}}}}n.r(t),n.d(t,{_buildHtml:()=>i,_headingsArray:()=>c,_options:()=>d,_parseContent:()=>s,_scrollListener:()=>a,destroy:()=>m,init:()=>f,refresh:()=>h});const l={tocSelector:".js-toc",contentSelector:".js-toc-content",headingSelector:"h1, h2, h3",ignoreSelector:".js-toc-ignore",hasInnerContainers:!1,linkClass:"toc-link",extraLinkClasses:"",activeLinkClass:"is-active-link",listClass:"toc-list",extraListClasses:"",isCollapsedClass:"is-collapsed",collapsibleClass:"is-collapsible",listItemClass:"toc-list-item",activeListItemClass:"is-active-li",collapseDepth:0,scrollSmooth:!0,scrollSmoothDuration:420,scrollSmoothOffset:0,scrollEndCallback:function(e){},headingsOffset:1,throttleTimeout:50,positionFixedSelector:null,positionFixedClass:"is-position-fixed",fixedSidebarOffset:"auto",includeHtml:!1,includeTitleTags:!1,onClick:function(e){},orderedList:!0,scrollContainer:null,skipRendering:!1,headingLabelCallback:!1,ignoreHiddenElements:!1,headingObjectCallback:null,basePath:"",disableTocScrollSync:!1,tocScrollOffset:0};function r(e){var t=e.duration,n=e.offset,o=location.hash?l(location.href):location.href;function l(e){return e.slice(0,e.lastIndexOf("#"))}document.body.addEventListener("click",(function(r){var i;"a"!==(i=r.target).tagName.toLowerCase()||!(i.hash.length>0||"#"===i.href.charAt(i.href.length-1))||l(i.href)!==o&&l(i.href)+"#"!==o||r.target.className.indexOf("no-smooth-scroll")>-1||"#"===r.target.href.charAt(r.target.href.length-2)&&"!"===r.target.href.charAt(r.target.href.length-1)||-1===r.target.className.indexOf(e.linkClass)||function(e,t){var n,o,l=window.pageYOffset,r={duration:t.duration,offset:t.offset||0,callback:t.callback,easing:t.easing||function(e,t,n,o){return(e/=o/2)<1?n/2*e*e+t:-n/2*(--e*(e-2)-1)+t}},i=document.querySelector('[id="'+decodeURI(e).split("#").join("")+'"]')||document.querySelector('[id="'+e.split("#").join("")+'"]'),s="string"==typeof e?r.offset+(e?i&&i.getBoundingClientRect().top||0:-(document.documentElement.scrollTop||document.body.scrollTop)):e,c="function"==typeof r.duration?r.duration(s):r.duration;function a(e){o=e-n,window.scrollTo(0,r.easing(o,l,s,c)),o<c?requestAnimationFrame(a):(window.scrollTo(0,l+s),"function"==typeof r.callback&&r.callback())}requestAnimationFrame((function(e){n=e,a(e)}))}(r.target.hash,{duration:t,offset:n,callback:function(){var e,t;e=r.target.hash,(t=document.getElementById(e.substring(1)))&&(/^(?:a|select|input|button|textarea)$/i.test(t.tagName)||(t.tabIndex=-1),t.focus())}})}),!1)}let i,s,c,a,u,d={};function f(e){d=function(){const e={};for(let t=0;t<arguments.length;t++){const n=arguments[t];for(const t in n)p.call(n,t)&&(e[t]=n[t])}return e}(l,e||{}),d.scrollSmooth&&(d.duration=d.scrollSmoothDuration,d.offset=d.scrollSmoothOffset,r(d)),i=o(d),s=function(e){var t=[].reduce;function n(e){return e[e.length-1]}function o(e){return+e.nodeName.toUpperCase().replace("H","")}function l(t){if(!function(e){try{return e instanceof window.HTMLElement||e instanceof window.parent.HTMLElement}catch(t){return e instanceof window.HTMLElement}}(t))return t;if(e.ignoreHiddenElements&&(!t.offsetHeight||!t.offsetParent))return null;const n=t.getAttribute("data-heading-label")||(e.headingLabelCallback?String(e.headingLabelCallback(t.innerText)):(t.innerText||t.textContent).trim());var l={id:t.id,children:[],nodeName:t.nodeName,headingLevel:o(t),textContent:n};return e.includeHtml&&(l.childNodes=t.childNodes),e.headingObjectCallback?e.headingObjectCallback(l,t):l}return{nestHeadingsArray:function(o){return t.call(o,(function(t,o){var r=l(o);return r&&function(t,o){for(var r=l(t),i=r.headingLevel,s=o,c=n(s),a=i-(c?c.headingLevel:0);a>0&&(!(c=n(s))||i!==c.headingLevel);)c&&void 0!==c.children&&(s=c.children),a--;i>=e.collapseDepth&&(r.isCollapsed=!0),s.push(r)}(r,t.nest),t}),{nest:[]})},selectHeadings:function(t,n){var o=n;e.ignoreSelector&&(o=n.split(",").map((function(t){return t.trim()+":not("+e.ignoreSelector+")"})));try{return t.querySelectorAll(o)}catch(e){return console.warn("Headers not found with selector: "+o),null}}}}(d),m();const t=function(e){try{return e.contentElement||document.querySelector(e.contentSelector)}catch(t){return console.warn("Contents element not found: "+e.contentSelector),null}}(d);if(null===t)return;const n=g(d);if(null===n)return;if(c=s.selectHeadings(t,d.headingSelector),null===c)return;const f=s.nestHeadingsArray(c).nest;if(d.skipRendering)return this;i.render(n,f),a=C((function(e){i.updateToc(c),!d.disableTocScrollSync&&function(e){var t=e.tocElement||document.querySelector(e.tocSelector);if(t&&t.scrollHeight>t.clientHeight){var n=t.querySelector("."+e.activeListItemClass);if(n){var o=t.scrollTop,l=o+t.clientHeight,r=n.offsetTop,i=r+n.clientHeight;r<o+e.tocScrollOffset?t.scrollTop-=o-r+e.tocScrollOffset:i>l-e.tocScrollOffset-30&&(t.scrollTop+=i-l+e.tocScrollOffset+60)}}}(d);const t=e&&e.target&&e.target.scrollingElement&&0===e.target.scrollingElement.scrollTop;(e&&(0===e.eventPhase||null===e.currentTarget)||t)&&(i.updateToc(c),d.scrollEndCallback&&d.scrollEndCallback(e))}),d.throttleTimeout),a(),d.scrollContainer&&document.querySelector(d.scrollContainer)?(document.querySelector(d.scrollContainer).addEventListener("scroll",a,!1),document.querySelector(d.scrollContainer).addEventListener("resize",a,!1)):(document.addEventListener("scroll",a,!1),document.addEventListener("resize",a,!1));let h=null;u=C((function(e){d.scrollSmooth&&i.disableTocAnimation(e),i.updateToc(c),h&&clearTimeout(h),h=setTimeout((function(){i.enableTocAnimation()}),d.scrollSmoothDuration)}),d.throttleTimeout),d.scrollContainer&&document.querySelector(d.scrollContainer)?document.querySelector(d.scrollContainer).addEventListener("click",u,!1):document.addEventListener("click",u,!1)}function m(){const e=g(d);null!==e&&(d.skipRendering||e&&(e.innerHTML=""),d.scrollContainer&&document.querySelector(d.scrollContainer)?(document.querySelector(d.scrollContainer).removeEventListener("scroll",a,!1),document.querySelector(d.scrollContainer).removeEventListener("resize",a,!1),i&&document.querySelector(d.scrollContainer).removeEventListener("click",u,!1)):(document.removeEventListener("scroll",a,!1),document.removeEventListener("resize",a,!1),i&&document.removeEventListener("click",u,!1)))}function h(e){m(),f(e||d)}const p=Object.prototype.hasOwnProperty;function C(e,t,n){let o,l;return t||(t=250),function(){const r=n||this,i=+new Date,s=arguments;o&&i<o+t?(clearTimeout(l),l=setTimeout((function(){o=i,e.apply(r,s)}),t)):(o=i,e.apply(r,s))}}function g(e){try{return e.tocElement||document.querySelector(e.tocSelector)}catch(t){return console.warn("TOC element not found: "+e.tocSelector),null}}}},t={};function n(o){var l=t[o];if(void 0!==l)return l.exports;var r=t[o]={exports:{}};return e[o](r,r.exports,n),r.exports}n.d=(e,t)=>{for(var o in t)n.o(t,o)&&!n.o(e,o)&&Object.defineProperty(e,o,{enumerable:!0,get:t[o]})},n.g=function(){if("object"==typeof globalThis)return globalThis;try{return this||new Function("return this")()}catch(e){if("object"==typeof window)return window}}(),n.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t),n.r=e=>{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n(647)})();</script>
 <style>#mweb_toc_list_iid{overflow-y:auto}#mweb_toc_list_iid>.toc-list{overflow:hidden;position:relative}.toc>.toc-list li{list-style:none}.toc-list{margin:0;padding-left:10px}a.toc-link{height:100%}.is-collapsible{max-height:1000px;overflow:hidden;transition:all 300ms ease-in-out}.is-collapsed{max-height:0}.is-position-fixed{position:fixed !important;top:0} .is-active-link{} .toc-link::before{background-color:#eee;content:' ';display:inline-block;height:inherit;left:0;margin-top:-1px;position:absolute;width:2px;} .is-active-link::before{background-color:#54bc4b;} .mweb_ct_wrap{margin:0 auto;} .mweb_toc_wrap{margin-top: 18px;}  .mweb_toc_wrap_ct{position: fixed;  width: 266px; padding: 0px; overflow: auto; border-radius:4px; }  .mweb_toc_wrap_ct .markdown-body li{margin: 2px 0;} .mweb_toc_wrap_ct ul{padding-left: 14px;} .mweb_toc_wrap_ct .markdown-body{ padding:12px 12px; font-size: 13px;} .mweb_toc_wrap_ct li.is-active-li{ font-weight: bold;} .mweb_toc_wrap_ct li.is-active-li li{font-weight: normal;} #mweb_toc_list_iid{ padding-left:0px; } #mweb_toc_list_iid>ul{padding-left: 22px;} .mweb_toc_wrap_ct{width: 270px; top:42px; bottom:42px;} .mweb_toc_wrap_ct, .toc-link::before{background-color:#f8f8f8;} .is-active-link::before{background-color:#bbbbbb;}.mweb_ct_wrap{padding-left: 300px;} .mweb_toc_wrap{float: left;} .mweb_toc_wrap_ct{ margin-left: -300px;}@media screen and (max-width: 860px) {  .mweb_toc_wrap{display: none;} .mweb_ct_wrap{ padding:30px;} }@media print{ .mweb_toc_wrap{display: none;} .mweb_ct_wrap{ padding:30px;} }</style><script>document.addEventListener('DOMContentLoaded', (event) => {const ele = document.getElementById('markdown_content');const arr = ele.querySelectorAll('h1,h2,h3,h4,h5,h6'); var idNum = 0;arr.forEach((tmpEle) => { var idVal = 'mweb_tt_id_'+idNum;  if(tmpEle.id === ''){  tmpEle.id = idVal;  }  idNum++; });tocbot.init({ tocSelector: '#mweb_toc_list_iid', contentSelector: '#markdown_content',  headingSelector: 'h1, h2, h3, h4, h5, h6',  orderedList: false, collapseDepth: 6,scrollEndCallback: function (e) { const el = document.querySelector('#mweb_toc_list_iid li.is-active-li'); if(document.querySelector('#mweb_toc_list_iid>ul>li:first-child').classList.contains('is-active-li')){ document.getElementById('mweb_toc_list_iid').scrollTop=0; return;} if(typeof el.scrollIntoViewIfNeeded === 'function'){ el.scrollIntoViewIfNeeded();}else{ el.scrollIntoView(true);} },});});</script></head><body><div class='mweb_ct_wrap'><div class='mweb_toc_wrap'><div class='mweb_toc_wrap_ct'><div id='mweb_toc_list_iid' class='mweb_toc markdown-body'></div></div></div><div id='markdown_content' class='markdown-body'><h1><a id="a-guide-to-quantum-computation" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>A Guide to Quantum Computation</h1>
 <p><em>Jon Brumfitt<br />
-(This revision: 6 May 2026)</em></p>
+(This revision: 3 June 2026)</em></p>
 <h3><a id="preface" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preface</h3>
 <p>This is an introduction to the principles of quantum computing, focusing on quantum information, quantum circuits and quantum algorithms, rather than the technologies used for building a quantum computer. There are several detailed examples, including Shor's factoring algorithm and Grover's search algorithm. It concludes by looking at some ways of simulating a quantum computer on an ordinary (classical) computer.</p>
 <p>Much of my career was spent developing scientific software for space astrophysics missions so, when I retired, I was looking for something interesting to do with my newly-gained spare time. Many years earlier at university, I had been fascinated by quantum mechanics, so the emerging field of quantum computing caught my imagination and I was keen to learn more about it.</p>
@@ -773,7 +773,7 @@ div.code-toolbar > .toolbar > .toolbar-item > span:focus {
 <p>There are two main types of quantum computer: the gate-model quantum computer and the adiabatic quantum computer. This document only considers the gate-model. The gate model uses <em>quantum gates</em>, analogous to the logic gates of classical computers. These implement quantum operators that can manipulate a quantum state to evolve it towards a solution. A <em>quantum circuit</em> defines a sequence of gates that can perform an algorithm.</p>
 <p>In 1994, Peter Shor published a quantum algorithm, now known as Shor's algorithm, that can theoretically factor large integers exponentially faster than a classical computer. This led to a lot of interest as it would allow a quantum computer to break widely-used encryption codes such as RSA. However, quantum computing research is already giving us new solutions for secure communication and encryption, such as Quantum Key Distribution (QKD) and post-quantum cryptography algorithms.</p>
 <p>Quantum computers work on a completely different principle to classical computers, so the quantum algorithm to solve a problem is entirely different to a classical one. A lot of work is needed to find quantum algorithms that can exploit the power of a quantum computer. As yet, only a few exist.</p>
-<p>Current quantum computers are referred to as Noisy Intermediate-Scale Quantum (NISQ) devices. They are susceptible to <em>decoherence</em> of the fragile quantum state, caused by noise and interaction of the qubits with their environment, leading to high error rates. Devices are cooled down to near absolute zero to reduce the thermal noise and shielded against other forms of radiation. Qubits can be made more robust by quantum error correction, implemented using many physical qubits to make one error-free logical qubit. Consequently, the number of logical qubits can be much less that the physical number. The key challenge in the years ahead is to scale quantum computers up to the many thousands of logical qubits needed to tackle real-world problems, while keeping noise and errors under control.</p>
+<p>Current quantum computers are referred to as Noisy Intermediate-Scale Quantum (NISQ) devices. They are susceptible to <em>decoherence</em> of the fragile quantum state, caused by noise and interaction of the qubits with their environment, leading to high error rates. Devices are cooled down to near absolute zero to reduce the thermal noise and shielded against other forms of radiation. Qubits can be made more robust by quantum error correction, implemented using many physical qubits to make one error-free logical qubit. Consequently, the number of logical qubits can be much less than the physical number. The key challenge in the years ahead is to scale quantum computers up to the many thousands of logical qubits needed to tackle real-world problems, while keeping noise and errors under control.</p>
 <p>An added benefit of developing the technology for quantum computers is that we are learning new ways to manipulate nature at the quantum level and perform quantum experiments. This is already starting to have applications in areas such as quantum sensing. The spin-off benefits of trying to build a quantum computer may end up being as transformative as the quantum computers themselves.</p>
 <p><strong>Note:</strong> Throughout the text you will find notes like this paragraph. They are generally to provide additional explanations, clarifications or technical details. You may wish to skip them on a first reading.</p>
 <hr />
@@ -1194,8 +1194,8 @@ p(1) &amp;= \lvert\alpha_1\rvert^2
    p &amp;= \lvert \alpha_0 + \alpha_1 \rvert ^2\\
 	&amp;=  (\alpha_0 + \alpha_1)^*\  (\alpha_0 + \alpha_1) \\
 	&amp; = \lvert \alpha_0 \rvert^2 + \lvert \alpha_1 \rvert^2 + \alpha_0 \alpha_1^* + \alpha_0^* \alpha_1 \\
-	&amp; = \lvert \alpha_0 \rvert^2 + \lvert \alpha_1 \rvert^2 + \lvert\alpha_0\rvert\lvert\alpha_1\rvert (e^{i(\phi_0-\phi_1)} + e^{-i(\phi_0-\phi_1)}\\
-	&amp; = \lvert \alpha_0 \rvert^2 + \lvert \alpha_1 \rvert^2 + 2 \lvert \alpha_0\rvert \lvert \alpha_1 \rvert \cos{(\phi_0 - \phi_1)}]
+	&amp; = \lvert \alpha_0 \rvert^2 + \lvert \alpha_1 \rvert^2 + \lvert\alpha_0\rvert\lvert\alpha_1\rvert (e^{i(\phi_0-\phi_1)} + e^{-i(\phi_0-\phi_1)})\\
+	&amp; = \lvert \alpha_0 \rvert^2 + \lvert \alpha_1 \rvert^2 + 2 \lvert \alpha_0\rvert \lvert \alpha_1 \rvert \cos{(\phi_0 - \phi_1)}
 \end{align*}
 \]
 <p>The final term represents quantum <em>interference</em>. This term can be positive (constructive interference) or negative (destructive interference), depending on the relative phase \((\phi_0 - \phi_1)\).</p>
@@ -1240,7 +1240,7 @@ X \ket{1} = \begin{bmatrix}0 &amp; 1 \\ 1 &amp; 0 \end{bmatrix} \begin{bmatrix}0
 <p>This can be represented by a column vector:</p>
 \[\alpha_0\ket{0}+\alpha_1\ket{1}=\begin{bmatrix}\alpha_0\\\alpha_1\end{bmatrix}
 \]
-<p>So far, we have only looked a single qubit that has two basis states, but in practice we require many qubits. A \(K\)-qubit system has \(2^K\) basis states and can be represented by an \(n=2^K\)-element column vector:</p>
+<p>So far, we have only looked at a single qubit that has two basis states, but in practice we require many qubits. A \(K\)-qubit system has \(2^K\) basis states and can be represented by an \(n=2^K\)-element column vector:</p>
 \[\ket{A} = \begin{bmatrix}a_1\\a_2\\...\\a_n\end{bmatrix}
 \]
 <p><strong>Note:</strong> We will see below why a \(K\)-qubit system requires one \(2^K\)-element vector rather than \(K\) vectors of two elements.</p>
@@ -1299,7 +1299,7 @@ P_{\phi} \ket{\psi} &amp;= (\ket{\phi}\bra{\phi})\ \ket{\psi}\\
 &amp;=\braket{\phi|\psi}\ \ket{\phi}
 \end{align*}
 \]
-<p>The regrouping of terms allowed by associativity results in an inner product $\braket{\phi|\psi}$. This can then be moved to the left as a coefficient multiplier of \(\ket{\psi}\) as it is just a complex number. The effect of the projector \(\ketbra{\phi}{\phi}\) is to project the vector \(\ket{\psi}\) onto the basis vector \(\ket{\phi}\).</p>
+<p>The regrouping of terms allowed by associativity results in an inner product $\braket{\phi|\psi}$. This can then be moved to the left as a coefficient multiplier of \(\ket{\phi}\) as it is just a complex number. The effect of the projector \(\ketbra{\phi}{\phi}\) is to project the vector \(\ket{\psi}\) onto the basis vector \(\ket{\phi}\).</p>
 <p>This example illustrates how we can use bra-ket notation to perform algebra on abstract vectors, without requiring a specific basis.</p>
 <p>Projectors are <em>idempotent</em>. In other words, applying a projector \(P\) twice gives the same result as applying it once:</p>
 \[\begin{align*}
@@ -1712,7 +1712,7 @@ p(\ket{1}) &amp;= \lvert e^{i\phi}\sin({\small\frac{\theta}{2}}) \rvert^2 = \fra
 <p>The X-basis vectors are denoted by \(\ket{+}\) and \(\ket{-}\) and are related to the computational (Z) basis vectors \(\ket{0}\) and \(\ket{1}\) as follows:</p>
 \[\begin{align*}
 	\ket{+} &amp;= {\small\frac{1}{\sqrt{2}}}(\ket{0} + \ket{1}) =  {\small\frac{1}{\sqrt{2}}} \begin{bmatrix}1\\1\end{bmatrix}\\[1ex]
-	\ket{-} &amp;= {\small\frac{1}{\sqrt{2}}}(\ket{0} - \ket{1} =  {\small\frac{1}{\sqrt{2}}} \begin{bmatrix}1\\-1\end{bmatrix}
+	\ket{-} &amp;= {\small\frac{1}{\sqrt{2}}}(\ket{0} - \ket{1}) =  {\small\frac{1}{\sqrt{2}}} \begin{bmatrix}1\\-1\end{bmatrix}
 \end{align*}
 \]
 <p>and conversely:</p>
@@ -2098,10 +2098,10 @@ MAEmwASYABNgAkyACTABJhA0gf8PQIvccUiXL8AAAAAASUVORK5CYII=" width="200"/>
 \[H\ket{1} = \frac{1}{\sqrt{2}} \begin{bmatrix}1 &amp; 1 \\ 1 &amp; -1 \end{bmatrix}\begin{bmatrix}0\\1\end{bmatrix}=\frac{1}{\sqrt{2}}\begin{bmatrix}1\\-1\end{bmatrix}=\ket{-}
 \]
 <p>The X basis is sometimes called the Hadamard basis. The Hadamard operator is frequently used in quantum algorithms, in the form of a Hadamard gate, to switch back and forth between the Z and X bases.</p>
-<p>In addition, to the Z and X bases, there is also a Y basis. The Y basis vectors are denoted by \(\ket{R}\) and \(\ket{L}\), or sometimes by \(\ket{i}\) and \(\ket{-i}\). They are related to the computational (Z) basis vectors \(\ket{0}\) and \(\ket{1}\) as follows:</p>
+<p>In addition to the Z and X bases, there is also a Y basis. The Y basis vectors are denoted by \(\ket{R}\) and \(\ket{L}\), or sometimes by \(\ket{i}\) and \(\ket{-i}\). They are related to the computational (Z) basis vectors \(\ket{0}\) and \(\ket{1}\) as follows:</p>
 \[\begin{align*}
 	\ket{R} &amp;= {\small\frac{1}{\sqrt{2}}}(\ket{0} + i\ket{1}) =  {\small\frac{1}{\sqrt{2}}} \begin{bmatrix}1\\i\end{bmatrix}\\[1ex]
-	\ket{L} &amp;= {\small\frac{1}{\sqrt{2}}}(\ket{0} - i\ket{1} =  {\small\frac{1}{\sqrt{2}}} \begin{bmatrix}1\\-i\end{bmatrix}
+	\ket{L} &amp;= {\small\frac{1}{\sqrt{2}}}(\ket{0} - i\ket{1}) =  {\small\frac{1}{\sqrt{2}}} \begin{bmatrix}1\\-i\end{bmatrix}
 \end{align*}
 \]
 <h3><a id="rotations-on-the-bloch-sphere" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rotations on the Bloch Sphere</h3>
@@ -3418,7 +3418,7 @@ RK5CYII=" alt="permute3.png" height="260"/>
 \ket{11}\quad &amp; a_1b_1
 \end{align*}
 \]
-<p>The ket labels 00, 01, 10 and 11 can be thought of as binary numbers that index elements of the state vector. Qubits 0 and 1 corresponds to the first and second bits of this number respectively. The values of the elements, such as \(a_0b_1\) all contain '\(a\)' and '\(b\)' terms. Consequently, modifying either of the qubits affects all of the elements of the state vector.</p>
+<p>The ket labels 00, 01, 10 and 11 can be thought of as binary numbers that index elements of the state vector. Qubits 0 and 1 correspond to the first and second bits of this number respectively. The values of the elements, such as \(a_0b_1\) all contain '\(a\)' and '\(b\)' terms. Consequently, modifying either of the qubits affects all of the elements of the state vector.</p>
 <p>This explains why we had to take the tensor product of gates with dummy identity gates to make a \(2^N\times 2^N\) matrix that could be applied to the \(2^N\) element state vector.</p>
 <p>Individual state elements do not correspond to qubits, so we cannot apply gates to a subset of the elements. However, it is possible to permute the order of qubits by permuting the elements of the state vector. This is equivalent to permuting the columns of the binary index values in the table above and then sorting the table by index. However, a one-qubit gate can still affect the complex amplitudes of all the state elements, so we still need to expand the qubit matrix to match the size of the state vector.</p>
 <p>As we will see in a later section on simulation, the use of tensors instead of vectors and matrices leads to a much simpler and more efficient approach, where qubits can be addressed directly and there is no need to expand matrices before applying them to the state.</p>
@@ -5342,9 +5342,6 @@ p(1) &amp;= \lvert\alpha_1\rvert^2
 <p>Mathematically, measuring qubits one-at-a-time corresponds to expanding the \(2\times 2\) Hermitian matrix by forming the tensor product with identity matrices \(I\) for the unmeasured qubits. For example, to measure the first of three qubits, the Hermitian matrix is:</p>
 \[M=Z\otimes I\otimes I
 \]
-<p>To measure all the qubits at once, the Hermitian matrix would be:</p>
-\[M=Z\otimes Z\otimes Z
-\]
 <p>If the qubits are entangled, measuring one qubit may affect the probabilities of other unmeasured qubits, but this does not affect the final outcome.</p>
 <p>The qubits that have already been measured have definite values that can't be changed by measuring other qubits. This leads to the <em>Principle of Implicit Measurement</em>. This states that any qubits which have not been measured at the end of the computation may be assumed to be measured.</p>
 <h3><a id="measurement-in-different-bases" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Measurement in Different Bases</h3>
@@ -5380,7 +5377,7 @@ Ila2Ila2Ila2Ila2Ila2Ila2Ila2Ila2Ila2Iv8DeQsYoNa1wjoAAAAASUVORK5C
 YII=" alt="measure_x" height="65"/>
 </div>
 <p>However, a Z-basis measurement can be used to make measurements in other bases, by first transforming the state between bases and then performing a Z-basis measurement.</p>
-<p>For example, a X-basis measurement can be made by applying a Hadamard (H) gate before the Z-basis measurement.</p>
+<p>For example, an X-basis measurement can be made by applying a Hadamard (H) gate before the Z-basis measurement.</p>
 <div style="text-align: center;">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIkAAABBCAYAAADln4cQAAAAOXRFWHRTb2Z0d2Fy
 ZQBNYXRwbG90bGliIHZlcnNpb24zLjguNCwgaHR0cHM6Ly9tYXRwbG90bGliLm9y
@@ -5692,7 +5689,7 @@ gg==" alt="ancilla_measure" height="110"/>
 <p>If it is required to simulate measurements (for example to see some typical measurement counts), it is possible to simulate them by just re-sampling the probability distribution, without the need to re-run the simulation. This assumes that there are no mid-circuit measurements. If mid-circuit measurements are present, they can often be moved to the end of the circuit, by the <a href="#principle-of-deferred-measurement">Principle of Deferred Measurement</a>.</p>
 <h3><a id="measurement-as-decoherence" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Measurement as Decoherence</h3>
 <p>The traditional (Copenhagen interpretation) view of quantum measurement treats it as a discontinuous irreversible jump that causes the quantum state to suddenly collapse into a classical one. However, it seems very unsatisfactory that the state normally evolves in a deterministic unitary manner, but follows a completely different non-deterministic rule when we observe it. It is not even clear what constitutes a measurement.</p>
-<p>A more modern view, from the perspective of quantum information theory, is that measurement is the interaction of a quantum system with the environment through entanglement and information exchange. This causes phase information to leak out into the environment, so that the quantum coherence is lost. This process of <em>decoherence</em> makes the original system behave classically as it can no longer exhibit quantum effects such as superposition and interference. The evolution of the system being measured is no longer unitary, although the system as a whole, including the environment, is still unitary in principle. However, the phase information is now lost in the trillions of particles in the environment, so it is impossible in practice to recover the information and restore the coherence. Decoherence is the reason that that our everyday macroscopic world does not exhibit quantum behaviour, even though it is made of quantum particles.</p>
+<p>A more modern view, from the perspective of quantum information theory, is that measurement is the interaction of a quantum system with the environment through entanglement and information exchange. This causes phase information to leak out into the environment, so that the quantum coherence is lost. This process of <em>decoherence</em> makes the original system behave classically as it can no longer exhibit quantum effects such as superposition and interference. The evolution of the system being measured is no longer unitary, although the system as a whole, including the environment, is still unitary in principle. However, the phase information is now lost in the trillions of particles in the environment, so it is impossible in practice to recover the information and restore the coherence. Decoherence is the reason why our everyday macroscopic world does not exhibit quantum behaviour, even though it is made of quantum particles.</p>
 <p>The interaction with the environment can be via a measuring device, which in turn interacts with the environment, or it can be direct, in which case we can think of the environment as &quot;measuring&quot; the system. The system rapidly becomes entangled with trillions of particles in the measuring device and the entanglement rapidly spreads into the environment, so that there is a big multi-qubit entanglement which has a consistent view of the measurement outcome. We see one particular result because we are entangled with the environment.</p>
 <hr />
 <div style="page-break-after: always;"></div>
@@ -9488,7 +9485,7 @@ AABJRU5ErkJggg==" width="200"/>
 <p>The eigenvalue always has a magnitude of one because the operator is unitary, so it is just a phase term.</p>
 <p>If we apply the unitary to one of its eigenvectors \(\ket{u_k}\), the result will be the corresponding eigenvalue \(e^{i\phi_k}\) multiplied by the eigenvector:</p>
 \[\begin{align*}
-U \ket{u_k} &amp;= ({e^{i\phi_k}\,\ket{u_k}\bra{\psi_k}})\ \ket{u_k}\\
+U \ket{u_k} &amp;= ({e^{i\phi_k}\,\ket{u_k}\bra{u_k}})\ \ket{u_k}\\
 &amp;= e^{i\phi_k}\ket{u_k}
 \end{align*}
 \]
@@ -9550,9 +9547,9 @@ osCLVRR4sYoCL1ZR4MUqCrxYRYEXqyjwYhUFXqyiwItVFHixigIvVlHgxSoKvFhF
 gRerKPBiFQVerKLAi1UUeLHK/wBjlXb+kpWfEAAAAABJRU5ErkJggg==" width="200"/>
 </div>
 <p>The output is:</p>
-\[{\small\frac{1}{\sqrt{2}}}(\ket{0}\ket{u_k} + \ket{1}U\ket{u_k}
+\[{\small\frac{1}{\sqrt{2}}}(\ket{0}\ket{u_k} + \ket{1}U\ket{u_k})
 \]
-\[= {\small\frac{1}{\sqrt{2}}}(\ket{0}\ket{u_k} + e^{i\phi}\ket{1}\ket{u_k}
+\[= {\small\frac{1}{\sqrt{2}}}(\ket{0}\ket{u_k} + e^{i\phi}\ket{1}\ket{u_k})
 \]
 <p>This is not an entangled state, because it can be written as the tensor product of qubit states:</p>
 \[({\small\frac{1}{\sqrt{2}}}(\ket{0} + e^{i\phi}\ket{1})) \otimes\ket{u_k}
@@ -9642,7 +9639,7 @@ hohYUWiIiBWFhohYUWiIiBWFhohYUWiIiBWFhohYUWiIiBWFhohYUWiIiBWFhohY
 \[\ket{\psi}=\left[(0.75+0.43301j)\ket{0}+(0.25-0.43301j)\ket{1}\right] \otimes\ket{1}
 \]
 <p>All the phase has been kicked-back to qubit q0. Qubit q1 is still in its original state \(\ket{1}\) and so has not been affected.</p>
-<p>Phase kickback will work for any unitary, because a unitary simply applies a phase \(\theta_k\) when its input is the corresonding eigenvector \(\ket{\phi_k}\).</p>
+<p>Phase kickback will work for any unitary, because a unitary simply applies a phase \(\theta_k\) when its input is the corresponding eigenvector \(\ket{\phi_k}\).</p>
 <p>Although we have only considered a one-qubit unitary with two eigenvectors, it works for an N-qubit unitary with \(2^N\) eigenvectors. By initializing the input of the unitary to one of its eigenvectors, we can read out the phase associated with the corresponding eigenvalue. This plays an important role in algorithms such as Quantum Phase Estimation (QPE) and Shor's Algorithm.</p>
 <h4><a id="role-of-controls" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Role of Controls</h4>
 <p>Phase Kickback may seem very strange, because we often think of the control of a controlled gate as an enabling input, such that a \(\ket{1}\) on the control qubit enables the controlled operation on the target qubit and a \(\ket{0}\) on the control causes the gate to have no effect. However, this is only valid when the control is in the computational basis state, \(\ket{0}\) or \(\ket{1}\). In the phase kickback circuit, the controls are in an X-basis state (i.e. a superposition) and the only effect of the controlled gates is on their controls. See the earlier section on <em>Understanding Controls</em> for a discussion of this.</p>
@@ -10116,7 +10113,7 @@ AAAASUVORK5CYII=" alt="iqft4" height="210"/>
 \[QFT: \ket{x}\mapsto{\small\frac{1}{\sqrt{N}}}\sum_{k=0}^{N-1}e^{\large\frac{2\pi i\ xk}{N}}\ket{k},\\
 \quad\text{where }N=2^n
 \]
-<p>If the input \(\ket{x}\) is a basis state, then the output is an equal-magnitude superposition with linearly increasing phase. The rate at which the phase increases going along the state vector is proportional to \(k\), which the index along the state vector, and to \(k\), which is the input.</p>
+<p>If the input \(\ket{x}\) is a basis state, then the output is an equal-magnitude superposition with linearly increasing phase. The rate at which the phase increases going along the state vector is proportional to \(k\), which is the index along the state vector, and to \(x\), which is the input.</p>
 <p>Let us look at the result of applying the 4-qubit QFT to some simple states. This should help to build some intuition about what the QFT does. The magnitude and phase plots shown below were produced by running the QFT circuit on a quantum circuit simulator with various input states.</p>
 <h4><a id="qft-0000" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>QFT(|0000&gt;)</h4>
 <p>The simplest case is when the input state is \(\ket{0000}\), as plotted here:</p>
@@ -11900,12 +11897,12 @@ QmCC" height="180"/>
 <p>The result can be quantified as follows:</p>
 \[\ket{\psi}=\frac{1}{\sqrt{2}}(\ket{1}+\ket{15})
 \]
-\[\begin{align*}QFT(\ket{\psi})&amp;={\small\frac{1}{\sqrt{2}}}(\frac{1}{4}\sum_{k=0}^{15} e^{{2\pi ik}\frac{1}{16}} + \frac{1}{4}\sum_{k=0}^{15} e^{{2\pi ik}\frac{15}{16}})\\
-&amp;={\small\frac{1}{4\sqrt{2}}}\sum_{k=0}^{15}(e^{{2\pi ik}\frac{1}{16}}+e^{-{2\pi ik}\frac{1}{16}})
+\[\begin{align*}QFT(\ket{\psi})&amp;={\small\frac{1}{\sqrt{2}}}(\frac{1}{4}\sum_{k=0}^{15} e^{{2\pi ik}\frac{1}{16}}\ket{k} + \frac{1}{4}\sum_{k=0}^{15} e^{{2\pi ik}\frac{15}{16}})\ket{k}\\
+&amp;={\small\frac{1}{4\sqrt{2}}}\sum_{k=0}^{15}(e^{{2\pi ik}\frac{1}{16}}+e^{-{2\pi ik}\frac{1}{16}})\ket{k}
 \end{align*}
 \]
 <p>Using the identity \(\cos{\phi}=\frac{e^{i\phi}+e^{-i\phi}}{2}\), this simplifies to:</p>
-\[QFT(\ket{\psi})={\small\frac{1}{2\sqrt{2}}}\sum_{k=0}^{15}\cos(\frac{2\pi k}{16})
+\[QFT(\ket{\psi})={\small\frac{1}{2\sqrt{2}}}\sum_{k=0}^{15}\cos(\frac{2\pi k}{16})\ket{k}
 \]
 <h4><a id="computational-complexity" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Computational Complexity</h4>
 <p>The time complexity of the traditional DFT algorithm is \(\mathcal{O}(N^2)\). However, it is usually implemented by the Fast Fourier Transform (FFT) algorithm which is \(\mathcal{O}(N\log{N})\). The QFT does even better than this.</p>
@@ -11963,7 +11960,7 @@ U \ket{\psi_k} &amp;= ({e^{i\phi_k}\,\ket{\psi_k}\bra{\psi_k}})\ \ket{\psi_k}\\
 \]
 <p>Encoding the phase this way allows us to represent it using a qubit register, with the qubits corresponding to the bits of the binary fraction. The aim is to evolve the phase so that, when measured, it will give the bits of the binary fraction. For example, with a 3-qubit register, a measurement outcome of \(\ket{011}\) would correspond to the phase \(\theta=.011\) in binary, if we place a binary point before it.</p>
 <h4><a id="example-unitary-operator" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example Unitary Operator</h4>
-<p>To demonstrate QPE, we will define a 2\(\times\)2 matrix which has eigenvalue phases of 0, p1, p2, p3 for eigenstates \(\ket{00}, \ket{01}, \ket{10}, \ket{11}\), respectively. The phases are expressed as multiples of \(2\pi\).</p>
+<p>To demonstrate QPE, we will define a \(4\times 4\) matrix which has eigenvalue phases of 0, p1, p2, p3 for eigenstates \(\ket{00}, \ket{01}, \ket{10}, \ket{11}\), respectively. The phases are expressed as multiples of \(2\pi\).</p>
 \[\begin{bmatrix}
 1&amp;0&amp;0&amp;0\\0&amp;e^{i \phi_1}&amp;0&amp;0\\0&amp;0&amp;e^{i \phi_2}&amp;0\\0&amp;0&amp;0&amp;e^{i \phi_3}
 \end{bmatrix}
@@ -12308,7 +12305,7 @@ U \ket{u} = \lambda\ket{u}=e^{2\pi i\theta}\ket{u}
 <p>You will probably recognize that the Hadamard gates and the controlled unitaries form three instances of the Phase Kickback circuit discussed in a previous example. The final Hadamard gates of the Phase Kickback circuits have been replaced by a single inverse Quantum Fourier Transform (QFT\(^\dagger\)), but we will come back to that shortly.</p>
 <p>The action of applying a unitary operator \(U\) to one of its eigenvectors \(\ket{u}\) is to multiply the target eigenvector by its eigenvalue. If the unitary is a controlled-unitary, the phase is <em>kicked-back</em> from the target to the control and the target is left unchanged:</p>
 \[\begin{align*}
-\ket{\psi_2}&amp;={\small\frac{1}{\sqrt{M}}}\sum_{k=0}^{M-1}\lambda\ket{k} \otimes\ket{u}\\
+\ket{\psi_2}&amp;={\small\frac{1}{\sqrt{M}}}\sum_{k=0}^{M-1}\lambda^k\ket{k} \otimes\ket{u}\\
 &amp;={\small\frac{1}{\sqrt{M}}}\sum_{k=0}^{M-1}e^{2\pi i k\ \theta}\ket{k} \otimes\ket{u}
 \end{align*}
 \]
@@ -12319,7 +12316,7 @@ U \ket{u} = \lambda\ket{u}=e^{2\pi i\theta}\ket{u}
 <p>This is identical to the control register part of \(\ket{\psi_2}\) if we equate \(\theta\) with \(\frac{x}{M}\) :</p>
 \[\theta = \frac{x}{M}
 \]
-<p>So, taking the inverse QFT of the control register should result in a single basis state \(\ket{x}\), provided that \(\theta\) can be expressed as fraction with an integer numerator and denominator \(M\). Otherwise the probability distribution will peak close to this value and \(\frac{x}{M}\) is the nearest approximation to \(\theta\) expressed as a binary fraction with \(m\) bits. In this case, \(\frac{x}{M}\) is an estimate \(\hat{\theta}\):</p>
+<p>So, taking the inverse QFT of the control register should result in a single basis state \(\ket{x}\), provided that \(\theta\) can be expressed as a fraction with an integer numerator and denominator \(M\). Otherwise the probability distribution will peak close to this value and \(\frac{x}{M}\) is the nearest approximation to \(\theta\) expressed as a binary fraction with \(m\) bits. In this case, \(\frac{x}{M}\) is an estimate \(\hat{\theta}\):</p>
 \[\hat{\theta}=\frac{x}{M}
 \]
 <p>However, the phase we want to find might be a value that is not expressible as a fraction with an integer numerator and a denominator which is a power of 2, for example \(\frac{5}{26}\). In the next notebook, we will look at how Shor's factorization algorithm solves this problem using <em>partial fraction convergents</em>.</p>
@@ -14019,7 +14016,7 @@ RK5CYII=" width="800"/>
 \]
 <p>The QPE returns an approximation to an eigenvalue of \(U\), when the input of the target register is the corresponding eigenvector.</p>
 <p>If \(U_{a,N}\ket{x} = \ket{ax \bmod N}\), then it satisfies \(U^r_{a,N}=I\) when \(r\) is the order.</p>
-<p>Hence, its eigenvalues will be \(e^{2\pi\frac{k}{r}}\) for \(k=0,\dots,r-1\).</p>
+<p>Hence, its eigenvalues will be \(e^{2\pi i\frac{k}{r}}\) for \(k=0,\dots,r-1\).</p>
 <p>Applying \(U\) to the eigenstate \(k\) times multiplies the phase \(\theta\) by \(k\):</p>
 \[U^k\ket{u_e}=e^{2\pi ik\theta}\ket{u_e}
 \]
@@ -14547,7 +14544,7 @@ AIehWAcAAAAAwGH+PwvH8pbgfAPaAAAAAElFTkSuQmCC" height="300"/>
 \[m = \lceil 2\log_2 N\rceil + 1
 \]
 <p><strong>Note:</strong> This value can be derived using Legendre's theorem on continued fractions. It guarantees that the correct partial-fraction convergent will appear in the list of convergents (see above). However, the convergents are <em>reduced fractions</em>, so the required order may be a multiple of the convergent denominator.</p>
-<p>The circuit diagram above is just to illustrate the generate form of the QPE circuit, so a smaller value of \(m\) has been used to make the diagram easier to understand.</p>
+<p>The circuit diagram above is just to illustrate the general form of the QPE circuit, so a smaller value of \(m\) has been used to make the diagram easier to understand.</p>
 <p>The target register is initialized to the eigenvector \(\ket{u_e}=\ket{0\dots 01}\) of the unitary \(U\). Then applying QPE gives an approximation \(\frac{x}{2^m}\) to the phase, as discussed above.</p>
 <h4><a id="computing-the-order" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Computing the Order</h4>
 <p>Using Quantum Phase Estimation (QPE), measurement of the \(m\)-qubit control register will give some value \(x\), such that \(\frac{x}{2^m}\) is an approximation to the true phase \(\theta=\frac{k}{r}\):</p>
@@ -14608,13 +14605,13 @@ AIehWAcAAAAAwGH+PwvH8pbgfAPaAAAAAElFTkSuQmCC" height="300"/>
 \]
 \[(40^{24}+1)(40^{24}-1)\equiv 0\pmod{119}
 \]
-<p>The required factors of 21 are therefore:</p>
+<p>The required factors of 119 are therefore:</p>
 \[\gcd((40^{24}+1),119)=17
 \]
 <p>and</p>
 \[\gcd((40^{24}-1),119)=7
 \]
-<p>Hence \(119\) can be factor as \(17\times 7\).</p>
+<p>Hence \(119\) can be factored as \(17\times 7\).</p>
 <hr />
 <h3><a id="7-6-grover-s-algorithm" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>7.6: Grover's Algorithm</h3>
 <p>This example demonstrates how Grover's Search Algorithm may be used to solve search problems that involve finding the input to a black-box function that produces a particular output.</p>
@@ -15374,7 +15371,7 @@ Q93J2tu3RO+jvS5zjdEGz+MBAQhAwLACKLwMe+oQuJEEjkxVQD1fTPs66UOoooFJ
 agoAAAAASUVORK5CYII=" height="250"/>
 </div>
 <p>The initial superposition state is:</p>
-\[\ket{s} = {\small\frac{1}{\sqrt{N}}}\sum_{i=0}^N{\ket{x_i}} = \ket{+\dots +}
+\[\ket{s} = {\small\frac{1}{\sqrt{N}}}\sum_{i=0}^{N-1}{\ket{x_i}} = \ket{+\dots +}
 \]
 <p>This can be written as the sum of two orthogonal vectors:</p>
 \[\ket{s} = \sqrt{\frac{1}{N}}\ \ket{\omega} + \sqrt{\frac{N-1}{N}}\ \ket{\omega_\perp}
@@ -16688,10 +16685,6 @@ P(\nu, K) &amp;= \sin^2(\phi)\\
 \[\begin{align*}
 U\ket{\psi} &amp;= (\mathbb{I}-2\ket{x}\bra{x})\ \ket{\psi}\\[0.4em]
 &amp;= \ket{\psi}-2\ket{x}\braket{x|\psi}\\[0.4em]
-&amp;= \begin{cases}
-      -\ket{\psi}, &amp; \text{if $\psi=x$}\\
-      +\ket{\psi}, &amp; \text{if $\psi \ne x$}
-\end{cases}
 \end{align*}
 \]
 <p>It flips the component of the vector \(\ket{\psi}\) that is along \(\ket{x}\), while leaving the other components which are orthogonal to \(\ket{x}\) unchanged. This is equivalent to reflecting \(\ket{\psi}\) about the hyperplane orthogonal to \(\ket{x}\).</p>
@@ -19406,7 +19399,7 @@ iIAIiIAIiIAIlE/g/wEHIW+4iK5FIgAAAABJRU5ErkJggg==" width="200"/>
 <p>where \(U\) and \(V\) are unitary matrices and \(D\) is a diagonal matrix. The diagonal elements of \(D\) are the singular values. An SVD can be applied to a tensor by first reshaping the tensor into a matrix and finally reshaping the resulting matrices back into tensors.</p>
 <p>It is possible to convert an existing state vector into an MPS by applying an SVD to the state and reshaping the resulting \(U\) term to give the first MPS tensor \(A_1\). The remaining \(DV^\dagger\) term becomes the starting point for the next SVD iteration, resulting in the second MPS tensor \(A_2\) and so on. However, starting with a vector would limit the number of qubits, so it is better to just create the initial state MPS directly. This is trivial if the qubits in the state are not entangled, which is normally the case for the initial state.</p>
 <p>The dimension of the bonds starts out at 1 for a non-entangled initial state such as \(\ket{00\dots0}\). The resulting storage requirement is only \(Nd\) elements, which is same as just having \(N\) independent order-1 tensors for the qubits. The bond dimensions grow as multi-qubit gate tensors are applied which introduce entanglement between qubits. If the degree of entanglement is low, the dimension of the bonds can remain low. The bond dimension grows from each end of the train and in the worst case reaches a maximum of \(2^\frac{N}{2}\) at the centre of the train.</p>
-<p>The bond dimension may start off small but will grow as the application of gate tensors introduces entanglement. This can be countered by limiting the bond dimension to a maximum value \(\chi\). After each SVD, only the \(\chi\) largest non-zero singular values are kept and the others are set to zero. The matrix rows and columns corresponding to singular values of zero can then be removed, leaving fewer elements to store and process. This results is a small approximation error but significantly reduces the  amount of data to be stored and processed. Provided that the degree of entanglement is not too high, an MPS can achieve a significant degree of compression of the quantum state, with a corresponding reduction in memory usage and processing time.</p>
+<p>The bond dimension may start off small but will grow as the application of gate tensors introduces entanglement. This can be countered by limiting the bond dimension to a maximum value \(\chi\). After each SVD, only the \(\chi\) largest non-zero singular values are kept and the others are set to zero. The matrix rows and columns corresponding to singular values of zero can then be removed, leaving fewer elements to store and process. This results in a small approximation error but significantly reduces the  amount of data to be stored and processed. Provided that the degree of entanglement is not too high, an MPS can achieve a significant degree of compression of the quantum state, with a corresponding reduction in memory usage and processing time.</p>
 <p>A Matrix Product Operator (MPO) is similar to an MPS, except that the tensors are of order-4 instead of order-3. It provides a way to factor a tensor operator into a train of lower-order tensors in much the same way that an MPS factors a state. The following diagram shows an MPO (in red) being applied to an MPS. The MPS and MPO sites can then be contracted together resulting in an updated MPS.</p>
 <div style="text-align: center;">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANAAAAEuCAYAAAD/S5ypAAAAAXNSR0IArs4c6QAA
@@ -19761,7 +19754,7 @@ pr8ieZLmOz8rpTwge+Wrz9ZXvG/MgTEyDKEeI9CoBgRAwByBWFPnNRSPfeV8De3b
 \]
 <p>where \(G_{mj}\) is the one-qubit gate tensor and \(A_{ijk}\) is the MPS site into which it is to be contracted.</p>
 <p>In the case of a one-qubit gate, no approximation is involved and the bond dimensions in the chain remain unchanged.</p>
-<p>The situation is a little more complicated for a 2-qubit gate, as shown below. The 2-qubit gate tensor (shown in red) is contracted with the MPS and replaces two of the tensors in the chain with an order-4 tensor, as shown in the middle part of the diagram. The SVD procedure described earlier is then used the split this new tensor into two order-3 tensors to restore the MPS.</p>
+<p>The situation is a little more complicated for a 2-qubit gate, as shown below. The 2-qubit gate tensor (shown in red) is contracted with the MPS and replaces two of the tensors in the chain with an order-4 tensor, as shown in the middle part of the diagram. The SVD procedure described earlier is then used to split this new tensor into two order-3 tensors to restore the MPS.</p>
 <div style="text-align: center;">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAmYAAADpCAYAAACOVfuuAAAAAXNSR0IArs4c6QAA
 AHhlWElmTU0AKgAAAAgABAEaAAUAAAABAAAAPgEbAAUAAAABAAAARgEoAAMAAAAB
