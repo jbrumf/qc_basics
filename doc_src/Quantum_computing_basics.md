@@ -1,7 +1,7 @@
 # A Guide to Quantum Computation
 
 *Jon Brumfitt
-(This revision: 3 June 2026)*
+(This revision: 4 June 2026)*
 
 ### Preface
 
