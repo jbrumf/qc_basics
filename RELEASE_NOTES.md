@@ -1,5 +1,9 @@
 ## QC_Basics Release Notes
 
+### Release Note (4 June 2026)
+
+- Added list of symbols after the Preface
+
 ### Release Note (3 June 2026)
 
 - Minor corrections

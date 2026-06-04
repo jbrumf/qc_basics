@@ -24,6 +24,89 @@ This guide started out as some notes on quantum computing to accompany TinyQsim,
 ---
 <div style="page-break-after: always;"></div>
 
+### Symbols
+
+The mathematical and other symbols used in the guide are summarized here for quick reference.
+
+#### Mathematics and Logic
+
+|Symbol|Meaning|
+|---|---|
+|$\approx$|Approximately equal to|
+|$\equiv$|Equivalent to|
+|$\implies$|Implies|
+|$\mapsto$|Maps to|
+|$x\in X$|Element $x$ of set $X$|
+|$\{a,b\}$|Set containing $a$ and $b$|
+|$[a,b)$|Half-open interval (includes $a$, excludes $b$)|
+|$(a,b]$|Half-open interval (excludes $a$, includes $b$)|
+|$\perp$|Perpendicular|
+
+#### Numbers, Functions & Arithmetic
+
+|Symbol|Meaning|
+|---|---|
+|$\|x\|$|Absolute value of $x$|
+|$\lfloor x\rfloor$|Greatest integer $\le x$ (rounds down)|
+|$\lceil x\rceil$|Least integer $\ge x$ (rounds up)|
+|$\Sigma$|Summation operator|
+|$k\mid N$|Integer $k$ divides $N$|
+|$k\nmid N$|Integer $k$ does not divide $N$|
+|$\gcd(a,b)$|Greatest Common Divisor of $a$ and $b$|
+|$x \equiv y\pmod{N}$|Congruent modulo $N$|
+|$p(x)$|Probability of $x$|
+|$\log_2$|Base-2 logarithm|
+|$\phi, \theta$|Typical symbols for angles|
+
+#### Complex Numbers & Linear Algebra
+
+|Symbol|Meaning|
+|---|---|
+|$i$|Complex unit $(\sqrt{-1})$|
+|$z^*$|Complex conjugate of $z$|
+|$\mathbb{C}$|Set of all complex numbers|
+|$\lambda$|Matrix or operator eigenvalue|
+|$I,\mathbb{I}$|Identity operator or matrix|
+|$A^\dagger$|Hermitian conjugate of matrix $A$|
+|$A\otimes B$|Tensor product of $A$ and $B$|
+|$T_{ijkl}$|Order-4 tensor example|
+
+#### Dirac (Bra-Ket) Notation
+
+|Symbol|Meaning|
+|---|---|
+|$\ket{B}$|Ket vector (e.g. a quantum state)|
+|$\bra{A}$|Bra vector (conjugate transpose vector)|
+|$\braket{A\|B}$|Inner product (scalar)|
+|$\ket{A}\bra{B}$|Outer product (operator)|
+|$\ket{A}\ket{B}$|Tensor product of states|
+|$\ket{0}^{\otimes N}$|Tensor power $(\ket{0\dots 00})$|
+
+#### Quantum Information & Gates
+
+|Symbol|Meaning|
+|---|---|
+|$q_0,q_1,\dots$|Qubit identifiers|
+|$\ket{0}, \ket{1}$|Computational Z-basis states|
+|$\ket{+}, \ket{-}$|Diagonal X-basis states|
+|$\ket{R}, \ket{L}$|Circular Y-basis states|
+|$H$|Hadamard gate|
+|$X,Y,Z$|Pauli gates|
+|$P(\phi)$|Phase gate|
+|$CX$|Controlled-X (CNOT) gate|
+|$U$|Generic unitary operator|
+
+#### Computer Science & Complexity
+
+|Symbol|Meaning|
+|---|---|
+|$1010_2$|Base-2 integer (binary)|
+|$.1010_2$|Base-2 fraction (binary fraction)|
+|$\mathcal{O}(\dots)$|Asymptotic complexity upper-bound|
+
+---
+<div style="page-break-after: always;"></div>
+
 ## 1: Introduction
 
 Quantum computing uses the special properties of quantum systems, such as superposition and entanglement, to perform computations. In principle, this makes it possible to solve certain problems that would be totally intractable on a conventional (classical) computer.
