@@ -768,12 +768,12 @@ div.code-toolbar > .toolbar > .toolbar-item > span:focus {
 <div style="page-break-after: always;"></div>
 <h3><a id="symbols" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Symbols</h3>
 <p>The mathematical and other symbols used in the guide are summarized here for quick reference.</p>
-<h4><a id="mathematics-and-logic" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Mathematics and Logic</h4>
+<h4><a id="general-mathematics" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>General Mathematics</h4>
 <table>
 <thead>
 <tr>
-<th>Symbol</th>
-<th>Meaning</th>
+<th>\(\quad\) Symbol\(\qquad\)</th>
+<th>\(\qquad\qquad\) Meaning\(\qquad\qquad\qquad\qquad\quad\)</th>
 </tr>
 </thead>
 <tbody>
@@ -813,17 +813,6 @@ div.code-toolbar > .toolbar > .toolbar-item > span:focus {
 <td>\(\perp\)</td>
 <td>Perpendicular</td>
 </tr>
-</tbody>
-</table>
-<h4><a id="numbers-functions-arithmetic" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Numbers, Functions &amp; Arithmetic</h4>
-<table>
-<thead>
-<tr>
-<th>Symbol</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
 <tr>
 <td>$|x|$</td>
 <td>Absolute value of \(x\)</td>
@@ -853,7 +842,7 @@ div.code-toolbar > .toolbar > .toolbar-item > span:focus {
 <td>Greatest Common Divisor of \(a\) and \(b\)</td>
 </tr>
 <tr>
-<td>\(x \equiv y\pmod{N}\)</td>
+<td>\(\small{x\equiv y\pmod{N}}\)</td>
 <td>Congruent modulo \(N\)</td>
 </tr>
 <tr>
@@ -868,17 +857,14 @@ div.code-toolbar > .toolbar > .toolbar-item > span:focus {
 <td>\(\phi, \theta\)</td>
 <td>Typical symbols for angles</td>
 </tr>
-</tbody>
-</table>
-<h4><a id="complex-numbers-linear-algebra" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Complex Numbers &amp; Linear Algebra</h4>
-<table>
-<thead>
 <tr>
-<th>Symbol</th>
-<th>Meaning</th>
+<td>\(1010_2\)</td>
+<td>Base-2 integer (binary)</td>
 </tr>
-</thead>
-<tbody>
+<tr>
+<td>\(.1010_2\)</td>
+<td>Base-2 fraction (binary fraction)</td>
+</tr>
 <tr>
 <td>\(i\)</td>
 <td>Complex unit \((\sqrt{-1})\)</td>
@@ -891,34 +877,14 @@ div.code-toolbar > .toolbar > .toolbar-item > span:focus {
 <td>\(\mathbb{C}\)</td>
 <td>Set of all complex numbers</td>
 </tr>
-<tr>
-<td>\(\lambda\)</td>
-<td>Matrix or operator eigenvalue</td>
-</tr>
-<tr>
-<td>\(I,\mathbb{I}\)</td>
-<td>Identity operator or matrix</td>
-</tr>
-<tr>
-<td>\(A^\dagger\)</td>
-<td>Hermitian conjugate of matrix \(A\)</td>
-</tr>
-<tr>
-<td>\(A\otimes B\)</td>
-<td>Tensor product of \(A\) and \(B\)</td>
-</tr>
-<tr>
-<td>\(T_{ijkl}\)</td>
-<td>Order-4 tensor example</td>
-</tr>
 </tbody>
 </table>
-<h4><a id="dirac-bra-ket-notation" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dirac (Bra-Ket) Notation</h4>
+<h4><a id="dirac-notation-linear-algebra" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dirac Notation &amp; Linear Algebra</h4>
 <table>
 <thead>
 <tr>
-<th>Symbol</th>
-<th>Meaning</th>
+<th>\(\quad\) Symbol\(\qquad\)</th>
+<th>\(\qquad\qquad\) Meaning\(\qquad\qquad\qquad\qquad\quad\)</th>
 </tr>
 </thead>
 <tbody>
@@ -946,14 +912,34 @@ div.code-toolbar > .toolbar > .toolbar-item > span:focus {
 <td>\(\ket{0}^{\otimes N}\)</td>
 <td>Tensor power \((\ket{0\dots 00})\)</td>
 </tr>
+<tr>
+<td>\(\lambda\)</td>
+<td>Matrix or operator eigenvalue</td>
+</tr>
+<tr>
+<td>\(I,\mathbb{I}\)</td>
+<td>Identity operator or matrix</td>
+</tr>
+<tr>
+<td>\(A^\dagger\)</td>
+<td>Hermitian conjugate of matrix \(A\)</td>
+</tr>
+<tr>
+<td>\(A\otimes B\)</td>
+<td>Tensor product of \(A\) and \(B\)</td>
+</tr>
+<tr>
+<td>\(T_{ijkl}\)</td>
+<td>Order-4 tensor example</td>
+</tr>
 </tbody>
 </table>
 <h4><a id="quantum-information-gates" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Quantum Information &amp; Gates</h4>
 <table>
 <thead>
 <tr>
-<th>Symbol</th>
-<th>Meaning</th>
+<th>\(\quad\) Symbol\(\qquad\)</th>
+<th>\(\qquad\qquad\) Meaning\(\qquad\qquad\qquad\qquad\quad\)</th>
 </tr>
 </thead>
 <tbody>
@@ -982,35 +968,12 @@ div.code-toolbar > .toolbar > .toolbar-item > span:focus {
 <td>Pauli gates</td>
 </tr>
 <tr>
-<td>\(P(\phi)\)</td>
-<td>Phase gate</td>
-</tr>
-<tr>
 <td>\(CX\)</td>
 <td>Controlled-X (CNOT) gate</td>
 </tr>
 <tr>
 <td>\(U\)</td>
 <td>Generic unitary operator</td>
-</tr>
-</tbody>
-</table>
-<h4><a id="computer-science-complexity" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Computer Science &amp; Complexity</h4>
-<table>
-<thead>
-<tr>
-<th>Symbol</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>\(1010_2\)</td>
-<td>Base-2 integer (binary)</td>
-</tr>
-<tr>
-<td>\(.1010_2\)</td>
-<td>Base-2 fraction (binary fraction)</td>
 </tr>
 <tr>
 <td>\(\mathcal{O}(\dots)\)</td>
