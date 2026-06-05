@@ -1,7 +1,14 @@
 # A Guide to Quantum Computation
 
-*Jon Brumfitt
-(This revision: 4 June 2026)*
+by Jon Brumfitt
+
+This is an unfinished working draft.
+Last updated 5 June 2026
+
+©️Jon Brumfitt 2026
+
+---
+<div style="page-break-after: always;"></div>
 
 ### Preface
 
@@ -24,7 +31,7 @@ This guide started out as some notes on quantum computing to accompany TinyQsim,
 ---
 <div style="page-break-after: always;"></div>
 
-### Symbols
+### Symbols and Abbreviations
 
 The mathematical and other symbols used in the guide are summarized here for quick reference.
 
@@ -88,10 +95,35 @@ The mathematical and other symbols used in the guide are summarized here for qui
 |$U$|Generic unitary operator|
 |$\mathcal{O}(\dots)$|Asymptotic complexity upper-bound|
 
+#### List of Abbreviations
+
+|$\quad$ Symbol$\qquad$|$\qquad\qquad$ Meaning$\qquad\qquad\qquad\qquad\quad$|
+|---|---|
+|CNOT|Controlled NOT (gate)
+|DFT|Discrete Fourier Transform|
+|FFT|Fast Fourier Transform|
+|GCD|Greatest Common Divisor|
+|IQFT|Inverse QFT|
+|LCM|Least Common Multiple|
+|MCZ|Multi-Controlled Z (gate)|
+|MPO|Matrix Product Operator|
+|MPS|Matrix Product State|
+|NISQ|Noisy Intermediate-Scale Quantum|
+|QFT|Quantum Fourier Transform|
+|QKD|Quantum Key Distribution|
+|QPE|Quantum Phase Estimation|
+|QR|A matrix factorisation method|
+|RSA|Rivest-Shamir-Adelman|
+|STEM|Science, Technology, Engineering & Maths|
+|SVD|Singular Value Decomposition|
+|TT|Tensor Train|
+
 ---
 <div style="page-break-after: always;"></div>
 
 ## 1: Introduction
+
+### Overview of Quantum Computing
 
 Quantum computing uses the special properties of quantum systems, such as superposition and entanglement, to perform computations. In principle, this makes it possible to solve certain problems that would be totally intractable on a conventional (classical) computer.
 
@@ -110,6 +142,10 @@ Current quantum computers are referred to as Noisy Intermediate-Scale Quantum (N
 An added benefit of developing the technology for quantum computers is that we are learning new ways to manipulate nature at the quantum level and perform quantum experiments. This is already starting to have applications in areas such as quantum sensing. The spin-off benefits of trying to build a quantum computer may end up being as transformative as the quantum computers themselves.
 
 **Note:** Throughout the text you will find notes like this paragraph. They are generally to provide additional explanations, clarifications or technical details. You may wish to skip them on a first reading.
+
+### A Roadmap to This Book
+
+*< to be written >*
 
 ---
 <div style="page-break-after: always;"></div>
@@ -180,6 +216,16 @@ We will see later that the limit of "knowability" of a quantum state gets even m
 
 Quantum measurement is fundamentally unpredictable. It is not just a lack of knowledge. In contrast, the randomness we encounter in the classical world just reflects lack of knowledge. For example, the laws of classical physics could, in principle, predict the outcome of a coin toss if we knew the exact initial conditions and interactions of the coin.
 
+<div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
+    <strong>Key Points:</strong></p>
+    
+- A *qubit* is an abstraction of the state of a two-level quantum system, such as the spin of an electron.
+
+- The quantum state $\ket{\psi}$ of a qubit may be in either of the basis states $\ket{0}$ or $\ket{1}$, but it can also be in a linear *superposition* of these: $\ket{\psi}=\alpha_0\ket{0}+\alpha_1\ket{1}$, where $\alpha_0$ and $\alpha_1$ are complex *probability amplitudes*.
+
+- When we measure it, the state will jump to one of the two basis states, with a probability given by the square of the absolute value of the corresponding probability amplitude, so we only ever find it in a basis state.
+</div>    
+
 ### Quantum Probability, Phase and Coherence
 
 A probability amplitude $\alpha$ is a complex number, which may be written as:
@@ -197,6 +243,12 @@ Phase is essential to describe observed quantum phenomena such as superposition,
 Coherent quantum states are very fragile. Quantum particles easily become entangled with the environment and the phase information leaks away. This makes the quantum system behave in a way that appears classical, since the interference terms disappear. The macroscopic classical world we see around us is made of quantum particles, but the "quantumness" has been lost through this process of *decoherence*.
 
 Interference is one of the key quantum phenomena that is exploited in quantum computing. We get quantum states to interfere so that correct solutions interfere constructively and their probability increases, while other outcomes interfere destructively and their probability decreases. A final measurement then has a high probability of giving a valid result from the computation. A quantum computer normally has to be kept at an extremely low temperature to preserve quantum coherence of the qubit states for long enough to perform a computation.
+
+<div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
+    <strong>Key Points:</strong></p>
+
+- Probability amplitudes are complex numbers that have a magnitude and a phase. Phase coherence gives rise to the quantum phenomena of superposition, interference and entanglement. Phase information can easily leak away into the environment causing a quantum particle to lose its *quantumness*.
+</div> 
 
 ### Interference
 
@@ -273,7 +325,17 @@ X \ket{1} = \begin{bmatrix}0 & 1 \\ 1 & 0 \end{bmatrix} \begin{bmatrix}0 \\ 1 \e
 
 Of course, a real quantum computer doesn't use vectors and matrices; it lets real quantum particles do the work. However, matrices provide a way to perform numerical computations and simulations on a classical computer.
 
+<div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
+    <strong>Key Points:</strong></p>
+
+- The abstract basis states $\ket{0}$ and $\ket{1}$ can be represented as column vectors in a specific basis. Quantum operators (i.e. gates) can then be expressed as matrices that operate on these states. This provides a simple but very inefficient way to simulate a quantum computation.
+</div>  
+
 ### Dirac Notation
+
+#### Difficulty Level
+
+Dirac notation is widely used in quantum computing, so it is important to become familiar with it. You might find this section too difficult on a first reading, but at least read through it and try to get the gist. There is also a "take-away" section at the end which gives a brief summary of the key points. You should find this section easier on a second reading after you have seen the notation in action.
 
 #### Hilbert Space
 
@@ -491,7 +553,15 @@ The tensor product can also be used to combine operators. If $U$ and $V$ are ope
 (U\otimes V)(\ket{A}\otimes \ket{B}) = (U\ket{A})\otimes(V\ket{B})
 ```
 
-**Note:** Strictly, the tensor product is an operation on coordinate-independent vectors or operators. The corresponding operation on matrices is called the *Kronecker product*. However, it is common in quantum computing to refer to it as the tensor product. 
+**Note:** Strictly, the tensor product is an operation on coordinate-independent vectors or operators. The corresponding operation on matrices is called the *Kronecker product*. However, it is common in quantum computing to refer to it as the tensor product.
+
+<div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
+    <strong>Key Points:</strong></p>
+    
+- Quantum states are represented by complex vectors in a multi-dimensional space. In Dirac's *Bra-Ket* notation, a state vector is known as a *ket* and is written $\ket{A}$. The conjugate transpose of a ket is called a *bra* and written $\bra{A}$. This notation makes it easy to perform algebra with complex vectors using three types of product: the inner product $\braket{A|B}$, outer product $\ket{A}\bra{B}$ and tensor product $\ket{A}\ket{B}$.
+
+- The abstract bra and ket vectors can be represented by ordinary row and column vectors. The outer product then becomes a matrix. You might find this easier if the Dirac notation seems too difficult at first.
+</div>
 
 ### Bloch Sphere
 
@@ -570,6 +640,14 @@ Qubit states that lie in the XZ plane of the Bloch sphere have real probability 
 
 - The Bloch sphere is well-suited for relating qubits to the behaviour of spin-½ systems, such as the spin of an electron. However, even qubits that are physically implemented by other 2-state phenomena, such as the direction of current in a superconducting loop, behave in the same way at the abstract level of qubits. It is equally possible to perform X, Y and Z rotations of them on the Bloch sphere, although these operations are no longer simply related to the physical system.
 
+<div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
+    <strong>Key Points:</strong></p>
+
+- The Bloch Sphere is a way to represent the state of a single qubit as a point on a sphere in three dimensions. This is very useful for visualising the effect of one-qubit gates since these all correspond to rotations on the sphere.
+
+- The polar angle represents the balance between $\ket{0}$ and $\ket{1}$, while the azimuthal angle represents the quantum phase. These are both meaningful concepts at the level of understanding quantum algorithms.
+</div>
+
 ### Bases and Complementarity
 
 In quantum mechanics, there are pairs of *complementary* properties, such as position and momentum, that cannot both be precisely known at the same time. This is the basis of the *Heisenberg Uncertainty Principle*. The more you know about one property, the less you can know about the other. An exact measurement of one of the properties makes the other one completely undetermined, such that a measurement of it gives a random result. Complementarity limits what we can know about a quantum system, even in principle.
@@ -645,6 +723,16 @@ In addition to the Z and X bases, there is also a Y basis. The Y basis vectors a
 \end{align*}
 ```
 
+<div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
+    <strong>Key Points:</strong></p>
+
+- $\ket{0}$ and $\ket{1}$ are basis vectors in the Z-basis. $\ket{+}$ and $\ket{-}$ are basis vectors in the X-basis. X and Z are *complementary bases*. A measurement in one basis leaves the qubit in an equal superposition in the other basis, so that a subsequent measurement in that basis results in a completely unpredictable outcome.
+
+- The Hadamard operator/gate $H$ switches back and forth between the Z and X bases. Use of complementary bases forms an important part of most quantum algorithms.
+
+- There is also a Y basis although is not used as often.
+</div>    
+
 ### Rotations on the Bloch Sphere
 
 The following diagram shows where the $\ket{0}, \ket{1}, \ket{+}, \ket{-}, \ket{R}$ and $\ket{L}$ states are located on the Bloch sphere in relation to the X, Y and Z axes:
@@ -719,6 +807,14 @@ The graphical circuit notation is generally easier to understand than the algebr
 
 We will discuss these gates in more detail in the chapter on quantum gates. The example above was just to provide a preliminary look at them in relation to the Bloch sphere and to introduce the idea of a quantum circuit.
 
+<div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
+    <strong>Key Points:</strong></p>
+
+- The Bloch Sphere provides a good way visualise the relation between the $X, Y$ and $Z$ basis vectors and how various quantum gates rotate the state on the sphere.
+
+- The $X, Y, Z, H$ and $P$ gates are introduced as well as the concept of a quantum circuit.
+</div>
+
 ### Unitary Operators
 
 The previous section considered some single-qubit unitary operators that perform rotations on the Bloch sphere. We will now look at what a *unitary* operator is more generally.
@@ -753,6 +849,16 @@ The norm-preserving property of unitary operators implies that they preserve the
 The unitary operators in a gate-model quantum computer are called “quantum gates” by analogy with the logic gates of traditional computers. Unitary operators are reversible, since by definition their inverse is their Hermitian Conjugate. Quantum circuits built from quantum gates are just large unitary operators, provided that they do not contain any measurements. The evolution of the entire circuit is unitary. Consequently, quantum gates and quantum circuits are reversible. Measurement is not considered to be a gate because it is not reversible.
 
 Unitary operators can be expressed as unitary matrices. A unitary matrix is one whose inverse is its conjugate transpose. It is the complex equivalent of a real orthonormal matrix. Unitary matrices are square, which results in quantum gates (and hence quantum circuits) having the same number of outputs as inputs. This is very different to ordinary digital logic gates where, for example, a NAND gate has two inputs and one output. The inputs of a NAND gate cannot be inferred from the output, so it is not reversible.
+
+<div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
+    <strong>Key Points:</strong></p>
+    
+- A unitary operator is one that is its own Hermitian conjugate (conjugate transpose in the case of a matrix). Unitary operators are norm-preserving and invertible.
+
+- This implies that quantum gates are reversible and must have the same number of inputs and outputs.
+
+- Time evolution of a closed quantum system is unitary. Quantum gates and whole quantum circuits are unitary, provided that they don't contain measurement operations.
+</div>
 
 ### Multi-Qubit States
 
@@ -804,6 +910,16 @@ Unentangled states are separable and can therefore be simulated efficiently on a
 
 Quantum states represent exponentially more information than classical states. However, we cannot access that information because measuring it will only give one of the classical states. The art of writing quantum algorithms is to utilize the vast state space, but then evolve the state towards one of the basis states, having some required property, which can be read out as the answer.
 
+<div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
+    <strong>Key Points:</strong></p>
+
+- The state of a multi-qubit system is described by the tensor product of the individual qubit states. This cannot be factored back into individual qubit states once the qubits become entangled.
+
+- Consequently, the state of an N-qubit quantum system must be described by a vector in a $2^N$-dimensional vector space and not by $N$ vectors in a two-dimensional space.
+
+- If we simulate the quantum system on a classical computer, the storage needed grows eponentially with the number of qubits. This limits simulations to a few tens of qubits. A later section of this guide looks at how modern simulation approaches can improve on this a little.
+</div>
+
 ### No-Cloning Theorem
 
 The *no-cloning* theorem of quantum mechanics says that, given an unknown quantum state, it is not possible to create an exact independent copy of it. For example, in quantum teleportation, it is not possible to send an unknown quantum state from A to B, unless the original state at A is lost in the process.
@@ -826,6 +942,14 @@ Deletion would be the operation:
 ```
 
 The no-cloning theorem implies that it is not possible to connect the output of one quantum gate to the input of two other gates, which is a normal occurrence with classical logical gates (i.e. *fan-out*).
+
+<div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
+    <strong>Key Points:</strong></p>
+
+- The *no-cloning theorem* says that, given an unknown quantum state, it is not possible to create an exact independent copy of it.
+
+- The related *no-deleting theorem* says that, given two identical quantum states, it is not possible to throw one away. 
+</div>
 
 ---
 <div style="page-break-after: always;"></div>

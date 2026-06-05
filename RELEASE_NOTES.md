@@ -1,5 +1,12 @@
 ## QC_Basics Release Notes
 
+### Release Note (5 June 2026)
+
+- Added list of abbreviations
+- Added place-holder for document roadmap
+- Added "Key Points" box at the end of some sections
+- Added "Difficulty Level" at start of section on Dirac Notation
+
 ### Release Note (4 June 2026)
 
 - Added list of symbols after the Preface
