@@ -335,7 +335,7 @@ Of course, a real quantum computer doesn't use vectors and matrices; it lets rea
 
 #### Difficulty Level
 
-Dirac notation is widely used in quantum computing, so it is important to become familiar with it. You might find this section too difficult on a first reading, but at least read through it and try to get the gist. There is also a "take-away" section at the end which gives a brief summary of the key points. You should find this section easier on a second reading after you have seen the notation in action.
+Dirac notation is widely used in quantum computing, so it is important to become familiar with it. You might find this section too difficult on a first reading, but at least read through it and try to get the gist. There is also a "Key Points" section at the end which gives a brief summary of the key points. You should find this section easier on a second reading after you have seen the notation in action.
 
 #### Hilbert Space
 
@@ -1907,11 +1907,11 @@ which gives:
 The probabilities of measuring $\ket{0}$ and $\ket{1}$ are:
 
 ```math
-p(\ket{0})=\frac{1}{4}(3 + \sqrt{3}i)\ \frac{1}{4}[(3 - \sqrt{3}i) = \frac{3}{4}
+p(\ket{0})=\frac{1}{4}(3 + \sqrt{3}i)\ \frac{1}{4}(3 - \sqrt{3}i) = \frac{3}{4}
 ```
 
 ```math
-p(\ket{1})=\frac{1}{4}(1 - \sqrt{3}i)\ \frac{1}{4}[(1 + \sqrt{3}i) = \frac{1}{4}
+p(\ket{1})=\frac{1}{4}(1 - \sqrt{3}i)\ \frac{1}{4}(1 + \sqrt{3}i) = \frac{1}{4}
 ```
 
 These agree with the values of 0.75 and 0.25 given earlier.
