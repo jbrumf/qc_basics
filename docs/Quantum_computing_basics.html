@@ -755,7 +755,7 @@ div.code-toolbar > .toolbar > .toolbar-item > span:focus {
 <style>#mweb_toc_list_iid{overflow-y:auto}#mweb_toc_list_iid>.toc-list{overflow:hidden;position:relative}.toc>.toc-list li{list-style:none}.toc-list{margin:0;padding-left:10px}a.toc-link{height:100%}.is-collapsible{max-height:1000px;overflow:hidden;transition:all 300ms ease-in-out}.is-collapsed{max-height:0}.is-position-fixed{position:fixed !important;top:0} .is-active-link{} .toc-link::before{background-color:#eee;content:' ';display:inline-block;height:inherit;left:0;margin-top:-1px;position:absolute;width:2px;} .is-active-link::before{background-color:#54bc4b;} .mweb_ct_wrap{margin:0 auto;} .mweb_toc_wrap{margin-top: 18px;}  .mweb_toc_wrap_ct{position: fixed;  width: 266px; padding: 0px; overflow: auto; border-radius:4px; }  .mweb_toc_wrap_ct .markdown-body li{margin: 2px 0;} .mweb_toc_wrap_ct ul{padding-left: 14px;} .mweb_toc_wrap_ct .markdown-body{ padding:12px 12px; font-size: 13px;} .mweb_toc_wrap_ct li.is-active-li{ font-weight: bold;} .mweb_toc_wrap_ct li.is-active-li li{font-weight: normal;} #mweb_toc_list_iid{ padding-left:0px; } #mweb_toc_list_iid>ul{padding-left: 22px;} .mweb_toc_wrap_ct{width: 270px; top:42px; bottom:42px;} .mweb_toc_wrap_ct, .toc-link::before{background-color:#f8f8f8;} .is-active-link::before{background-color:#bbbbbb;}.mweb_ct_wrap{padding-left: 300px;} .mweb_toc_wrap{float: left;} .mweb_toc_wrap_ct{ margin-left: -300px;}@media screen and (max-width: 860px) {  .mweb_toc_wrap{display: none;} .mweb_ct_wrap{ padding:30px;} }@media print{ .mweb_toc_wrap{display: none;} .mweb_ct_wrap{ padding:30px;} }</style><script>document.addEventListener('DOMContentLoaded', (event) => {const ele = document.getElementById('markdown_content');const arr = ele.querySelectorAll('h1,h2,h3,h4,h5,h6'); var idNum = 0;arr.forEach((tmpEle) => { var idVal = 'mweb_tt_id_'+idNum;  if(tmpEle.id === ''){  tmpEle.id = idVal;  }  idNum++; });tocbot.init({ tocSelector: '#mweb_toc_list_iid', contentSelector: '#markdown_content',  headingSelector: 'h1, h2, h3, h4, h5, h6',  orderedList: false, collapseDepth: 6,scrollEndCallback: function (e) { const el = document.querySelector('#mweb_toc_list_iid li.is-active-li'); if(document.querySelector('#mweb_toc_list_iid>ul>li:first-child').classList.contains('is-active-li')){ document.getElementById('mweb_toc_list_iid').scrollTop=0; return;} if(typeof el.scrollIntoViewIfNeeded === 'function'){ el.scrollIntoViewIfNeeded();}else{ el.scrollIntoView(true);} },});});</script></head><body><div class='mweb_ct_wrap'><div class='mweb_toc_wrap'><div class='mweb_toc_wrap_ct'><div id='mweb_toc_list_iid' class='mweb_toc markdown-body'></div></div></div><div id='markdown_content' class='markdown-body'><h1><a id="a-guide-to-quantum-computation" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>A Guide to Quantum Computation</h1>
 <p>by Jon Brumfitt</p>
 <p>This is an unfinished working draft.<br />
-Last updated 5 June 2026</p>
+Last updated 6 June 2026</p>
 <p>©️Jon Brumfitt 2026</p>
 <hr />
 <div style="page-break-after: always;"></div>
@@ -1019,6 +1019,10 @@ Last updated 5 June 2026</p>
 <td>Least Common Multiple</td>
 </tr>
 <tr>
+<td>MBQC</td>
+<td>Measurement-Based Quantum Computing</td>
+</tr>
+<tr>
 <td>MCZ</td>
 <td>Multi-Controlled Z (gate)</td>
 </tr>
@@ -1055,10 +1059,6 @@ Last updated 5 June 2026</p>
 <td>Rivest-Shamir-Adelman</td>
 </tr>
 <tr>
-<td>STEM</td>
-<td>Science, Technology, Engineering &amp; Maths</td>
-</tr>
-<tr>
 <td>SVD</td>
 <td>Singular Value Decomposition</td>
 </tr>
@@ -1082,7 +1082,23 @@ Last updated 5 June 2026</p>
 <p>An added benefit of developing the technology for quantum computers is that we are learning new ways to manipulate nature at the quantum level and perform quantum experiments. This is already starting to have applications in areas such as quantum sensing. The spin-off benefits of trying to build a quantum computer may end up being as transformative as the quantum computers themselves.</p>
 <p><strong>Note:</strong> Throughout the text you will find notes like this paragraph. They are generally to provide additional explanations, clarifications or technical details. You may wish to skip them on a first reading.</p>
 <h3><a id="a-roadmap-to-this-book" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>A Roadmap to This Book</h3>
-<p><em>&lt; to be written &gt;</em></p>
+<h4><a id="what-does-it-cover" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>What Does it Cover?</h4>
+<p>The book covers a wide range of material, starting with the basic ideas of quantum information, including quantum states, superposition, interference, entanglement and measurement. This leads on to quantum gates and circuits, followed by a number of detailed examples, including well-known algorithms such as Shor's algorithm and Grover's algorithm. A final more-specialised chapter looks at ways of simulating a quantum computer on an ordinary (classical) computer.</p>
+<h4><a id="who-is-the-book-for" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Who is the Book for?</h4>
+<p>The book is intended for technically-literate readers who are interested in learning about quantum computing. It aims to give intuition for the main mathematical structures behind quantum computing, rather than provide a fully rigorous textbook treatment.</p>
+<p>No knowledge of quantum mechanics is needed, but readers should be comfortable with basic algebra, complex numbers, vectors, matrices and probability. Some of the later sections, include more advanced mathematics such as modular arithmetic and Fourier transforms. The final chapter discusses the use of tensors for simulation, but this chapter will only be of interest to some readers.</p>
+<p>In many places, it should be possible to get the gist without understanding the equations in detail. If you find the maths difficult, don't give up, just try to get the gist by reading the text. It may make more sense on a second reading. As a minimum, read the &quot;Key Points&quot; summary at the end of the section.</p>
+<h4><a id="navigating-the-book" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Navigating the Book</h4>
+<p>To help you navigate your way around the book, there are &quot;Reader's Guide&quot; boxes before sections that are more difficult or considered optional. For example:</p>
+<div style="background-color: #f0ffe0; padding: 15px; border-radius: 5px;">
+    <strong>Reader's Guide:</strong></p>
+This section ...
+</div><p>
+<p>Where relevant, there are &quot;Key Points&quot; boxes at the end of sections. For example:</p>
+<div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
+    <strong>Key Points:</strong></p>
+The key points to remember from this section are ..
+</div>
 <hr />
 <div style="page-break-after: always;"></div>
 <h2><a id="2-quantum-information" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2: Quantum Information</h2>
@@ -1508,7 +1524,7 @@ p(1) &amp;= \lvert\alpha_1\rvert^2
 <li>Probability amplitudes are complex numbers that have a magnitude and a phase. Phase coherence gives rise to the quantum phenomena of superposition, interference and entanglement. Phase information can easily leak away into the environment causing a quantum particle to lose its <em>quantumness</em>.</li>
 </ul>
 </div> 
-<h3><a id="interference" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Interference</h3>
+<h3><a id="probability" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Probability</h3>
 <p>In classical probability theory, if an outcome can occur in two mutually-exclusive ways, the probability of it happening is the sum of the probabilities for the two cases:</p>
 \[p = p_0 + p_1
 \]
@@ -1529,6 +1545,17 @@ p(1) &amp;= \lvert\alpha_1\rvert^2
 <p>In the classical case, the two states of a bit (0 and 1) are mutually exclusive, so that the interference term disappears and the probability reduces to the classical one:</p>
 \[p = \lvert \alpha_0 \rvert^2 + \lvert \alpha_1 \rvert^2 = p_0 + p_1
 \]
+<div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
+    <strong>Key Points:</strong></p>
+<ul>
+<li>
+<p>Classical probability simply adds the likelihood of mutually exclusive events, whereas quantum probability adds complex amplitudes before squaring the result.</p>
+</li>
+<li>
+<p>The squaring creates a phase-dependent interference term that either enhances or suppresses the final probability. It collapses back to the classical sum when the phases are lost.</p>
+</li>
+</ul>
+</div>
 <h3><a id="vectors-and-matrices" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Vectors and Matrices</h3>
 <p>The two qubit basis states \(\ket{0}\) and \(\ket{1}\) can be represented as column vectors as follows:</p>
 \[\ket{0} =  \begin{bmatrix}1\\0\end{bmatrix}\quad\text{and}\quad\ket{1} = \begin{bmatrix}0\\1\end{bmatrix}
@@ -1557,8 +1584,10 @@ X \ket{1} = \begin{bmatrix}0 &amp; 1 \\ 1 &amp; 0 \end{bmatrix} \begin{bmatrix}0
 </ul>
 </div>  
 <h3><a id="dirac-notation" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dirac Notation</h3>
-<h4><a id="difficulty-level" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Difficulty Level</h4>
-<p>Dirac notation is widely used in quantum computing, so it is important to become familiar with it. You might find this section too difficult on a first reading, but at least read through it and try to get the gist. There is also a &quot;Key Points&quot; section at the end which gives a brief summary of the key points. You should find this section easier on a second reading after you have seen the notation in action.</p>
+<div style="background-color: #f0ffe0; padding: 15px; border-radius: 5px;">
+    <strong>Reader's Guide:</strong></p>
+Dirac notation is widely used in quantum computing, so it is important to become familiar with it. You might find this section too difficult on a first reading, but at least read through it and try to get the gist. There is also a "Key Points" section at the end which gives a brief summary of the key points. You should find this section easier on a second reading after you have seen the notation in action.
+</div> 
 <h4><a id="hilbert-space" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hilbert Space</h4>
 <p>It was mentioned earlier that the complex vector space used in quantum computing is called <em>Hilbert Space</em>. Linear algebra in Hilbert space is normally described using <em>Dirac Notation</em>, which is also known as <em>Bra-Ket</em> notation.</p>
 <p>Hilbert Space is a type of complex vector space that comes with an <em>inner product</em> that allows us to define lengths, angles and orthogonality, which are essential for working with quantum states. Hilbert spaces also extend to infinite-dimensional spaces, although this is not necessary for quantum computing as we are working with  a finite number of qubits.</p>
@@ -2058,7 +2087,7 @@ p(\ket{1}) &amp;= \lvert e^{i\phi}\sin({\small\frac{\theta}{2}}) \rvert^2 = \fra
 <p>The Bloch Sphere is a way to represent the state of a single qubit as a point on a sphere in three dimensions. This is very useful for visualising the effect of one-qubit gates since these all correspond to rotations on the sphere.</p>
 </li>
 <li>
-<p>The polar angle represents the balance between \(\ket{0}\) and \(\ket{1}\), while the azimuthal angle represents the quantum phase. These are both meaningful concepts at the level of understanding quantum algorithms.</p>
+<p>The polar angle represents the balance between \(\ket{0}\) and \(\ket{1}\), while the azimuthal angle represents the quantum phase. These are both meaningful concepts at the level of understanding quantum circuits and algorithms.</p>
 </li>
 </ul>
 </div>
@@ -2922,7 +2951,7 @@ kXIsLESkHAsLESnHwkJEyv0P6PH0p3bWUOYAAAAASUVORK5CYII=" height="70"/>
     <strong>Key Points:</strong></p>
 <ul>
 <li>
-<p>The Bloch Sphere provides a good way visualise the relation between the \(X, Y\) and \(Z\) basis vectors and how various quantum gates rotate the state on the sphere.</p>
+<p>The Bloch Sphere provides a good way visualise the relation between the \(X, Y\) and \(Z\) bases and how various quantum gates rotate the state on the sphere.</p>
 </li>
 <li>
 <p>The \(X, Y, Z, H\) and \(P\) gates are introduced as well as the concept of a quantum circuit.</p>
@@ -3156,6 +3185,18 @@ AElFTkSuQmCC" alt="ghz" height="160"/>
 <p>The difference between <em>big-endian</em> and <em>little-endian</em> systems is discussed in a later section.</p>
 <p>A quantum circuit has a fixed number of qubits, as required by unitarity and the no-cloning theorem. No qubits can be added to the circuit or deleted. Any extra qubits (known as <em>ancilla</em> qubits) that the computation needs must be included and initialized as part of the initial state. The flow of information is from left to right, with no loops allowed.</p>
 <p>The diagram represents a sequence of unitary operators, in the form of quantum gates, applied to a set of qubits, with the information flow running from left to right. The gates are typically not physical entities, but just operators applied to a fixed set of qubits <em>in situ</em>.</p>
+<p>The circuit is at quite a high level of abstraction. The gate symbols can be thought of as representing abstract operators or matrices, with the qubit &quot;wires&quot; representing flow of quantum information (qubits). The whole circuit can be thought of as a tensor network with the gates representing tensors and the wires representing tensor indices (This is discussed later). It can also be interpreted as describing a sequence of operations applied to physical qubits, such as superconducting qubits, in a quantum computer.</p>
+<div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
+    <strong>Key Points:</strong></p>
+<ul>
+<li>
+<p>A quantum circuit describes the application of a sequence of quantum gates to a set of qubits to evolve an initial quantum state into a final state. There are some rules about what constitutes a valid circuit so that it respects unitarity and the no-cloning theorem.</p>
+</li>
+<li>
+<p>A quantum circuit diagram describes this graphically using gate symbols placed on a set of horizontal lines that represent the qubits.</p>
+</li>
+</ul>
+</div>
 <h3><a id="composing-circuits" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Composing Circuits</h3>
 <p>A sequence of operations can be composed by matrix multiplication, whereas operations on different qubits are combined by tensor multiplication.</p>
 <p>The following example shows the series composition of two one-qubit gates:</p>
@@ -3416,6 +3457,17 @@ hMXCMJKwWBhGEhYLw0jyP0NPqVTBNsNZAAAAAElFTkSuQmCC" height="120"/>
 \[(A\otimes I)(I\otimes B) = A\otimes B = (I\otimes B)(A\otimes I)
 \]
 <p>However, both A and B must be complete before C is applied. The circuit should be thought of as a <em>partially ordered</em> Directed Acyclic Graph (DAG), rather than as a strict time-sequence having time on the horizontal axis.</p>
+<div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
+    <strong>Key Points:</strong></p>
+<ul>
+<li>
+<p>The series composition of two gates corresponds to matrix multiplication of the gates, whereas parallel operations on different qubits are combined using the tensor product.</p>
+</li>
+<li>
+<p>When applying a gate to one or more qubits, dummy identity gates must be included on the other qubits and included in the tensor product, so that the whole state vector is updated.</p>
+</li>
+</ul>
+</div>
 <h3><a id="endianness" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Endianness</h3>
 <p>The qubit on the left side of a tensor product is referred to as the <em>most-significant</em> qubit. Hence, in the quantum state \(\ket{0}\otimes\ket{1}\otimes\ket{1}\), the most-significant qubit is \(\ket{0}\) and the least-significant qubit is \(\ket{1}\). This state can also be written as \(\ket{011}\).</p>
 <p>There are two different conventions for numbering the qubits. In the <em>big-endian</em> convention, qubit 0 refers to the most-significant qubit whereas, in the <em>little-endian</em> convention, qubit 0 refers to the least-significant qubit. For example, a 3-qubit state is \(\ket{q_0}\otimes\ket{q_1}\otimes\ket{q_2}\) for big-endian and \(\ket{q_2}\otimes\ket{q_1}\otimes\ket{q_0}\) for little-endian.</p>
@@ -3478,6 +3530,17 @@ riImVxGTq4jJVcTkKvIPhqGJwR66wScAAAAASUVORK5CYII=" height="115"/>
 = \begin{bmatrix}1&amp;0&amp;0&amp;0 \\ 0&amp;0&amp;0&amp;1 \\0&amp;0&amp;1&amp;0 \\0&amp;1&amp;0&amp;0 \end{bmatrix}
 \]
 <p>The first definition is for a big-endian CX gate, whereas the second definition is for a little-endian CX gate. The tensor-product order of qubits to which the gate is applied is reversed, leading to reversal of the terms in the Dirac notation definition of the gate.</p>
+<div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
+    <strong>Key Points:</strong></p>
+<ul>
+<li>
+<p>There are two different conventions for the way that qubits are numbered, which are known as <em>big-endian</em> and <em>little-endian</em>. Simply relabelling qubits would have no effect on the operation but, because of the way it is implemented, it actually results in different definitions for some gates such as CX.</p>
+</li>
+<li>
+<p>Textbooks and academic papers tend to use the big-endian convention, but some software libraries and development tools use the little-endian convention. This can lead to confusion particularly for beginners. This guide uses the big-endian convention.</p>
+</li>
+</ul>
+</div>
 <h3><a id="permutation-of-qubits" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Permutation of Qubits</h3>
 <p>Consider modifying the previous example so that there are 5 qubits and the \(\ket{x}\) input is qubit 4 instead of qubit 0. The dotted lines on qubits 2 and 3 of gate 'C' indicate that the gate does not use these qubits.</p>
 <div style="text-align: center;">
@@ -3817,6 +3880,17 @@ RK5CYII=" alt="permute3.png" height="260"/>
 <p>Non-consecutive qubits are a problem in real quantum computers because the qubits are typically physically arranged in a one or two dimensional array. Operations that involve interactions between qubits (e.g. CX), usually require them to be physically adjacent. Consequently, the physical topology of the array of gates is important in minimizing the number of swaps needed.</p>
 <p>Quantum computer programming languages and quantum circuit diagrams work at a higher level of abstraction, where multi-qubit gates can be applied to arbitrary qubits, without the user needing to worry about such issues. Software then compiles these into sequences of lower-level operations for the quantum hardware, taking into account the qubit topology and primitive operations available.</p>
 <p>Fortunately, in a quantum-computer simulator, we can sometimes implement swaps more efficiently by permuting the qubit indices, as explained in the next section. Then a later section considers approaches to simulating a quantum computer, including the use of tensors to provide a much more efficient solution.</p>
+<div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
+    <strong>Key Points:</strong></p>
+<ul>
+<li>
+<p>Real quantum computers normally arrange the physical qubits in a one or two dimensional array. Operations like CX usually need the relevant qubits to be physically adjacent for them to interact, so SWAP gates are needed to rearrange the qubits.</p>
+</li>
+<li>
+<p>Quantum circuit simulators can have similar problems when they need to apply a CX gate to non-adjacent qubits. Depending on the type of simulator, SWAP gates or a permutation matrix may be used, or it may be possible to just permute qubit indices. Quantum circuit design tools normally hide such issues from the circuit designer.</p>
+</li>
+</ul>
+</div>
 <h3><a id="addressing-qubits" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Addressing Qubits</h3>
 <p>It is important to understand that even a simple one-qubit gate can affect <em>all</em> the elements of the state vector. To see why this is, consider two qubits:</p>
 \[\begin{align*}
@@ -3843,6 +3917,17 @@ RK5CYII=" alt="permute3.png" height="260"/>
 <p>This explains why we had to take the tensor product of gates with dummy identity gates to make a \(2^N\times 2^N\) matrix that could be applied to the \(2^N\) element state vector.</p>
 <p>Individual state elements do not correspond to qubits, so we cannot apply gates to a subset of the elements. However, it is possible to permute the order of qubits by permuting the elements of the state vector. This is equivalent to permuting the columns of the binary index values in the table above and then sorting the table by index. However, a one-qubit gate can still affect the complex amplitudes of all the state elements, so we still need to expand the qubit matrix to match the size of the state vector.</p>
 <p>As we will see in a later section on simulation, the use of tensors instead of vectors and matrices leads to a much simpler and more efficient approach, where qubits can be addressed directly and there is no need to expand matrices before applying them to the state.</p>
+<div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
+    <strong>Key Points:</strong></p>
+<ul>
+<li>
+<p>Even a one-qubit gate can affect all the elements of the state vector. This is why we needed to use dummy identity gates in an earlier section to propagate the changes to other qubits. There is a mismatch between the way the state is stored in a state vector and the way we would like to address it by qubit.</p>
+</li>
+<li>
+<p>Some more advanced simulation methods represent the state as a tensor with indices corresponding to the qubits. This leads to a simpler and more efficient way of addressing the qubits.</p>
+</li>
+</ul>
+</div>
 <hr />
 <div style="page-break-after: always;"></div>
 <h2><a id="4-quantum-gates" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4: Quantum Gates</h2>
@@ -5257,6 +5342,28 @@ Hi1ijfJoEWuUR4tYozxaxBrl0SLWKI8WsUZ5tIg1yqNFrFEeLWKN8mgRa5RHi1ij
 PFrEGuX5H2me0VXUobufAAAAAElFTkSuQmCC" height="110"/>
 </div>
 <p>A sequence of swaps of adjacent qubits may be needed to realize a swap of two qubits that are several qubits apart. The topology of the physical qubit array is obviously important in minimizing the number of swap operations required.</p>
+<div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
+    <strong>Key Points:</strong></p>
+<ul>
+<li>
+<p>The following are one-qubit gates that perform rotations on the Bloch sphere:</p>
+<ul>
+<li>X, Y and Z rotate by \(\pi\) radians about the corresponding axis.</li>
+<li>Hadamard (H) switches between the Z and X bases.</li>
+<li>The phase gate \(P(\phi)\) rotates by \(\phi\) about the Z axis.</li>
+</ul>
+</li>
+<li>
+<p>The two-qubit Controlled-X (CX) is similar to an exclusive-OR gate when the inputs are Z-basis states. Used with an H gate, it can create entanglement. The concept of a particular qubit being the control is dependent on the basis.</p>
+</li>
+<li>
+<p>The 2-qubit SWAP gate interchanges two qubits.</p>
+</li>
+<li>
+<p>X, H, P and CX are suffcient to build any quantum circuit. Other gates provide useful abstractions for convenience.</p>
+</li>
+</ul>
+</div
 <hr />
 <div style="page-break-after: always;"></div>
 <h2><a id="5-entanglement" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5: Entanglement</h2>
@@ -5603,9 +5710,27 @@ AElFTkSuQmCC" alt="ghz" height="160"/>
 \]
 <p>If we measure qubit q0, we will either get \(\ket{0}\) or \(\ket{1}\). The remaining two qubits are then in the state \(\ket{00}\) or \(\ket{11}\) respectively, but it is just a classical correlation. Qubits q1 and q2 are not in a superposition of \(\ket{00}\) and \(\ket{11}\), so they are not entangled. It is just a lack of knowledge about the result of measuring q0 that leaves two outcomes for q1 and q2.</p>
 <p>Any number of qubits can be entangled this way by cascading more CX gates.</p>
+<div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
+    <strong>Key Points:</strong></p>
+<ul>
+<li>
+<p>Entanglement plays a key role in quantum circuits. Without it, we would just have lots of trivial independent one-qubit circuits. It can be created using just a Hadamard gate and a CX gate.</p>
+</li>
+<li>
+<p>There are four possible maximally-entangled states of two qubits, which are known as the Bell states. A Bell measurement can be used to distinguish between them.</p>
+</li>
+<li>
+<p>Many-qubit entanglements are possible but if two qubits are maximally entangled, they cannot have any entanglement with a third qubit.</p>
+</li>
+</ul>
+</div> 
 <hr />
 <div style="page-break-after: always;"></div>
 <h2><a id="6-measurement" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>6: Measurement</h2>
+<div style="background-color: #f0ffe0; padding: 15px; border-radius: 5px;">
+    <strong>Reader's Guide:</strong></p>
+<p>You may wish to skip the sections on Measurement Operators, Projective Measurement and Measuring Multiple Qubits on a first reading as they are more difficult.</p>
+</div>
 <h3><a id="introduction" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction</h3>
 <p>It is not possible to inspect the quantum state of a real quantum computer. The only way to get a result is to perform a measurement that <em>collapses</em> the quantum state by projecting it onto one of the basis states. Each possible measurement outcome has an associated probability and the state after measurement is a random sample from this probability distribution. Ideally, the state will have been evolved in a way that gives a high probability of getting the required result.</p>
 <p>Measurement of a qubit in the computational (i.e. Z) basis is usually shown by a meter symbol like this:</p>
@@ -5797,7 +5922,7 @@ OCzx/RAwprp2ztX8++yqk13N2BukIla2Ila2Ila2Ila2Ila2Ila2Ila2Ila2Ila2
 Ila2Ila2Ila2Ila2Ila2Ila2Ila2Ila2Ila2Iv8DeQsYoNa1wjoAAAAASUVORK5C
 YII=" alt="measure_x" height="65"/>
 </div>
-<p>However, a Z-basis measurement can be used to make measurements in other bases, by first transforming the state between bases and then performing a Z-basis measurement.</p>
+<p>However, a Z-basis measurement can be used to make measurements in other bases, by first transforming the state between bases and then performing a Z-basis measurement. Rotating a qubit in one direction is equivalent to rotating the basis is the opposite direction.</p>
 <p>For example, an X-basis measurement can be made by applying a Hadamard (H) gate before the Z-basis measurement.</p>
 <div style="text-align: center;">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIkAAABBCAYAAADln4cQAAAAOXRFWHRTb2Z0d2Fy
@@ -6112,9 +6237,46 @@ gg==" alt="ancilla_measure" height="110"/>
 <p>The traditional (Copenhagen interpretation) view of quantum measurement treats it as a discontinuous irreversible jump that causes the quantum state to suddenly collapse into a classical one. However, it seems very unsatisfactory that the state normally evolves in a deterministic unitary manner, but follows a completely different non-deterministic rule when we observe it. It is not even clear what constitutes a measurement.</p>
 <p>A more modern view, from the perspective of quantum information theory, is that measurement is the interaction of a quantum system with the environment through entanglement and information exchange. This causes phase information to leak out into the environment, so that the quantum coherence is lost. This process of <em>decoherence</em> makes the original system behave classically as it can no longer exhibit quantum effects such as superposition and interference. The evolution of the system being measured is no longer unitary, although the system as a whole, including the environment, is still unitary in principle. However, the phase information is now lost in the trillions of particles in the environment, so it is impossible in practice to recover the information and restore the coherence. Decoherence is the reason why our everyday macroscopic world does not exhibit quantum behaviour, even though it is made of quantum particles.</p>
 <p>The interaction with the environment can be via a measuring device, which in turn interacts with the environment, or it can be direct, in which case we can think of the environment as &quot;measuring&quot; the system. The system rapidly becomes entangled with trillions of particles in the measuring device and the entanglement rapidly spreads into the environment, so that there is a big multi-qubit entanglement which has a consistent view of the measurement outcome. We see one particular result because we are entangled with the environment.</p>
+<div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
+    <strong>Key Points:</strong></p>
+<ul>
+<li>
+<p>Measurement can be formalised in terms of a measurement operator and projectors.</p>
+</li>
+<li>
+<p>Measurement is normally made in the Z basis. It may be made in other bases by first transforming the state and then perfoming a Z-basis measurement.</p>
+</li>
+<li>
+<p>Measurements are usually performed at the end after the unitary evolution.</p>
+</li>
+<li>
+<p>Simulations allow direct access to the quantum state, so measurement can often be omitted provided that they are at the end of the circuit.</p>
+</li>
+<li>
+<p>The Principle of Deferred Measurement makes it possible to move mid-circuit measurements to the end of the circuit.</p>
+</li>
+<li>
+<p>One way to view measurement is as a non-unitary collapse of the state. A more modern way is to treat it as entanglement with the measuring aparatus or environment, causing phase information to get lost in the environment through decoherence.</p>
+</li>
+</ul>
+</div>    
 <hr />
 <div style="page-break-after: always;"></div>
 <h2><a id="7-quantum-algorithms" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>7: Quantum Algorithms</h2>
+<div style="background-color: #f0ffe0; padding: 15px; border-radius: 5px;">
+    <strong>Reader's Guide:</strong></p>
+<ul>
+<li>
+<p>Some of the material in this section is more difficult. The examples should be read in sequence, as each one builds on the previous ones, with the exception of Grover's algorithm and Quantum Teleportation, which can be read on their own.</p>
+</li>
+<li>
+<p>The Quantum Fourier Transform (QFT) is one of the more difficult topics. However, several examples are given with graphical representations to provide more intuition.</p>
+</li>
+<li>
+<p>Shor's Algorithm is the most difficult as it involves some number theory. To make this easy, some worked examples are given.</p>
+</li>
+</ul>
+</div><p>
 <p>This section describes some quantum algorithms, including Shor's algorithm and Grover's algorithm. The examples have been adapted from the Jupyter Notebook examples that are included with the author's TinyQsim simulator. However, the executable code has been omitted here to keep this Guide less specific to particular development tools.</p>
 <p>If you would like to see full working versions of these examples, see the Examples section in the TinyQsim documentation (<a href="https://jbrumf.github.io/tinyqsim">https://jbrumf.github.io/tinyqsim</a>).</p>
 <p><strong>Note:</strong>  TinyQSim should not be confused with the Tiny-Q project that has subsequently appeared in the PyPI software repository with the name TinyQSim. The two are not related.</p>
@@ -9895,6 +10057,23 @@ AABJRU5ErkJggg==" width="200"/>
 </code></pre>
 <p>One way to think about the circuit is that the Hadamard-sandwich \(HPH\) is a basis change that transforms the phase (P) gate so that it rotates about X instead of Z. A phase change then becomes a measurable amplitude change. Alternatively, from an interference perspective, the first Hadamard places the state in a superposition. The phase gate then introduces a phase difference between the \(\ket{0}\) and \(\ket{1}\) states. The second Hadamard then causes the two states to interfere with one another, leading to an observable amplitude difference.</p>
 <p>Many quantum algorithms work by placing a set of \(N\) qubits in a joint superposition of the \(2^N\) states. The phases are then selectively modified so that the states interfere, amplifying valid solutions using constructive interference. A final Hadamard or Fourier transform then puts the state back in a form where we can see the phase difference as amplitude differences when we measure the output state. This will become clearer when we look at Quantum Phase Estimation and Shor's Algorithm in subsequent examples.</p>
+<div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
+    <strong>Key Points:</strong></p>
+<ul>
+<li>
+<p>Quantum states can interfere with one another causing their amplitudes to increase or decrease.</p>
+</li>
+<li>
+<p>States with different phases can be made to interfere with one another by performing a basis change that converts a phase difference into a measurable amplitude difference.</p>
+</li>
+<li>
+<p>Basis changes are typically performed by Hadamard transforms before and after unitary operations that manipulate the relative phases.</p>
+</li>
+<li>
+<p>In the simplest case, a single qubit can interfere with itself, because it has two basis states.</p>
+</li>
+</ul>
+</div>
 <hr />
 <h3><a id="7-2-phase-kickback" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>7.2: Phase Kickback</h3>
 <p>This example explores the phenomenon of Phase Kickback. This is an effect in which controlled gates can have an effect on their control qubits. It is an important building block in many quantum algorithms such as the Quantum Phase Estimation (QPE) and Shor's Algorithm.</p>
@@ -10064,7 +10243,21 @@ hohYUWiIiBWFhohYUWiIiBWFhohYUWiIiBWFhohYUWiIiBWFhohYUWiIiBWFhohY
 <p>Although we have only considered a one-qubit unitary with two eigenvectors, it works for an N-qubit unitary with \(2^N\) eigenvectors. By initializing the input of the unitary to one of its eigenvectors, we can read out the phase associated with the corresponding eigenvalue. This plays an important role in algorithms such as Quantum Phase Estimation (QPE) and Shor's Algorithm.</p>
 <h4><a id="role-of-controls" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Role of Controls</h4>
 <p>Phase Kickback may seem very strange, because we often think of the control of a controlled gate as an enabling input, such that a \(\ket{1}\) on the control qubit enables the controlled operation on the target qubit and a \(\ket{0}\) on the control causes the gate to have no effect. However, this is only valid when the control is in the computational basis state, \(\ket{0}\) or \(\ket{1}\). In the phase kickback circuit, the controls are in an X-basis state (i.e. a superposition) and the only effect of the controlled gates is on their controls. See the earlier section on <em>Understanding Controls</em> for a discussion of this.</p>
-<hr />
+<div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
+    <strong>Key Points:</strong></p>
+<ul>
+<li>
+<p>The control input of a controlled gate is often thought of as enabling an operation on the target qubit. However, this assumes that the control is in the basis state \(\ket{0}\) or \(\ket{1}\). Phase kickback is an an effect in which controlled gates have an effect on the phase of the control qubit.</p>
+</li>
+<li>
+<p>If the control is in an equal superposition state and the target input is an eigenvector of the unitary being controlled, the phase of the corresponding eigenvalue is &quot;kicked-back&quot; onto the contol qubit, leaving the target qubit state unaffected.</p>
+</li>
+<li>
+<p>This plays an important part in algorithms such as Quantum Phase Estimation (QPE).</p>
+</li>
+</ul>
+</div>    
+---
 <h3><a id="7-3-quantum-fourier-transform" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>7.3: Quantum Fourier Transform</h3>
 <p>The Quantum Fourier Transform (QFT) is an important building block of many quantum algorithms, including Quantum Phase Estimation and Shor's algorithm. These are the subject of subsequent examples. Here, we look at how it is implemented using quantum gates and some of its properties.</p>
 <h4><a id="introduction" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction</h4>
@@ -12351,6 +12544,26 @@ QmCC" height="180"/>
 \end{bmatrix}
 \]
 <p>The QFT is equivalent to the application of this unitary matrix to the quantum state. The columns of the matrix are the DFTs of the N orthogonal quantum basis vectors \([1,0,0,\dots], [0,1,0,\dots],[0,0,1,\dots], \) etc. Because of linearity, we can apply it to a general quantum state that is a superposition of the basis states.</p>
+<div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
+    <strong>Key Points:</strong></p>
+<ul>
+<li>
+<p>The Fourier Transform is widely used in science and engineering to transform data between two different domains. This is often done where it is easier to perform a task in the transform domain.</p>
+</li>
+<li>
+<p>The Quantum Fourier Transform (QFT) is an implementation as a quantum circuit that takes the Fourier transform of a quantum state.</p>
+</li>
+<li>
+<p>The QFT is useful where we want to encode numerical values using qubits to represent bits, for example in Shor's algorithm.</p>
+</li>
+<li>
+<p>Basis states transform to linearly increasing phases. Superpositions of two basis states transform to sinusoidal amplitude variations.</p>
+</li>
+<li>
+<p>The QFT has a much lower computational complexity that even the Fast Fourier Transform FFT of classical computing.</p>
+</li>
+</ul>
+</div>    
 <hr />
 <h3><a id="7-4-quantum-phase-estimation" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>7.4: Quantum Phase Estimation</h3>
 <p>Quantum Phase Estimation (QPE) is an important part of many quantum algorithms, such as Shor's factorization algorithm. The aim of QPE is to find the phase associated with an eigenvector of a unitary operator. This example looks at how it works.</p>
@@ -14351,8 +14564,27 @@ RK5CYII=" width="800"/>
 <p><strong>Note:</strong> If you are familiar with Fourier Transforms in signal processing, you may recognize this as <em>spectral leakage</em>.</p>
 <p>In this case, we could just repeat the QPE with 6 control qubits and we would get the result \(\theta=001011_2=\frac{11}{64}\).</p>
 <p>However, the phase we want to find might not be expressible as a fraction with an integer numerator and a denominator that is a power of 2, such as \(\frac{5}{26}\). In the next example we look at how Shor's factorization algorithm solves this problem using <em>partial fraction convergents</em>.</p>
+<div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
+    <strong>Key Points:</strong></p>
+<ul>
+<li>
+<p>The aim of Quantum Phase Estimation (QPE) is to estimate the phase of an eigenvalue of a unitary operator \(U\), given its associated eigenvector. This plays an important role in quantum algorithms such as Shor's algorithm.</p>
+</li>
+<li>
+<p>Controlled-\(U\) operations use phase-kickback to encode the phase as fractional rotations in a qubit register, effectively representing the phase in the Fourier basis.</p>
+</li>
+<li>
+<p>An inverse Quantum Fourier Transform (QFT) then transforms the result into the computational (Z) basis, allowing the binary bits of the phase to be read out by a measurement.</p>
+</li>
+</ul>
+</div>
 <hr />
 <h3><a id="7-5-shor-s-algorithm" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>7.5: Shor's Algorithm</h3>
+<div style="background-color: #f0ffe0; padding: 15px; border-radius: 5px;">
+    <strong>Reader's Guide:</strong></p>
+<p>This is the most difficult part of this guide as it involves quite a lot of mathematics, including Euclid's algorithm, modular arithmetic and continued fraction convergents. It also uses Quantum Phase Estimation which in turn uses the Quantum Fourier Transform (QFT).</p>
+<p>The first two sections (The top-level algorithm&quot; and &quot;Simple numerical example&quot;) use some simple number theory, but you may want to skip the rest unless you have a mathematical background.</p>
+</div><p>
 <p>This example looks at Shor's Algorithm for integer factorisation.  It makes use of the Quantum Fourier Transform (QFT) and Quantum Phase Estimation (QPE) algorithms that were explored in previous examples, so it would be useful to become familiar with those examples first.</p>
 <h4><a id="introduction" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction</h4>
 <p>Factoring large composite numbers is an interesting mathematical problem in its own right, but it has particular practical implications for the widely-used RSA encryption system. RSA relies for its security on the fact that it is easy to multiply two large prime numbers but very difficult to find the factors if you are just given their product.</p>
@@ -15033,6 +15265,17 @@ AIehWAcAAAAAwGH+PwvH8pbgfAPaAAAAAElFTkSuQmCC" height="300"/>
 \[\gcd((40^{24}-1),119)=7
 \]
 <p>Hence \(119\) can be factored as \(17\times 7\).</p>
+<div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
+    <strong>Key Points:</strong></p>
+<ul>
+<li>
+<p>Shor's algorithm can potentially factor very large integers using a quantum computer. This is of concern because of the implication for the security of widely-used encryption codes such as RSA that rely on the difficulty of factoring large numbers.</p>
+</li>
+<li>
+<p>The algorithm sets up a phase-estimation problem using a unitary operator derived from the number \(N\) to be factored, such that applying Quantum Phase Estimation (QPE) gives a phase from which the multiplicative order of some random number modulo \(N\) can be obtained. The factors can then be found using Euclid's algorithm and modular arithmetic. (It is more complicated, but that is the gist of it.)</p>
+</li>
+</ul>
+</div>
 <hr />
 <h3><a id="7-6-grover-s-algorithm" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>7.6: Grover's Algorithm</h3>
 <p>This example demonstrates how Grover's Search Algorithm may be used to solve search problems that involve finding the input to a black-box function that produces a particular output.</p>
@@ -18892,6 +19135,23 @@ AAAAAAAAIGFY+AUAAAAAAACAhGHhFwAAAAAAAAAShoVfAAAAAAAAAEiY/w9ydwII
 gfpYjwAAAABJRU5ErkJggg==" height="130"/>
 </div>
 <p>This example has demonstrated Grover's algorithm as well as the more general concept of Amplitude Amplification.</p>
+<div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
+    <strong>Key Points:</strong></p>
+<ul>
+<li>
+<p>Grover's Algorithm solves &quot;oracle&quot; type problems, where a black-box function can only answer &quot;yes&quot; or &quot;no&quot; when asked if something is a solution.</p>
+</li>
+<li>
+<p>The system is put in an equal superposition of all possible outcomes. The oracle flips the phase of the solution state, but this doesn't change its measurement probabilities.</p>
+</li>
+<li>
+<p>A &quot;diffusion&quot; function is applied to make the states interfere, such that the amplitude of the flipped state is increased and the others are increased. This is an example of amplitude amplification.</p>
+</li>
+<li>
+<p>This process is applied iteratively to further amplify the correct answer, then the state is measured. The number of iterations required is approximately \(\sqrt{N}\) when there are \(N\) possible outcomes. This is a considerable improvement over a &quot;brute force&quot; search by trying all possibilities.</p>
+</li>
+</ul>
+</div> 
 <hr />
 <h3><a id="7-7-quantum-teleportation" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>7.7: Quantum Teleportation</h3>
 <p>Quantum teleportation is a protocol for sending quantum information (i.e. qubits) from one place to another.</p>
@@ -19267,9 +19527,27 @@ SUVORK5CYII=" alt="teleport2" height="165"/>
 </div>
 <p>This results in Bob having the data qubit that Alice sent. Note that although entanglement is used, the information cannot be sent faster than the speed of light because Bob cannot decode his qubit until he receives the two bits over a classical channel.</p>
 <p>If Bob were to just guess what the two classical bits would be, he would have a 25% chance of correctly decoding the qubit but, if sent a sequence of qubits, he would not know which ones were correct.</p>
+<div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
+    <strong>Key Points:</strong></p>
+<ul>
+<li>
+<p>Quantum teleportation is a protocol that allows quantum information to be sent from one place to another. This is non-trivial because measuring it to send it classically would collapse the state and the no-cloning theorem requires that the sender no longer has access to the information.</p>
+</li>
+<li>
+<p>The sender (Alice) and receiver (Bob) share a pair of entangled qubits. These cannot be used to send information directly. Alice performs a Bell measurement of the her entangled qubit with the qubit to be sent. This results in two bits of classical information which she sends to Bob.</p>
+</li>
+<li>
+<p>Bob then performs quantum operations on his entangled qubit according to the two classical bits. This reconstructs the original state of Alice's qubit. Alice doesn't have a copy because her Bell measurement destroyed the state of the original particle.</p>
+</li>
+</ul>
+</div>    
 <hr />
 <div style="page-break-after: always;"></div>
 <h2><a id="8-simulating-a-quantum-computer" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>8: Simulating a Quantum Computer</h2>
+<div style="background-color: #f0ffe0; padding: 15px; border-radius: 5px;">
+    <strong>Reader's Guide:</strong></p>
+This section is more specialised and may not be of interest to all readers.
+</div><p>
 <p>It is useful to have a simulator that allows us to develop and test quantum algorithms on a conventional computer. A simulator is also a good tool for learning about quantum computers and experimenting with new ideas.</p>
 <p>Earlier, we saw that quantum states could be represented by vectors and quantum gates by matrices. This suggests that we can simulate a quantum circuit by starting with an initial state vector and applying the matrix for each gate in the circuit in turn, until we are left with a final state. Unfortunately, this approach does not scale well as the number of qubits is increased.</p>
 <p>Before looking at ways of tackling this problem with tensors, we will first look at what is wrong with this simple matrix-based approach.</p>
@@ -20404,6 +20682,26 @@ AAAAAElFTkSuQmCC" height="130"/>
 <p>A ZX tensor network is an undirected multigraph which is a much more general than a normal quantum circuit. The tensor indices are not necessarily inputs or outputs, so there is no requirement for the tensors to have the same number of inputs as outputs and the wires may go in any direction. There are no longer any qubit lines, except possibly at the input and output of the circuit. Any quantum gate or quantum circuit may be reduced to a tensor network consisting of just red and green spiders.</p>
 <p>Because there are only red and green spiders, the rewrite rules are very simple and there are only a few of them. Tools exist to apply the rules to transform or simplify a tensor network. These may be used for symbolic reasoning about circuits or for simplifying circuits. The simplified form may be turned back into a normal quantum circuit for execution on a real quantum computer. However, extracting the circuit is computationally hard.</p>
 <p>This section was just to give a flavour of the ZX-calculus for interest, without going into too much detail. For further information and examples see [JvdW20].</p>
+<div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
+    <strong>Key Points:</strong></p>
+<ul>
+<li>
+<p>A quantum computation can be simulated using a vector for the state and matrices for the gates, but this doesn't scale well. A laptop computer can simulate up to around 15 qubits this way. The execution time increases by a factor of 4 for each qubit that is added.</p>
+</li>
+<li>
+<p>Tensors can be thought of a generalisation of vectors and matrices to higher dimensions. The quantum circuit is treated as a tensor network with tensors for the gates and the quantum state. Applying a gate becomes a tensor contraction.</p>
+</li>
+<li>
+<p>A simple approach uses an order-N tensor for N qubits, allowing the qubits to be addressed individually. This approximately doubles the number of qubits that can be simulated and greatly increases the speed.</p>
+</li>
+<li>
+<p>A more sophisticated approach factors the state tensor into individual qubit tensors, forming a Matrix Product State (MPS). The bonds between the qubit tensors carry information on correlations (i.e entanglement). This approach  allows the state to be stored in a much more compact form. The bond dimensions only grow as needed when entanglement actually occurs. The storage and execution time can be further reduced by using approximations that can be viewed as a kind of data compression. Simulators using this approach can handle a much larger number of qubits provided that the entanglement is not too great.</p>
+</li>
+<li>
+<p>ZX calculus is a graphical language for reasoning about quantum circuits expressed as tensor networks.</p>
+</li>
+</ul>
+</div>    
 <hr />
 <div style="page-break-after: always;"></div>
 <h2><a id="9-conclusions" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>9: Conclusions</h2>
