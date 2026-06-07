@@ -1,6 +1,6 @@
 ## QC_Basics Release Notes
 
-### Release Note (6 June 2026)
+### Release Note (7 June 2026)
 
 - Added draft document roadmap
 - Added "Key Points" boxes at the end of relevant sections

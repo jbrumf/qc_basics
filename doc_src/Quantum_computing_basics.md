@@ -3,7 +3,7 @@
 by Jon Brumfitt
 
 This is an unfinished working draft.
-Last updated 6 June 2026
+Last updated 7 June 2026
 
 ©️Jon Brumfitt 2026
 
@@ -147,15 +147,15 @@ An added benefit of developing the technology for quantum computers is that we a
 
 #### What Does it Cover?
 
-The book covers a wide range of material, starting with the basic ideas of quantum information, including quantum states, superposition, interference, entanglement and measurement. This leads on to quantum gates and circuits, followed by a number of detailed examples, including well-known algorithms such as Shor's algorithm and Grover's algorithm. A final more-specialised chapter looks at ways of simulating a quantum computer on an ordinary (classical) computer.
+The book covers a wide range of material, starting with the basic ideas of quantum information, including quantum states, superposition, interference, entanglement and measurement. This leads on to quantum gates and circuits, where the more-intuitive language of quantum circuit diagrams is introduced. A major section is then devoted to quantum algorithms, including well-known ones such as Shor's algorithm and Grover's algorithm. A final more-specialised chapter looks at ways of simulating a quantum computer on an ordinary (classical) computer, for readers who find this of interest.
 
 #### Who is the Book for?
 
 The book is intended for technically-literate readers who are interested in learning about quantum computing. It aims to give intuition for the main mathematical structures behind quantum computing, rather than provide a fully rigorous textbook treatment.
 
-No knowledge of quantum mechanics is needed, but readers should be comfortable with basic algebra, complex numbers, vectors, matrices and probability. Some of the later sections, include more advanced mathematics such as modular arithmetic and Fourier transforms. The final chapter discusses the use of tensors for simulation, but this chapter will only be of interest to some readers.
+No knowledge of quantum mechanics is required, but readers should be comfortable with basic algebra, complex numbers, vectors, matrices and probability. Some of the later sections include other mathematics such as modular arithmetic, eigenvalues and Fourier transforms. The final chapter discusses the use of tensors for simulation, but this is optional reading.
 
-In many places, it should be possible to get the gist without understanding the equations in detail. If you find the maths difficult, don't give up, just try to get the gist by reading the text. It may make more sense on a second reading. As a minimum, read the "Key Points" summary at the end of the section.
+If you find the mathematics a little heavy going, try at least to get the gist by reading the accompanying text and studying the diagrams. Don't expect to understand everything on a first reading. There are "Key Points" summaries at the end of sections, which sum up the bare minimum you need to know. Once you reach the section on Quantum Circuits, it should become a litle easier because we are working in the language of circuit diagrams, which are rather more intuitive.
 
 #### Navigating the Book
 
@@ -171,7 +171,13 @@ Where relevant, there are "Key Points" boxes at the end of sections. For example
 <div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
     <strong>Key Points:</strong></p>
 The key points to remember from this section are ..
-</div>
+</div><p>
+
+For most readers, the best approach is to read from the start, up to and including the section on Algorithms. Don't worry about understanding everything on a first pass. You may then want to go back and re-read some of the earlier sections or at least refresh your memory by looking at the "Key Points" summaries.
+
+An excellent way to learn about quantum computing is to use a simulator so that you can try out the things you learn as you go through the book. You wouldn't expect to learn a programming language like Python just by reading a book on it; you need to write some programs and learn from your mistakes. The same is true of quantum computing. You may not have access to a real quantum computer, but simulators are quite capable of running the small quantum circuits needed for learning purposes.
+
+The final chapter is on ways to simulate a quantum computer using an ordinary computer. This is probably not of interest to everyone, so can be considered as optional reading.
 
 ---
 <div style="page-break-after: always;"></div>
@@ -245,7 +251,7 @@ Quantum measurement is fundamentally unpredictable. It is not just a lack of kno
 <div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
     <strong>Key Points:</strong></p>
     
-- A *qubit* is an abstraction of the state of a two-level quantum system, such as the spin of an electron.
+- The *qubit* is an abstraction of the state of a two-level quantum system, such as the spin of an electron.
 
 - The quantum state $\ket{\psi}$ of a qubit may be in either of the basis states $\ket{0}$ or $\ket{1}$, but it can also be in a linear *superposition* of these: $\ket{\psi}=\alpha_0\ket{0}+\alpha_1\ket{1}$, where $\alpha_0$ and $\alpha_1$ are complex *probability amplitudes*.
 
@@ -273,7 +279,9 @@ Interference is one of the key quantum phenomena that is exploited in quantum co
 <div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
     <strong>Key Points:</strong></p>
 
-- Probability amplitudes are complex numbers that have a magnitude and a phase. Phase coherence gives rise to the quantum phenomena of superposition, interference and entanglement. Phase information can easily leak away into the environment causing a quantum particle to lose its *quantumness*.
+- Probability amplitudes are complex numbers that have a magnitude and a phase. Phase coherence gives rise to the quantum phenomena of superposition, interference and entanglement.
+
+- Phase information can easily leak away into the environment, through a process called *decoherence*, which causes a quantum particle to lose its *quantumness*.
 </div> 
 
 ### Probability
@@ -362,15 +370,20 @@ Of course, a real quantum computer doesn't use vectors and matrices; it lets rea
 <div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
     <strong>Key Points:</strong></p>
 
-- The abstract basis states $\ket{0}$ and $\ket{1}$ can be represented as column vectors in a specific basis. Quantum operators (i.e. gates) can then be expressed as matrices that operate on these states. This provides a simple but very inefficient way to simulate a quantum computation.
+- The abstract basis states $\ket{0}$ and $\ket{1}$ can be represented as column vectors in a specific basis. Quantum operators (i.e. gates) can then be expressed as matrices that operate on these states. 
+
+- This provides a simple but inefficient way to simulate a quantum computation.
 </div>  
 
 ### Dirac Notation
 
 <div style="background-color: #f0ffe0; padding: 15px; border-radius: 5px;">
     <strong>Reader's Guide:</strong></p>
-Dirac notation is widely used in quantum computing, so it is important to become familiar with it. You might find this section too difficult on a first reading, but at least read through it and try to get the gist. There is also a "Key Points" section at the end which gives a brief summary of the key points. You should find this section easier on a second reading after you have seen the notation in action.
-</div> 
+
+- This section is more mathematical, but it is important to become familiar with Dirac notation because it is widely used in quantum computing.
+
+- If you find it too difficult on a first reading, at least try to get the gist. There is a "Key Points" section at the end which gives a brief summary of the main points. It should become easier on a second reading after you have seen the notation in action.
+</div>
 
 #### Hilbert Space
 
@@ -593,9 +606,18 @@ The tensor product can also be used to combine operators. If $U$ and $V$ are ope
 <div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
     <strong>Key Points:</strong></p>
     
-- Quantum states are represented by complex vectors in a multi-dimensional space. In Dirac's *Bra-Ket* notation, a state vector is known as a *ket* and is written $\ket{A}$. The conjugate transpose of a ket is called a *bra* and written $\bra{A}$. This notation makes it easy to perform algebra with complex vectors using three types of product: the inner product $\braket{A|B}$, outer product $\ket{A}\bra{B}$ and tensor product $\ket{A}\ket{B}$.
+- Quantum states are represented by complex vectors in a multi-dimensional vector space known as *Hilbert Space*. A system with $K$ qubits requires a $2^K$ dimensional Hilbert space.
 
-- The abstract bra and ket vectors can be represented by ordinary row and column vectors. The outer product then becomes a matrix. You might find this easier if the Dirac notation seems too difficult at first.
+- In Dirac's *Bra-Ket* notation, a state vector is known as a *ket* and is written $\ket{A}$. The conjugate transpose of a ket is called a *bra* and written $\bra{A}$. This notation makes it easy to perform algebra with complex vectors.
+
+- The *inner product* $\braket{A|B}$ is a complex number that represents the similarity between two vectors. It is the complex equivalent of the dot-product of ordinary vectors.
+
+- The *outer product* $\ket{A}\bra{B}$ is an operator that can be applied to a ket $\ket{C}$, resulting in $\ket{A}$ multiplied by the complex number $\braket{B|C}$:
+  - $\ket{A}\bra{B}\ \ \ket{C} = \braket{B|C}\ \ \ket{A}$
+
+- The *tensor product* $\ket{A}\ket{B}$ combines two quantum states into one that describes the whole combination.  
+
+- The abstract bra and ket vectors can be represented by ordinary row and column vectors if we take care of the complex conjugation. The outer product then becomes a matrix.
 </div>
 
 ### Bloch Sphere
@@ -763,7 +785,7 @@ In addition to the Z and X bases, there is also a Y basis. The Y basis vectors a
 
 - $\ket{0}$ and $\ket{1}$ are basis vectors in the Z-basis. $\ket{+}$ and $\ket{-}$ are basis vectors in the X-basis. X and Z are *complementary bases*. A measurement in one basis leaves the qubit in an equal superposition in the other basis, so that a subsequent measurement in that basis results in a completely unpredictable outcome.
 
-- The Hadamard operator/gate $H$ switches back and forth between the Z and X bases. Use of complementary bases forms an important part of most quantum algorithms.
+- The Hadamard operator $H$ switches back and forth between the Z and X bases. Use of complementary bases forms an important part of most quantum algorithms.
 
 - There is also a Y basis although is not used as often.
 </div>    
@@ -845,9 +867,13 @@ We will discuss these gates in more detail in the chapter on quantum gates. The 
 <div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
     <strong>Key Points:</strong></p>
 
-- The Bloch Sphere provides a good way visualise the relation between the $X, Y$ and $Z$ bases and how various quantum gates rotate the state on the sphere.
+- The Bloch Sphere provides a good way to visualise the relation between the X, Y and Z bases and how one-qubit quantum gates rotate the state of a qubit on the sphere.
 
-- The $X, Y, Z, H$ and $P$ gates are introduced as well as the concept of a quantum circuit.
+- The $X, Y$ and $Z$ gates rotate by an angle of $\pi$ (180 degrees) about the corresponding axis.
+- The Hadamard gate $H$ switches between the X and Z bases by rotating about an axis mid-way between X and Z.
+- The phase gate $P(\phi)$ changes the phase by $\phi$ by rotating about the Z axis.
+
+- A quantum circuit represents these gates as square boxes drawn on a qubit line.
 </div>
 
 ### Unitary Operators
@@ -888,7 +914,7 @@ Unitary operators can be expressed as unitary matrices. A unitary matrix is one 
 <div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
     <strong>Key Points:</strong></p>
     
-- A unitary operator is one that is its own Hermitian conjugate (conjugate transpose in the case of a matrix). Unitary operators are norm-preserving and invertible.
+- A unitary operator is one whose inverse is its own Hermitian conjugate (conjugate transpose in the case of a matrix). Unitary operators are norm-preserving and invertible.
 
 - This implies that quantum gates are reversible and must have the same number of inputs and outputs.
 
@@ -950,9 +976,9 @@ Quantum states represent exponentially more information than classical states. H
 
 - The state of a multi-qubit system is described by the tensor product of the individual qubit states. This cannot be factored back into individual qubit states once the qubits become entangled.
 
-- Consequently, the state of an N-qubit quantum system must be described by a vector in a $2^N$-dimensional vector space and not by $N$ vectors in a two-dimensional space.
+- Consequently, the state of an N-qubit quantum system must be described by a vector in a $2^N$-dimensional vector space and not by $N$ vectors in two-dimensional space.
 
-- If we simulate the quantum system on a classical computer, the storage needed grows eponentially with the number of qubits. This limits simulations to a few tens of qubits. A later section of this guide looks at how modern simulation approaches can improve on this a little.
+- If we simulate the quantum system on a classical computer, the storage needed grows exponentially with the number of qubits. This limits simulations to a few tens of qubits. A later section of this guide looks at how modern simulation approaches can improve on this a little.
 </div>
 
 ### No-Cloning Theorem
@@ -983,7 +1009,7 @@ The no-cloning theorem implies that it is not possible to connect the output of 
 
 - The *no-cloning theorem* says that, given an unknown quantum state, it is not possible to create an exact independent copy of it.
 
-- The related *no-deleting theorem* says that, given two identical quantum states, it is not possible to throw one away. 
+- The related *no-deleting theorem* says that, given two identical arbitrary quantum states, it is not possible to delete one of them. 
 </div>
 
 ---
@@ -1021,7 +1047,9 @@ A quantum circuit has a fixed number of qubits, as required by unitarity and the
 
 The diagram represents a sequence of unitary operators, in the form of quantum gates, applied to a set of qubits, with the information flow running from left to right. The gates are typically not physical entities, but just operators applied to a fixed set of qubits *in situ*.
 
-The circuit is at quite a high level of abstraction. The gate symbols can be thought of as representing abstract operators or matrices, with the qubit "wires" representing flow of quantum information (qubits). The whole circuit can be thought of as a tensor network with the gates representing tensors and the wires representing tensor indices (This is discussed later). It can also be interpreted as describing a sequence of operations applied to physical qubits, such as superconducting qubits, in a quantum computer.
+A quantum circuit is at quite a high level of abstraction. The gate symbols can be thought of as representing abstract operators or matrices, with the qubit "wires" representing flow of quantum information (qubits). The whole circuit can be thought of as a tensor network with the gates representing tensors and the wires representing tensor indices (This is discussed later). It can also be interpreted as describing a sequence of operations applied to physical qubits, such as superconducting qubits, in a quantum computer.
+
+This abstraction, together with the abstraction of two-level quantum systems as qubits, bridges the gap between computational models and physical implementation.
 
 <div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
     <strong>Key Points:</strong></p>
@@ -1029,6 +1057,8 @@ The circuit is at quite a high level of abstraction. The gate symbols can be tho
 - A quantum circuit describes the application of a sequence of quantum gates to a set of qubits to evolve an initial quantum state into a final state. There are some rules about what constitutes a valid circuit so that it respects unitarity and the no-cloning theorem.
 
 - A quantum circuit diagram describes this graphically using gate symbols placed on a set of horizontal lines that represent the qubits.
+
+- It is an abstract representation that can be interpreted as mathematical operators, matrices, tensors or as operations on physical qubits.
 </div>
 
 ### Composing Circuits
@@ -1116,7 +1146,7 @@ However, both A and B must be complete before C is applied. The circuit should b
 <div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
     <strong>Key Points:</strong></p>
     
-- The series composition of two gates corresponds to matrix multiplication of the gates, whereas parallel operations on different qubits are combined using the tensor product.
+- The series composition of two gates corresponds to matrix multiplication, whereas parallel operations on different qubits correspond to a tensor product.
 
 - When applying a gate to one or more qubits, dummy identity gates must be included on the other qubits and included in the tensor product, so that the whole state vector is updated.
 </div>
@@ -1158,7 +1188,9 @@ The first definition is for a big-endian CX gate, whereas the second definition 
 
 - There are two different conventions for the way that qubits are numbered, which are known as *big-endian* and *little-endian*. Simply relabelling qubits would have no effect on the operation but, because of the way it is implemented, it actually results in different definitions for some gates such as CX.
 
-- Textbooks and academic papers tend to use the big-endian convention, but some software libraries and development tools use the little-endian convention. This can lead to confusion particularly for beginners. This guide uses the big-endian convention.
+- Textbooks and academic papers tend to use the big-endian convention, but some software libraries and development tools use the little-endian convention. This can lead to confusion particularly for beginners.
+
+- This guide uses the big-endian convention.
 </div>
 
 ### Permutation of Qubits
@@ -1190,7 +1222,7 @@ Fortunately, in a quantum-computer simulator, we can sometimes implement swaps m
 <div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
     <strong>Key Points:</strong></p>
 
-- Real quantum computers normally arrange the physical qubits in a one or two dimensional array. Operations like CX usually need the relevant qubits to be physically adjacent for them to interact, so SWAP gates are needed to rearrange the qubits.
+- Real quantum computers typically arrange the physical qubits in a one or two dimensional array. Operations like CX normally need the relevant qubits to be physically adjacent for them to interact, so SWAP gates are needed to rearrange the qubits.
 
 - Quantum circuit simulators can have similar problems when they need to apply a CX gate to non-adjacent qubits. Depending on the type of simulator, SWAP gates or a permutation matrix may be used, or it may be possible to just permute qubit indices. Quantum circuit design tools normally hide such issues from the circuit designer.
 </div>
@@ -1654,7 +1686,7 @@ Any number of qubits can be entangled this way by cascading more CX gates.
 <div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
     <strong>Key Points:</strong></p>
 
-- Entanglement plays a key role in quantum circuits. Without it, we would just have lots of trivial independent one-qubit circuits. It can be created using just a Hadamard gate and a CX gate. 
+- Entanglement plays a key role in quantum circuits. Without it, we would just have lots of trivial independent circuits. It can be created using just a Hadamard gate and a CX gate. 
 
 - There are four possible maximally-entangled states of two qubits, which are known as the Bell states. A Bell measurement can be used to distinguish between them.
 
@@ -1920,9 +1952,9 @@ The interaction with the environment can be via a measuring device, which in tur
 
 - Measurement is normally made in the Z basis. It may be made in other bases by first transforming the state and then perfoming a Z-basis measurement.
 
-- Measurements are usually performed at the end after the unitary evolution.
+- Measurements are usually performed as the last step, after the unitary evolution.
 
-- Simulations allow direct access to the quantum state, so measurement can often be omitted provided that they are at the end of the circuit.
+- Simulations allow direct access to the quantum state, so measurements can often be omitted if they are at the end of the circuit.
 
 - The Principle of Deferred Measurement makes it possible to move mid-circuit measurements to the end of the circuit.
 
@@ -1941,7 +1973,7 @@ The interaction with the environment can be via a measuring device, which in tur
 
 - The Quantum Fourier Transform (QFT) is one of the more difficult topics. However, several examples are given with graphical representations to provide more intuition.
 
-- Shor's Algorithm is the most difficult as it involves some number theory. To make this easy, some worked examples are given.
+- Shor's Algorithm is the most difficult as it involves some number theory. To make it easier, some worked examples are given.
 </div><p>
 
 This section describes some quantum algorithms, including Shor's algorithm and Grover's algorithm. The examples have been adapted from the Jupyter Notebook examples that are included with the author's TinyQsim simulator. However, the executable code has been omitted here to keep this Guide less specific to particular development tools.
@@ -2217,7 +2249,7 @@ Phase Kickback may seem very strange, because we often think of the control of a
 <div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
     <strong>Key Points:</strong></p>
 
-- The control input of a controlled gate is often thought of as enabling an operation on the target qubit. However, this assumes that the control is in the basis state $\ket{0}$ or $\ket{1}$. Phase kickback is an an effect in which controlled gates have an effect on the phase of the control qubit.
+- The control input of a controlled gate is often thought of as enabling an operation on the target qubit. However, this assumes that the control is in either the basis state $\ket{0}$ or $\ket{1}$. Phase kickback is an an effect in which controlled gates have an effect on the phase of the control qubit.
 
 - If the control is in an equal superposition state and the target input is an eigenvector of the unitary being controlled, the phase of the corresponding eigenvalue is "kicked-back" onto the contol qubit, leaving the target qubit state unaffected.
 
@@ -2443,7 +2475,7 @@ The QFT is equivalent to the application of this unitary matrix to the quantum s
 
 - The Fourier Transform is widely used in science and engineering to transform data between two different domains. This is often done where it is easier to perform a task in the transform domain.
 
-- The Quantum Fourier Transform (QFT) is an implementation as a quantum circuit that takes the Fourier transform of a quantum state.
+- The Quantum Fourier Transform (QFT) is an implementation in the form of a quantum circuit that computes the Fourier transform of a quantum state.
 
 - The QFT is useful where we want to encode numerical values using qubits to represent bits, for example in Shor's algorithm.
 
@@ -3291,11 +3323,11 @@ This example has demonstrated Grover's algorithm as well as the more general con
 
 - Grover's Algorithm solves "oracle" type problems, where a black-box function can only answer "yes" or "no" when asked if something is a solution.
 
-- The system is put in an equal superposition of all possible outcomes. The oracle flips the phase of the solution state, but this doesn't change its measurement probabilities.
+- The system is put in an equal superposition of all possible outcomes. The oracle flips the phase of the solution state within the superposition, but this doesn't change its measurement probabilities.
 
 - A "diffusion" function is applied to make the states interfere, such that the amplitude of the flipped state is increased and the others are increased. This is an example of amplitude amplification.
 
-- This process is applied iteratively to further amplify the correct answer, then the state is measured. The number of iterations required is approximately $\sqrt{N}$ when there are $N$ possible outcomes. This is a considerable improvement over a "brute force" search by trying all possibilities. 
+- This process is applied iteratively to further amplify the correct answer, then the state is measured. The number of iterations required is approximately $\sqrt{N}$ when there are $N$ possible outcomes. This is a considerable improvement over a "brute force" search by trying all $N$ possibilities. 
 </div> 
 
 ---
@@ -3344,11 +3376,11 @@ If Bob were to just guess what the two classical bits would be, he would have a 
 <div style="background-color: #f0f0ff; padding: 15px; border-radius: 5px;">
     <strong>Key Points:</strong></p>
 
-- Quantum teleportation is a protocol that allows quantum information to be sent from one place to another. This is non-trivial because measuring it to send it classically would collapse the state and the no-cloning theorem requires that the sender no longer has access to the information.
+- Quantum teleportation is a protocol that allows quantum information to be sent from one place to another. This is non-trivial because measuring it to send it classically would collapse the state. Also, the no-cloning theorem requires that the sender no longer has access to the information.
 
 - The sender (Alice) and receiver (Bob) share a pair of entangled qubits. These cannot be used to send information directly. Alice performs a Bell measurement of the her entangled qubit with the qubit to be sent. This results in two bits of classical information which she sends to Bob.
 
-- Bob then performs quantum operations on his entangled qubit according to the two classical bits. This reconstructs the original state of Alice's qubit. Alice doesn't have a copy because her Bell measurement destroyed the state of the original particle.
+- Bob then performs quantum operations on his entangled qubit according to the two classical bits. This reconstructs the original state of Alice's qubit. Alice doesn't have a copy because her Bell measurement destroyed the state of the original qubit.
 </div>    
 
 ---
@@ -3358,7 +3390,10 @@ If Bob were to just guess what the two classical bits would be, he would have a 
 
 <div style="background-color: #f0ffe0; padding: 15px; border-radius: 5px;">
     <strong>Reader's Guide:</strong></p>
-This section is more specialised and may not be of interest to all readers.
+
+This section is more specialised and can be considered as optional reading for those who are interested.
+
+It looks at methods of simulating a quantum computer on an ordinary computer. This should not be confused with "Quantum Simulation", which is about the use of quantum computers to solve quantum mechanical problems, for example in physics and chemistry, by simulating real quantum systems.
 </div><p>
 
 It is useful to have a simulator that allows us to develop and test quantum algorithms on a conventional computer. A simulator is also a good tool for learning about quantum computers and experimenting with new ideas.
@@ -3543,13 +3578,15 @@ This section was just to give a flavour of the ZX-calculus for interest, without
 
 - A quantum computation can be simulated using a vector for the state and matrices for the gates, but this doesn't scale well. A laptop computer can simulate up to around 15 qubits this way. The execution time increases by a factor of 4 for each qubit that is added.
 
-- Tensors can be thought of a generalisation of vectors and matrices to higher dimensions. The quantum circuit is treated as a tensor network with tensors for the gates and the quantum state. Applying a gate becomes a tensor contraction.
+- Tensors can be thought of a generalisation of vectors and matrices to higher dimensions. The quantum circuit is treated as a tensor network with tensors for the gates and the quantum state. Applying a gate then becomes a tensor contraction.
 
-- A simple approach uses an order-N tensor for N qubits, allowing the qubits to be addressed individually. This approximately doubles the number of qubits that can be simulated and greatly increases the speed.
+- The simplest approach uses an order-N tensor for the N qubits, allowing the qubits to be addressed individually. This approximately doubles the number of qubits that can be simulated and greatly increases the speed. The execution time only grows by a factor of 2 for each qubit.
 
-- A more sophisticated approach factors the state tensor into individual qubit tensors, forming a Matrix Product State (MPS). The bonds between the qubit tensors carry information on correlations (i.e entanglement). This approach  allows the state to be stored in a much more compact form. The bond dimensions only grow as needed when entanglement actually occurs. The storage and execution time can be further reduced by using approximations that can be viewed as a kind of data compression. Simulators using this approach can handle a much larger number of qubits provided that the entanglement is not too great.
+- An even better approach is to factor the state tensor into a chain of individual qubit tensors. This is called a Matrix Product State (MPS). The bonds between the qubit tensors carry any entanglement. An initial basis state can be stored very compactly as there is no entanglement. The bond dimensions only grow as needed when entanglement actually occurs, as gate tensors are contracted into the MPS.
 
-- ZX calculus is a graphical language for reasoning about quantum circuits expressed as tensor networks.
+- The storage and execution time of an MPS can be further reduced by limiting the dimension of the inter-qubit bonds by using approximations, which can be viewed as a kind of data compression. Simulators using this approach can handle a much larger number of qubits provided that the entanglement is not too great.
+
+- ZX calculus is a graphical language for reasoning about quantum circuits expressed as tensor networks. The tensors are symbolic entities, unlike the numerical tensors in MPS simulations.
 
 </div>    
 
